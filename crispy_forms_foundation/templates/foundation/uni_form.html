@@ -1,0 +1,16 @@
+{% if form_show_errors %}
+    {% include "foundation/errors.html" %}
+{% endif %}
+
+{% if form_style == "" or form_style %}
+    <fieldset class="{{ form_style }}">
+        <legend></legend>
+{% endif %}
+
+{% for field in form %}
+    {% include "foundation/field.html" %}
+{% endfor %}
+
+{% if form_style == "" or form_style %}
+    </fieldset>
+{% endif %}

@@ -1,0 +1,4 @@
+include MANIFEST.in
+include LICENCE.txt
+include README.rst
+recursive-include crispy_forms_foundation/templates *

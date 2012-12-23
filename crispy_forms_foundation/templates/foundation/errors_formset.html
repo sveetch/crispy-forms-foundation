@@ -1,0 +1,10 @@
+{% if formset.non_form_errors %}
+    <div id="errorMsg" class="alert-box alert">
+        {% if formset_error_title %}<h3>{{ formset_error_title }}</h3>{% endif %}
+        <ol>
+            {{ formset.non_form_errors|unordered_list }}
+        </ol>
+        <a href="" class="close">&times;</a>
+    </div>
+{% endif %}
+
