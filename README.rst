@@ -2,6 +2,7 @@
 .. _Django: https://www.djangoproject.com/
 .. _django-crispy-forms: https://github.com/maraujop/django-crispy-forms
 .. _Foundation: http://github.com/zurb/foundation
+.. _Foundation Grid: http://foundation.zurb.com/docs/grid.php
 
 Introduction
 ============
@@ -40,7 +41,7 @@ Just register the app in your project settings like this :
 Usage
 =====
 
-Import `crispy-forms-foundation`_ then you can use the layout object in your forms :
+Import **crispy-forms-foundation** then you can use the layout object in your forms :
     
 .. sourcecode:: python
 
@@ -84,3 +85,40 @@ Import `crispy-forms-foundation`_ then you can use the layout object in your for
             super(YourForm, self).__init__(*args, **kwargs)
 
 The embedded templates are in ``crispy_forms_foundation/templates/foundation``.
+
+Layout items
+************
+
+For now there is only three layout items dedicated to Foundation (Row, RowFluid, Column), other embedded items are cloned from the **uni_form** layout items from `django-crispy-forms`_.
+
+Row
+---
+
+Act as a div container row, it will embed his items in a div like this : ::
+
+    <div class"row">Your stuff</div>
+
+
+RowFluid
+--------
+
+It has a same behaviour than `Row`_ but add a CSS class "row-fluid" that you can use to have top level row that take all the container width. You have to put the CSS for this class to your CSS stylesheet. It will embed his items in a div like this : ::
+
+    <div class"row row-fluid">Your stuff</div>
+
+The CSS to add should be something like this : ::
+
+    .row-fluid {
+        width: 100%;
+        max-width: 100%;
+        min-width: 100%;
+    }
+
+Column
+------
+
+This is the column from the `Foundation Grid`_, all columns should be contained in a `Row`_ or a `RowFluid`_ and you will have to define the column type in the ``css_class`` attribute.
+
+With a ``css_class`` attribute defined to ``twelve``, it will embed his items in a div like this : ::
+
+    <div class"columns twelve">Your stuff</div>
