@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% load i18n crispy_forms_tags %}
+
+{% comment %}Translators: Demonstration title{% endcomment %}
+{% block head_title %}{% trans "Crispy-forms Foundation sample" %}{% endblock %}
+
+{% block content %}
+    <h2>{% trans "Crispy-forms Foundation sample" %}</h2>
+    
+    {% crispy form %}
+{% endblock %}
