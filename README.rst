@@ -22,7 +22,7 @@ Links
 Requires
 ========
 
-* `django-crispy-forms`_ >= 1.1.2;
+* `django-crispy-forms`_ = 1.2.x;
 
 Installation
 ============
@@ -37,6 +37,15 @@ Just register the app in your project settings like this :
         'crispy_forms_foundation',
         ...
     )
+
+Then append this part to specify usage of the Foundation set :
+
+.. sourcecode:: python
+
+    # Default layout to use with "crispy_forms"
+    CRISPY_TEMPLATE_PACK = 'foundation'
+
+All other `django-crispy-forms`_ settings option apply, see its documentation for more details.
 
 Usage
 =====
