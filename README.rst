@@ -7,7 +7,7 @@
 Introduction
 ============
 
-This is a `Django`_ application to add `django-crispy-forms`_ layout objects for `Foundation`_.
+This is a `Django`_ application to add `django-crispy-forms`_ layout objects for `Foundation`_ version ``3.5.x``.
 
 Actually this is only to use specific templates and changing some CSS class names.
 
@@ -22,7 +22,7 @@ Links
 Requires
 ========
 
-* `django-crispy-forms`_ = 1.2.x;
+* `django-crispy-forms`_ = 1.4.x;
 
 Installation
 ============
