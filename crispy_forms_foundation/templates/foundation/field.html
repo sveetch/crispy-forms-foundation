@@ -15,7 +15,11 @@
             </label>
         {% endif %}
 
-        {% if not field|is_checkbox %}
+        {% if field|is_checkboxselectmultiple %}
+            {% include 'foundation/layout/checkboxselectmultiple.html' %}
+        {% endif %}
+
+        {% if not field|is_checkbox and not field|is_checkboxselectmultiple %}
             {% crispy_field field %}
         {% endif %}
 

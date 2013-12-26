@@ -1,0 +1,7 @@
+{% load l10n %}
+
+{% for choice in field.field.choices %}
+    <input type="checkbox"{% if choice.0 in field.value or choice.0|stringformat:"s" in field.value or choice.0|stringformat:"s" == field.value|stringformat:"s" %} checked="checked"{% endif %} name="{{ field.html_name }}" id="id_{{ field.html_name }}_{{ forloop.counter }}" value="{{ choice.0|unlocalize }}">
+    <label for="id_{{ field.html_name}}_{{ forloop.counter }}">{{ choice.1|unlocalize }}</label>
+{% endfor %}
+
