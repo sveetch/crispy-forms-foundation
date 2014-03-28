@@ -3,6 +3,7 @@
 .. _django-crispy-forms: https://github.com/maraujop/django-crispy-forms
 .. _Foundation: http://github.com/zurb/foundation
 .. _Foundation Grid: http://foundation.zurb.com/docs/grid.php
+.. _crispy-forms-foundation-demo: https://github.com/sveetch/crispy-forms-foundation-demo
 
 Introduction
 ============
@@ -131,3 +132,24 @@ This is the column from the `Foundation Grid`_, all columns should be contained 
 With a ``css_class`` attribute defined to ``twelve``, it will embed his items in a div like this : ::
 
     <div class"columns twelve">Your stuff</div>
+
+Changelog
+=========
+
+Version 0.3.0
+*************
+
+Some backward incompatible change have been done, be sure to check them before upgrading.
+
+* Removed sample view, url and templates. If needed you can find a Django app sample on `crispy-forms-foundation-demo`_;
+* Moving ``foundation`` template pack name and its directory to ``foundation-3``. You have to change your ``settings.CRISPY_TEMPLATE_PACK`` if you used the old one;
+* Add ``foundation-5`` template pack, it is now the default template pack;
+* Removing camelcase on some css classes :
+
+  * 'ctrlHolder' has changed to 'holder';
+  * 'buttonHolder' has changed to 'button-holder';
+  * 'asteriskField' has changed to 'asterisk';
+  * 'errorField' has changed to 'error';
+  * 'formHint' has changed to 'hint';
+  * 'inlineLabel' has changed to 'inline-label';
+  * 'multiField' has changed to 'multiple-fields';

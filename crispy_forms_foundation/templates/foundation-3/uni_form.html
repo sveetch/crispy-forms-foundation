@@ -1,5 +1,5 @@
 {% if form_show_errors %}
-    {% include "foundation/errors.html" %}
+    {% include "foundation-5/errors.html" %}
 {% endif %}
 
 {% if form_style == "" or form_style %}
@@ -8,7 +8,7 @@
 {% endif %}
 
 {% for field in form %}
-    {% include "foundation/field.html" %}
+    {% include "foundation-5/field.html" %}
 {% endfor %}
 
 {% if form_style == "" or form_style %}

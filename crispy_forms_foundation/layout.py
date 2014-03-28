@@ -1,18 +1,16 @@
 """
-Inherits from the "uni_form" Layout objects to force templates on "foundation/..." and 
+Inherits from the "uni_form" Layout objects to force templates on TEMPLATE_PACK and 
 use of Foundation CSS classes
 
 Also the templates are more clean that the included ones from crispy_forms which produce 
 too much spaces and newlines in the final HTML.
-
-TODO: * Add some more element like prefixed/suffixed inputs, like the bootstrap layouts;
 """
 from django.conf import settings
 
 from crispy_forms.utils import render_field
 from crispy_forms import layout as crispy_forms_layout
 
-TEMPLATE_PACK = getattr(settings, 'CRISPY_TEMPLATE_PACK', 'foundation')
+TEMPLATE_PACK = getattr(settings, 'CRISPY_TEMPLATE_PACK', 'foundation-5')
 
 class Layout(crispy_forms_layout.Layout): pass
 class UneditableField(crispy_forms_layout.HTML): pass
@@ -21,7 +19,7 @@ class MultiWidgetField(crispy_forms_layout.MultiWidgetField): pass
 
 class ButtonHolder(crispy_forms_layout.ButtonHolder):
     """
-    Layout object. It wraps fields in a <div class="buttonHolder">
+    Layout object. It wraps fields in a <div class="button-holder">
 
     This is where you should put Layout objects that render to form buttons like Submit.
     It should only hold `HTML` and `BaseInput` inherited objects.
@@ -33,7 +31,7 @@ class ButtonHolder(crispy_forms_layout.ButtonHolder):
             Submit('Save', 'Save')
         )
     """
-    template = "foundation/layout/buttonholder.html"
+    template = TEMPLATE_PACK+"/layout/buttonholder.html"
 
 
 class Submit(crispy_forms_layout.Submit):
@@ -99,13 +97,13 @@ class Fieldset(crispy_forms_layout.Fieldset):
             'form_field_2'
         )
     """
-    template = "foundation/layout/fieldset.html"
+    template = TEMPLATE_PACK+"/layout/fieldset.html"
 
 
 class MultiField(crispy_forms_layout.MultiField):
     """ MultiField container. Renders to a MultiField <div> """
-    template = "foundation/layout/multifield.html"
-    field_template = "foundation/multifield.html"
+    template = TEMPLATE_PACK+"/layout/multifield.html"
+    field_template = TEMPLATE_PACK+"/multifield.html"
 
 
 class Div(crispy_forms_layout.Div):
@@ -116,7 +114,7 @@ class Div(crispy_forms_layout.Div):
 
         Div('form_field_1', 'form_field_2', css_id='div-example', css_class='divs')
     """
-    template = "foundation/layout/div.html"
+    template = TEMPLATE_PACK+"/layout/div.html"
 
 
 class Row(Div):
@@ -164,7 +162,7 @@ class SplitDateTimeField(Field):
     
     Simply use a specific template
     """
-    template="foundation/layout/splitdatetime_field.html"
+    template=TEMPLATE_PACK+"/layout/splitdatetime_field.html"
 
     #def render(self, form, form_style, context, template_pack=TEMPLATE_PACK):
         #html = ''
