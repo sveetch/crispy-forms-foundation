@@ -36,7 +36,7 @@ class ButtonHolder(crispy_forms_layout.ButtonHolder):
 
 class Submit(crispy_forms_layout.Submit):
     """
-    Used to create a Submit button descriptor for the {% crispy %} template tag::
+    Used to create a Submit button descriptor for the {% crispy %} template tag : ::
 
         submit = Submit('Search the Site', 'search this site')
 
@@ -48,7 +48,7 @@ class Submit(crispy_forms_layout.Submit):
 
 class Button(crispy_forms_layout.Button):
     """
-    Used to create a Submit input descriptor for the {% crispy %} template tag::
+    Used to create a Submit input descriptor for the {% crispy %} template tag : ::
 
         button = Button('Button 1', 'Press Me!')
 
@@ -68,7 +68,7 @@ class Hidden(crispy_forms_layout.Hidden):
 
 class Reset(crispy_forms_layout.Reset):
     """
-    Used to create a Reset button input descriptor for the {% crispy %} template tag::
+    Used to create a Reset button input descriptor for the {% crispy %} template tag : ::
 
         reset = Reset('Reset This Form', 'Revert Me!')
 
@@ -90,7 +90,7 @@ class Fieldset(crispy_forms_layout.Fieldset):
         )
 
     The first parameter is the text for the fieldset legend. This text is context aware,
-    so you can do things like::
+    so you can do things like : ::
 
         Fieldset("Data for {{ user.username }}",
             'form_field_1',
@@ -110,7 +110,7 @@ class Div(crispy_forms_layout.Div):
     """
     Layout object. It wraps fields in a <div>
 
-    You can set `css_id` for a DOM id and `css_class` for a DOM class. Example::
+    You can set `css_id` for a DOM id and `css_class` for a DOM class. Example : ::
 
         Div('form_field_1', 'form_field_2', css_id='div-example', css_class='divs')
     """
@@ -119,7 +119,7 @@ class Div(crispy_forms_layout.Div):
 
 class Row(Div):
     """
-    Layout object. It wraps fields in a div whose default class is "row". Example::
+    Layout object. It wraps fields in a div whose default class is "row". Example : ::
 
         Row('form_field_1', 'form_field_2', 'form_field_3')
     """
@@ -127,7 +127,7 @@ class Row(Div):
 
 class RowFluid(Row):
     """
-    Layout object. It wraps fields in a div whose default class is "row row-fluid". Example::
+    Layout object. It wraps fields in a div whose default class is "row row-fluid". Example : ::
 
         RowFluid('form_field_1', 'form_field_2', 'form_field_3')
     """
@@ -136,11 +136,25 @@ class RowFluid(Row):
 
 class Column(Div):
     """
-    Layout object. It wraps fields in a div whose default class is "formColumn". Example::
+    Layout object. It wraps fields in a div whose default class is "formColumn". Example : ::
 
         Column('form_field_1', 'form_field_2')
+    
+    Or : ::
+
+        Column('form_field_1', 'form_field_2', css_class='small-12 large-6')
+    
+    If not defined, CSS class will default to 'large-12 columns'. ``columns`` class is 
+    allways appended, so you don't need to specify it.
     """
     css_class = 'columns'
+
+    def __init__(self, field, *args, **kwargs):
+        self.field = field
+        if 'css_class' not in self.kwargs:
+            self.kwargs['css_class'] = 'large-12'
+
+        super(Column, self).__init__(field, *args, **kwargs)
 
 
 class Field(crispy_forms_layout.Field):

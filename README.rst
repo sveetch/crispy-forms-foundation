@@ -42,7 +42,9 @@ Then append this part to specify usage of the Foundation set :
 .. sourcecode:: python
 
     # Default layout to use with "crispy_forms"
-    CRISPY_TEMPLATE_PACK = 'foundation'
+    CRISPY_TEMPLATE_PACK = 'foundation-5'
+
+If not defined, the default template pack name used is ``foundation-5``, also you can use ``foundation-3``.
 
 All other `django-crispy-forms`_ settings option apply, see its documentation for more details.
 
@@ -70,18 +72,18 @@ Import **crispy-forms-foundation** then you can use the layout object in your fo
                 ),
                 Fieldset(
                     ugettext('Display settings'),
-                    RowFluid(
-                        Column('template', css_class='six'),
-                        Column('order', css_class='three'),
-                        Column('visible', css_class='three'),
+                    Row(
+                        Column('template', css_class='large-6'),
+                        Column('order', css_class='large-3'),
+                        Column('visible', css_class='large-3'),
                     ),
                 ),
                 Fieldset(
                     ugettext('Publish settings'),
                     'parent',
-                    RowFluid(
-                        Column(SplitDateTimeField('published'), css_class='six'),
-                        Column('slug', css_class='six'),
+                    Row(
+                        Column(SplitDateTimeField('published'), css_class='large-6'),
+                        Column('slug', css_class='large-6'),
                     ),
                 ),
                 ButtonHolder(
@@ -133,11 +135,21 @@ Column
 
 This is the column from the `Foundation Grid`_, all columns should be contained in a `Row`_ or a `RowFluid`_ and you will have to define the column type in the ``css_class`` attribute.
 
-With a ``css_class`` attribute defined to ``twelve``, it will embed its items in a div like that :
+Example :
+
+.. sourcecode:: python
+
+    Column('form_field_1', 'form_field_2', css_class='small-12 large-6')
+
+Will render to something like that :
 
 .. sourcecode:: html
 
-    <div class"columns twelve">Your stuff</div>
+    <div class"small-12 large-6 columns">...</div>
+
+``columns`` class is allways appended, so you don't need to specify it.
+
+If not defined, ``css_class`` will default to 'large-12'.
 
 InlineField
 -----------
