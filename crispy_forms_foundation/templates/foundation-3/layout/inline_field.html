@@ -1,0 +1,17 @@
+{% load crispy_forms_field %}
+
+{% if field.is_hidden %}
+    {{ field }}
+{% else %}
+    <div id="div_{{ field.auto_id }}" class="row inline-field{% if field|is_checkbox %} inline-checkbox{% endif %}">
+        <div class="{{ label_column }}">
+            <label for="{{ field.id_for_label }}" class="{{ label_class }}{% if field.field.required %} required{% endif %}">
+                {{ field.label|safe }}
+            </label>
+        </div>
+        <div class="{{ input_column }}">
+            {% comment %}{% crispy_field field 'placeholder' field.label %}{% endcomment %}
+            {% crispy_field field %}
+        </div>
+    </div>
+{% endif %}

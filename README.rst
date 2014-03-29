@@ -133,8 +133,27 @@ With a ``css_class`` attribute defined to ``twelve``, it will embed his items in
 
     <div class"columns twelve">Your stuff</div>
 
+InlineField
+-----------
+
+Layout object for rendering an inline field with Foundation form.
+
+Example : ::
+
+    InlineField('field_name')
+
+InlineJustifiedField
+--------------------
+
+Same as InlineField but default is to be right aligned with a middle vertical position
+
 Changelog
 =========
+
+Version 0.3.1
+*************
+
+* Added InlineField and InlineJustifiedField;
 
 Version 0.3.0
 *************

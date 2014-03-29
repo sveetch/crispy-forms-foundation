@@ -31,7 +31,7 @@ class ButtonHolder(crispy_forms_layout.ButtonHolder):
             Submit('Save', 'Save')
         )
     """
-    template = TEMPLATE_PACK+"/layout/buttonholder.html"
+    template = "{0}/layout/buttonholder.html".format(TEMPLATE_PACK)
 
 
 class Submit(crispy_forms_layout.Submit):
@@ -97,13 +97,13 @@ class Fieldset(crispy_forms_layout.Fieldset):
             'form_field_2'
         )
     """
-    template = TEMPLATE_PACK+"/layout/fieldset.html"
+    template = "{0}/layout/fieldset.html".format(TEMPLATE_PACK)
 
 
 class MultiField(crispy_forms_layout.MultiField):
-    """ MultiField container. Renders to a MultiField <div> """
-    template = TEMPLATE_PACK+"/layout/multifield.html"
-    field_template = TEMPLATE_PACK+"/multifield.html"
+    """ MultiField container. Renders to a MultiField <d.format(TEMPLATE_PACK)iv> """
+    template = "{0}/layout/multifield.html".format(TEMPLATE_PACK)
+    field_template = "{0}/multifield.html".format(TEMPLATE_PACK)
 
 
 class Div(crispy_forms_layout.Div):
@@ -114,7 +114,7 @@ class Div(crispy_forms_layout.Div):
 
         Div('form_field_1', 'form_field_2', css_id='div-example', css_class='divs')
     """
-    template = TEMPLATE_PACK+"/layout/div.html"
+    template = "{0}/layout/div.html".format(TEMPLATE_PACK)
 
 
 class Row(Div):
@@ -152,7 +152,7 @@ class Field(crispy_forms_layout.Field):
 
         Field('field_name', style="color: #333;", css_class="whatever", id="field_name")
     """
-    template = "%s/field.html" % TEMPLATE_PACK
+    template = "{0}/field.html".format(TEMPLATE_PACK)
 
 
 class SplitDateTimeField(Field):
@@ -162,10 +162,42 @@ class SplitDateTimeField(Field):
     
     Simply use a specific template
     """
-    template=TEMPLATE_PACK+"/layout/splitdatetime_field.html"
+    template="{0}/layout/splitdatetime_field.html".format(TEMPLATE_PACK)
 
-    #def render(self, form, form_style, context, template_pack=TEMPLATE_PACK):
-        #html = ''
-        #for field in self.fields:
-            #html += render_field(field, form, form_style, context, template=self.template, attrs=self.attrs, template_pack=template_pack)
-        #return html
+
+class InlineField(Field):
+    """
+    Layout object for rendering an inline field with Foundation
+
+    Example::
+
+        InlineField('field_name')
+    """
+    template = "{0}/layout/inline_field.html".format(TEMPLATE_PACK)
+
+    def __init__(self, field, label_column='small-3', input_column='small-9', label_class='', *args, **kwargs):
+        self.field = field
+        self.label_column = label_column+' columns'
+        self.input_column = input_column+' columns'
+        self.label_class = label_class
+
+        super(InlineField, self).__init__(field, *args, **kwargs)
+
+    def render(self, form, form_style, context, template_pack=TEMPLATE_PACK):
+        context['label_column'] = self.label_column
+        context['input_column'] = self.input_column
+        context['label_class'] = self.label_class
+
+        html = ''
+        for field in self.fields:
+            html += render_field(field, form, form_style, context, template=self.template, attrs=self.attrs, template_pack=template_pack)
+        return html
+
+
+class InlineJustifiedField(InlineField):
+    """
+    Same as InlineField but default is to be right aligned with a middle vertical position
+    """
+    def __init__(self, field, *args, **kwargs):
+        kwargs['label_class'] = kwargs.get('label_class', None) or 'right inline'
+        super(InlineJustifiedField, self).__init__(field, *args, **kwargs)
