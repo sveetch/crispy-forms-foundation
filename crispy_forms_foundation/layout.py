@@ -175,7 +175,7 @@ class InlineField(Field):
     """
     template = "{0}/layout/inline_field.html".format(TEMPLATE_PACK)
 
-    def __init__(self, field, label_column='small-3', input_column='small-9', label_class='', *args, **kwargs):
+    def __init__(self, field, label_column='large-3', input_column='large-9', label_class='', *args, **kwargs):
         self.field = field
         self.label_column = label_column+' columns'
         self.input_column = input_column+' columns'

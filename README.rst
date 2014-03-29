@@ -8,9 +8,7 @@
 Introduction
 ============
 
-This is a `Django`_ application to add `django-crispy-forms`_ layout objects for `Foundation`_ version ``3.5.x``.
-
-Actually this is only to use specific templates and changing some CSS class names.
+This is a `Django`_ application to add `django-crispy-forms`_ layout objects for `Foundation`_.
 
 This app does not embed a `Foundation`_ release, you will have to install it yourself.
 
@@ -28,7 +26,7 @@ Requires
 Installation
 ============
 
-Just register the app in your project settings like this :
+Just register the app in your project settings like that :
 
 .. sourcecode:: python
 
@@ -99,12 +97,14 @@ The embedded templates are in ``crispy_forms_foundation/templates/foundation``.
 Layout items
 ************
 
-For now there is only three layout items dedicated to Foundation (Row, RowFluid, Column), other embedded items are cloned from the **uni_form** layout items from `django-crispy-forms`_.
+There is some layout items dedicated to `Foundation`_, other embedded items are just cloned from the **uni_form** layout items from `django-crispy-forms`_ to use the right template.
 
 Row
 ---
 
-Act as a div container row, it will embed his items in a div like this : ::
+Act as a div container row, it will embed its items in a div like that :
+
+.. sourcecode:: html
 
     <div class"row">Your stuff</div>
 
@@ -112,11 +112,15 @@ Act as a div container row, it will embed his items in a div like this : ::
 RowFluid
 --------
 
-It has a same behaviour than `Row`_ but add a CSS class "row-fluid" that you can use to have top level row that take all the container width. You have to put the CSS for this class to your CSS stylesheet. It will embed his items in a div like this : ::
+It has a same behaviour than `Row`_ but add a CSS class "row-fluid" that you can use to have top level row that take all the container width. You have to put the CSS for this class to your CSS stylesheets. It will embed its items in a div like that :
+
+.. sourcecode:: html
 
     <div class"row row-fluid">Your stuff</div>
 
-The CSS to add should be something like this : ::
+The CSS to add should be something like that :
+
+.. sourcecode:: css
 
     .row-fluid {
         width: 100%;
@@ -129,7 +133,9 @@ Column
 
 This is the column from the `Foundation Grid`_, all columns should be contained in a `Row`_ or a `RowFluid`_ and you will have to define the column type in the ``css_class`` attribute.
 
-With a ``css_class`` attribute defined to ``twelve``, it will embed his items in a div like this : ::
+With a ``css_class`` attribute defined to ``twelve``, it will embed its items in a div like that :
+
+.. sourcecode:: html
 
     <div class"columns twelve">Your stuff</div>
 
@@ -138,14 +144,32 @@ InlineField
 
 Layout object for rendering an inline field with Foundation form.
 
-Example : ::
+Example :
+
+.. sourcecode:: python
 
     InlineField('field_name')
+
+There is also three optionnal keywords :
+
+label_column='small-3', input_column='small-9', label_class=''
+
+* ``label_column`` css class to add on the label div column, default to ``large-3``;
+* ``input_column`` css class to add on the input div column, default to ``large-9``;
+* ``label_class`` css class to add on the label element, defaut is empty, you can use it to add alignment like ``right inline``;
+
+Example :
+
+.. sourcecode:: python
+
+    InlineField('field_name', label_column='small-6 large-3', input_column='small-6 large-9', label_class='right inline')
+
+Note that ``label_column`` and ``input_column`` are allways filled with the css class ``columns``.
 
 InlineJustifiedField
 --------------------
 
-Same as InlineField but default is to be right aligned with a middle vertical position
+Same as `InlineField`_ but default is to be right aligned with a vertical padding using the ``label_class`` argument.
 
 Changelog
 =========
@@ -153,7 +177,7 @@ Changelog
 Version 0.3.1
 *************
 
-* Added InlineField and InlineJustifiedField;
+* Added `InlineField`_ and `InlineJustifiedField`_;
 
 Version 0.3.0
 *************
@@ -165,10 +189,10 @@ Some backward incompatible change have been done, be sure to check them before u
 * Add ``foundation-5`` template pack, it is now the default template pack;
 * Removing camelcase on some css classes :
 
-  * 'ctrlHolder' has changed to 'holder';
-  * 'buttonHolder' has changed to 'button-holder';
-  * 'asteriskField' has changed to 'asterisk';
-  * 'errorField' has changed to 'error';
-  * 'formHint' has changed to 'hint';
-  * 'inlineLabel' has changed to 'inline-label';
-  * 'multiField' has changed to 'multiple-fields';
+  * ``ctrlHolder`` has changed to ``holder``;
+  * ``buttonHolder`` has changed to ``button-holder``;
+  * ``asteriskField`` has changed to ``asterisk``;
+  * ``errorField`` has changed to ``error``;
+  * ``formHint`` has changed to ``hint``;
+  * ``inlineLabel`` has changed to ``inline-label``;
+  * ``multiField`` has changed to ``multiple-fields``;
