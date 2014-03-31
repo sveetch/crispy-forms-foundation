@@ -17,7 +17,7 @@
                 {% crispy_field field %}
             {% endif %}
 
-            <label for="{{ field.id_for_label }}" {% if field.field.required %}class="requiredField"{% endif %}>
+            <label for="{{ field.id_for_label }}" {% if field.field.required %}class="required"{% endif %}>
                 {{ field.label|safe }}{% if field.field.required %}<span class="asterisk">*</span>{% endif %}
             </label>
         {% endif %}

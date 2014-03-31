@@ -4,6 +4,7 @@
 .. _Foundation: http://github.com/zurb/foundation
 .. _Foundation Grid: http://foundation.zurb.com/docs/grid.php
 .. _crispy-forms-foundation-demo: https://github.com/sveetch/crispy-forms-foundation-demo
+.. _Abide: http://foundation.zurb.com/docs/components/abide.html
 
 Introduction
 ============
@@ -99,7 +100,7 @@ The embedded templates are in ``crispy_forms_foundation/templates/foundation``.
 Layout items
 ************
 
-There is some layout items dedicated to `Foundation`_, other embedded items are just cloned from the **uni_form** layout items from `django-crispy-forms`_ to use the right template.
+There is some layout items dedicated to `Foundation`_, other embedded items are just cloned from the default layout items from `django-crispy-forms`_ to use the right template.
 
 Row
 ---
@@ -183,8 +184,46 @@ InlineJustifiedField
 
 Same as `InlineField`_ but default is to be right aligned with a vertical padding using the ``label_class`` argument.
 
+ButtonHolderPanel
+-----------------
+
+Just like ``ButtonHolder`` but add a ``panel`` css class on the main div.
+
+Use Foundation 5 Abide
+======================
+
+You can use `Abide`_ validation in your form but note that there is no support within the layout objects. You will have to add the required attribute (and eventually its pattern) on your field widgets in your form.
+
+So to enable `Abide`_ you'll have to load its Javascript library if you don't load yet the whole Foundation library, then in your form helper you will have to its attribute on the form like this :
+
+.. sourcecode:: python
+
+    class SampleForm(forms.Form):
+        def __init__(self, *args, **kwargs):
+            self.helper = FormHelper()
+            self.helper.attrs = {'data_abide': ''}
+            self.helper.form_action = '.'
+            self.helper.layout = Layout(
+                ...
+            )
+            
+            super(SampleForm, self).__init__(*args, **kwargs)
+
+Then add the required attribute on a field widget like this :
+
+.. sourcecode:: python
+
+    textarea_input = forms.CharField(label=_('Textarea'), widget=forms.Textarea(attrs={'required':''}), required=True)
+
 Changelog
 =========
+
+Version 0.3.2
+*************
+
+* Fix some css class in templates;
+* Add documentation for `Abide`_ usage;
+* Add `ButtonHolderPanel`_ layout object;
 
 Version 0.3.1
 *************

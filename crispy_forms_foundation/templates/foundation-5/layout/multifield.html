@@ -10,7 +10,7 @@
     {% endif %}{% endspaceless %}
 
     {% spaceless %}{% if multifield.label_html %}
-        <p {% if multifield.label_class %}class="{{ multifield.label_class }}"{% endif %}>{{ multifield.label_html|safe }}</p>
+        <p{% if multifield.label_class %} class="{{ multifield.label_class }}"{% endif %}>{{ multifield.label_html|safe }}</p>
     {% endif %}{% endspaceless %}
 
     <div class="multiple-fields">

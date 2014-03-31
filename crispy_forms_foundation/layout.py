@@ -17,94 +17,6 @@ class UneditableField(crispy_forms_layout.HTML): pass
 class HTML(crispy_forms_layout.HTML): pass
 class MultiWidgetField(crispy_forms_layout.MultiWidgetField): pass
 
-class ButtonHolder(crispy_forms_layout.ButtonHolder):
-    """
-    Layout object. It wraps fields in a <div class="button-holder">
-
-    This is where you should put Layout objects that render to form buttons like Submit.
-    It should only hold `HTML` and `BaseInput` inherited objects.
-
-    Example::
-
-        ButtonHolder(
-            HTML(<span style="display: hidden;">Information Saved</span>),
-            Submit('Save', 'Save')
-        )
-    """
-    template = "{0}/layout/buttonholder.html".format(TEMPLATE_PACK)
-
-
-class Submit(crispy_forms_layout.Submit):
-    """
-    Used to create a Submit button descriptor for the {% crispy %} template tag : ::
-
-        submit = Submit('Search the Site', 'search this site')
-
-    .. note:: The first argument is also slugified and turned into the id for the submit button.
-    """
-    input_type = 'submit'
-    field_classes = 'submit button'
-
-
-class Button(crispy_forms_layout.Button):
-    """
-    Used to create a Submit input descriptor for the {% crispy %} template tag : ::
-
-        button = Button('Button 1', 'Press Me!')
-
-    .. note:: The first argument is also slugified and turned into the id for the button.
-    """
-    input_type = 'button'
-    field_classes = 'button'
-
-
-class Hidden(crispy_forms_layout.Hidden):
-    """
-    Used to create a Hidden input descriptor for the {% crispy %} template tag.
-    """
-    input_type = 'hidden'
-    field_classes = 'hidden'
-
-
-class Reset(crispy_forms_layout.Reset):
-    """
-    Used to create a Reset button input descriptor for the {% crispy %} template tag : ::
-
-        reset = Reset('Reset This Form', 'Revert Me!')
-
-    .. note:: The first argument is also slugified and turned into the id for the reset.
-    """
-    input_type = 'reset'
-    field_classes = 'reset secondary button'
-
-
-class Fieldset(crispy_forms_layout.Fieldset):
-    """
-    Layout object. It wraps fields in a <fieldset>
-
-    Example::
-
-        Fieldset("Text for the legend",
-            'form_field_1',
-            'form_field_2'
-        )
-
-    The first parameter is the text for the fieldset legend. This text is context aware,
-    so you can do things like : ::
-
-        Fieldset("Data for {{ user.username }}",
-            'form_field_1',
-            'form_field_2'
-        )
-    """
-    template = "{0}/layout/fieldset.html".format(TEMPLATE_PACK)
-
-
-class MultiField(crispy_forms_layout.MultiField):
-    """ MultiField container. Renders to a MultiField <d.format(TEMPLATE_PACK)iv> """
-    template = "{0}/layout/multifield.html".format(TEMPLATE_PACK)
-    field_template = "{0}/multifield.html".format(TEMPLATE_PACK)
-
 
 class Div(crispy_forms_layout.Div):
     """
@@ -151,10 +63,32 @@ class Column(Div):
 
     def __init__(self, field, *args, **kwargs):
         self.field = field
-        if 'css_class' not in self.kwargs:
-            self.kwargs['css_class'] = 'large-12'
+        if 'css_class' not in kwargs:
+            kwargs['css_class'] = 'large-12'
 
         super(Column, self).__init__(field, *args, **kwargs)
+
+
+class Fieldset(crispy_forms_layout.Fieldset):
+    """
+    Layout object. It wraps fields in a <fieldset>
+
+    Example::
+
+        Fieldset("Text for the legend",
+            'form_field_1',
+            'form_field_2'
+        )
+
+    The first parameter is the text for the fieldset legend. This text is context aware,
+    so you can do things like : ::
+
+        Fieldset("Data for {{ user.username }}",
+            'form_field_1',
+            'form_field_2'
+        )
+    """
+    template = "{0}/layout/fieldset.html".format(TEMPLATE_PACK)
 
 
 class Field(crispy_forms_layout.Field):
@@ -167,6 +101,12 @@ class Field(crispy_forms_layout.Field):
         Field('field_name', style="color: #333;", css_class="whatever", id="field_name")
     """
     template = "{0}/field.html".format(TEMPLATE_PACK)
+
+
+class MultiField(crispy_forms_layout.MultiField):
+    """ MultiField container. Renders to a MultiField <d.format(TEMPLATE_PACK)iv> """
+    template = "{0}/layout/multifield.html".format(TEMPLATE_PACK)
+    field_template = "{0}/multifield.html".format(TEMPLATE_PACK)
 
 
 class SplitDateTimeField(Field):
@@ -210,8 +150,78 @@ class InlineField(Field):
 
 class InlineJustifiedField(InlineField):
     """
-    Same as InlineField but default is to be right aligned with a middle vertical position
+    Same as InlineField but default is to be right aligned with a vertical padding
     """
     def __init__(self, field, *args, **kwargs):
         kwargs['label_class'] = kwargs.get('label_class', None) or 'right inline'
         super(InlineJustifiedField, self).__init__(field, *args, **kwargs)
+
+
+class ButtonHolder(crispy_forms_layout.ButtonHolder):
+    """
+    Layout object. It wraps fields in a <div class="button-holder panel">
+
+    This is where you should put Layout objects that render to form buttons like Submit.
+    It should only hold `HTML` and `BaseInput` inherited objects.
+
+    Example::
+
+        ButtonHolder(
+            HTML(<span style="display: hidden;">Information Saved</span>),
+            Submit('Save', 'Save')
+        )
+    """
+    template = "{0}/layout/buttonholder.html".format(TEMPLATE_PACK)
+
+
+class ButtonHolderPanel(ButtonHolder):
+    """
+    Just like ``ButtonHolder`` but add a ``panel`` css class on the main div
+    """
+    def __init__(self, field, *args, **kwargs):
+        kwargs['css_class'] = kwargs.get('css_class', '')+' panel'
+        super(ButtonHolderPanel, self).__init__(field, *args, **kwargs)
+
+
+class Button(crispy_forms_layout.Button):
+    """
+    Used to create a Submit input descriptor for the {% crispy %} template tag : ::
+
+        button = Button('Button 1', 'Press Me!')
+
+    .. note:: The first argument is also slugified and turned into the id for the button.
+    """
+    input_type = 'button'
+    field_classes = 'button'
+
+
+class Submit(crispy_forms_layout.Submit):
+    """
+    Used to create a Submit button descriptor for the {% crispy %} template tag : ::
+
+        submit = Submit('Search the Site', 'search this site')
+
+    .. note:: The first argument is also slugified and turned into the id for the submit button.
+    """
+    input_type = 'submit'
+    field_classes = 'submit button'
+
+
+class Hidden(crispy_forms_layout.Hidden):
+    """
+    Used to create a Hidden input descriptor for the {% crispy %} template tag.
+    """
+    input_type = 'hidden'
+    field_classes = 'hidden'
+
+
+class Reset(crispy_forms_layout.Reset):
+    """
+    Used to create a Reset button input descriptor for the {% crispy %} template tag : ::
+
+        reset = Reset('Reset This Form', 'Revert Me!')
+
+    .. note:: The first argument is also slugified and turned into the id for the reset.
+    """
+    input_type = 'reset'
+    field_classes = 'reset button'
