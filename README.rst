@@ -218,6 +218,11 @@ Then add the required attribute on a field widget like this :
 Changelog
 =========
 
+Version 0.3.3
+*************
+
+* Fix bad template includes in some templates;
+
 Version 0.3.2
 *************
 
