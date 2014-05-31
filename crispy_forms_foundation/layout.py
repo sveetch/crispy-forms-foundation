@@ -57,7 +57,7 @@ class Column(Div):
         Column('form_field_1', 'form_field_2', css_class='small-12 large-6')
     
     If not defined, CSS class will default to 'large-12 columns'. ``columns`` class is 
-    allways appended, so you don't need to specify it.
+    always appended, so you don't need to specify it.
     """
     css_class = 'columns'
 
