@@ -56,7 +56,7 @@ Import **crispy-forms-foundation** then you can use the layout object in your fo
     
 .. sourcecode:: python
 
-    from crispy_forms_foundation.layout import Layout, Fieldset, Field, SplitDateTimeField, RowFluid, Column, Div, ButtonHolder, Submit, HTML
+    from crispy_forms_foundation.layout import Layout, Fieldset, Field, SplitDateTimeField, Row, RowFluid, Column, Div, ButtonHolder, Submit, HTML
 
     class YourForm(forms.ModelForm):
         """
