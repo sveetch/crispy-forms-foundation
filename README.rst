@@ -148,7 +148,7 @@ Will render to something like that :
 
     <div class"small-12 large-6 columns">...</div>
 
-``columns`` class is allways appended, so you don't need to specify it.
+``columns`` class is always appended, so you don't need to specify it.
 
 If not defined, ``css_class`` will default to 'large-12'.
 
@@ -177,7 +177,7 @@ Example :
 
     InlineField('field_name', label_column='small-6 large-3', input_column='small-6 large-9', label_class='right inline')
 
-Note that ``label_column`` and ``input_column`` are allways filled with the css class ``columns``.
+Note that ``label_column`` and ``input_column`` are always filled with the css class ``columns``.
 
 InlineJustifiedField
 --------------------
