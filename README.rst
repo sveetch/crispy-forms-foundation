@@ -184,6 +184,20 @@ InlineJustifiedField
 
 Same as `InlineField`_ but default is to be right aligned with a vertical padding using the ``label_class`` argument.
 
+SwitchField
+-----------
+
+A specific field to use Foundation's (version >= 5.3 only) form switches. You should only use this with a checkbox field or a radio field.
+
+This field inherit from the layout Field base and accept an additional argument ``switch_class`` that could contains some CSS class options for a switch.
+
+Example :
+
+.. sourcecode:: python
+
+    SwitchField('field_name')
+    SwitchField('field_name', switch_class="round tiny")
+
 ButtonHolderPanel
 -----------------
 
@@ -217,6 +231,11 @@ Then add the required attribute on a field widget like this :
 
 Changelog
 =========
+
+Version 0.3.5
+*************
+
+* Add `SwitchField`_ field;
 
 Version 0.3.3
 *************

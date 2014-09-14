@@ -157,6 +157,28 @@ class InlineJustifiedField(InlineField):
         super(InlineJustifiedField, self).__init__(field, *args, **kwargs)
 
 
+class SwitchField(crispy_forms_layout.Field):
+    """
+    A specific field to use Foundation form switches
+    
+    You should only use this with a checkbox field
+
+    Example::
+
+        SwitchField('field_name', style="color: #333;", css_class="whatever", id="field_name")
+    """
+    template = "{0}/switch.html".format(TEMPLATE_PACK)
+    
+    def __init__(self, field, *args, **kwargs):
+        self.switch_class = ['switch']+kwargs.pop('switch_class', '').split()
+
+        super(SwitchField, self).__init__(field, *args, **kwargs)
+
+    def render(self, form, form_style, context, template_pack=TEMPLATE_PACK):
+        context['switch_class'] = " ".join(self.switch_class)
+        return super(SwitchField, self).render(form, form_style, context, template_pack)
+
+
 class ButtonHolder(crispy_forms_layout.ButtonHolder):
     """
     Layout object. It wraps fields in a <div class="button-holder panel">
