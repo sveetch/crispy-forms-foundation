@@ -6,6 +6,8 @@ Also the templates are more clean that the included ones from crispy_forms which
 too much spaces and newlines in the final HTML.
 """
 from django.conf import settings
+from django.template import Context
+from django.template.loader import render_to_string
 
 from crispy_forms.utils import render_field
 from crispy_forms import layout as crispy_forms_layout
@@ -181,7 +183,7 @@ class SwitchField(crispy_forms_layout.Field):
 
 class ButtonHolder(crispy_forms_layout.ButtonHolder):
     """
-    Layout object. It wraps fields in a <div class="button-holder panel">
+    Layout object. It wraps fields in a <div class="button-holder">
 
     This is where you should put Layout objects that render to form buttons like Submit.
     It should only hold `HTML` and `BaseInput` inherited objects.
@@ -198,11 +200,56 @@ class ButtonHolder(crispy_forms_layout.ButtonHolder):
 
 class ButtonHolderPanel(ButtonHolder):
     """
-    Just like ``ButtonHolder`` but add a ``panel`` css class on the main div
+    Act like ``ButtonHolder`` but add a ``panel`` css class on the main div
     """
     def __init__(self, field, *args, **kwargs):
         kwargs['css_class'] = kwargs.get('css_class', '')+' panel'
         super(ButtonHolderPanel, self).__init__(field, *args, **kwargs)
+
+
+class ButtonGroup(crispy_forms_layout.LayoutObject):
+    """
+    Layout object. It wraps fields in a <ul class="button-group">
+
+    This is where you should put Layout objects that render to form buttons like Submit.
+    It should only hold `HTML` and `BaseInput` inherited objects.
+
+    Example: ::
+
+        ButtonGroup(
+            Submit('Save', 'Save'),
+            Button('Cancel', 'Cancel'),
+        )
+    """
+    template = "{0}/layout/buttongroup.html".format(TEMPLATE_PACK)
+
+    def __init__(self, *fields, **kwargs):
+        self.fields = list(fields)
+        self.css_class = kwargs.get('css_class', None)
+        self.css_id = kwargs.get('css_id', None)
+        self.template = kwargs.get('template', self.template)
+
+    def render(self, form, form_style, context, template_pack=TEMPLATE_PACK):
+        field_list = []
+        for field in self.fields:
+            field_list.append(
+                render_field(field, form, form_style, context, template_pack=template_pack)
+            )
+
+        return render_to_string(self.template, Context({'buttongroup': self, 'field_list': field_list}))
+
+
+class Panel(crispy_forms_layout.Div):
+    """
+    Act like ``Div`` but add a ``panel`` css class.
+    
+    Example: ::
+
+        Panel('form_field_1', 'form_field_2', css_id='div-example', css_class='divs')
+    """
+    def __init__(self, field, *args, **kwargs):
+        kwargs['css_class'] = kwargs.get('css_class', '')+' panel'
+        super(Panel, self).__init__(field, *args, **kwargs)
 
 
 class Button(crispy_forms_layout.Button):

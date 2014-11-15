@@ -18,6 +18,7 @@ Links
 
 * Download his `PyPi package <http://pypi.python.org/pypi/crispy-forms-foundation>`_;
 * Clone it on his `Github repository <https://github.com/sveetch/crispy-forms-foundation>`_;
+* Demo app : `crispy-forms-foundation-demo`_;
 
 Requires
 ========
@@ -165,8 +166,6 @@ Example :
 
 There is also three optionnal keywords :
 
-label_column='small-3', input_column='small-9', label_class=''
-
 * ``label_column`` css class to add on the label div column, default to ``large-3``;
 * ``input_column`` css class to add on the input div column, default to ``large-9``;
 * ``label_class`` css class to add on the label element, defaut is empty, you can use it to add alignment like ``right inline``;
@@ -206,7 +205,7 @@ Just like ``ButtonHolder`` but add a ``panel`` css class on the main div.
 Use Foundation 5 Abide
 ======================
 
-You can use `Abide`_ validation in your form but note that there is no support within the layout objects. You will have to add the required attribute (and eventually its pattern) on your field widgets in your form.
+You can use `Abide`_ validation in your form but note that there is no support within the layout objects. You will have to add the ``required`` attribute (and eventually its pattern) on your field widgets in your form.
 
 So to enable `Abide`_ you'll have to load its Javascript library if you don't load yet the whole Foundation library, then in your form helper you will have to its attribute on the form like this :
 
@@ -231,6 +230,12 @@ Then add the required attribute on a field widget like this :
 
 Changelog
 =========
+
+Version 0.3.6
+*************
+
+* Add `ButtonGroup`_ to use Foundation's Button groups instead of Button holder;
+* Add `Panel`_ layout element that act like a ``Div`` but add a ``panel`` css class name;
 
 Version 0.3.5
 *************

@@ -1,0 +1,7 @@
+{% spaceless %}
+<ul{% if buttongroup.css_id %} id="{{ buttongroup.css_id }}"{% endif %} class="button-group{% if buttongroup.css_class %} {{ buttongroup.css_class }}{% endif %}">
+{% for field_item in field_list %}
+    <li>{{ field_item|safe }}</li>
+{% endfor %}
+</ul>
+{% endspaceless %}
