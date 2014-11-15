@@ -1,1 +1,2 @@
-crispy-forms-foundation==0.3.7
+django==1.5.9
+crispy-forms-foundation==0.3.7.1
