@@ -22,9 +22,11 @@ class MultiWidgetField(crispy_forms_layout.MultiWidgetField): pass
 
 class Div(crispy_forms_layout.Div):
     """
-    Layout object. It wraps fields in a <div>
+    It wraps fields in a <div>
 
-    You can set `css_id` for a DOM id and `css_class` for a DOM class. Example : ::
+    You can set ``css_id`` for a DOM id and ``css_class`` for a DOM class. Example:
+
+    .. sourcecode:: python
 
         Div('form_field_1', 'form_field_2', css_id='div-example', css_class='divs')
     """
@@ -33,33 +35,74 @@ class Div(crispy_forms_layout.Div):
 
 class Row(Div):
     """
-    Layout object. It wraps fields in a div whose default class is "row". Example : ::
+    It wraps fields in a div whose default class is ``row``. Example:
+
+    .. sourcecode:: python
 
         Row('form_field_1', 'form_field_2', 'form_field_3')
+        
+    Act as a div container row, it will embed its items in a div like that:
+
+    .. sourcecode:: html
+
+        <div class"row">Your stuff</div>
     """
     css_class = 'row'
 
 class RowFluid(Row):
     """
-    Layout object. It wraps fields in a div whose default class is "row row-fluid". Example : ::
+    It wraps fields in a div whose default class is "row row-fluid". Example:
+    
+    .. sourcecode:: python
 
         RowFluid('form_field_1', 'form_field_2', 'form_field_3')
+
+    It has a same behaviour than *Row* but add a CSS class "row-fluid" that you can use to have top level row that take all the container width. You have to put the CSS for this class to your CSS stylesheets. It will embed its items in a div like that:
+
+    .. sourcecode:: html
+
+        <div class"row row-fluid">Your stuff</div>
+
+    The CSS to add should be something like that:
+
+    .. sourcecode:: css
+
+        .row-fluid {
+            width: 100%;
+            max-width: 100%;
+            min-width: 100%;
+        }
     """
     css_class = 'row row-fluid'
 
 
 class Column(Div):
     """
-    Layout object. It wraps fields in a div whose default class is "formColumn". Example : ::
-
-        Column('form_field_1', 'form_field_2')
+    .. _Foundation Grid: http://foundation.zurb.com/docs/components/grid.html
     
-    Or : ::
+    It wraps fields in a div. If not defined, CSS class will default to 
+    ``large-12 columns``. ``columns`` class is always appended, so you don't 
+    need to specify it.
+
+    This is the column from the `Foundation Grid`_, all columns should be 
+    contained in a **Row** or a **RowFluid** and you will have to define the 
+    column type in the ``css_class`` attribute.
+
+    Example:
+
+    .. sourcecode:: python
 
         Column('form_field_1', 'form_field_2', css_class='small-12 large-6')
-    
-    If not defined, CSS class will default to 'large-12 columns'. ``columns`` class is 
-    always appended, so you don't need to specify it.
+
+    Will render to something like that:
+
+    .. sourcecode:: html
+
+        <div class"small-12 large-6 columns">...</div>
+
+    ``columns`` class is always appended, so you don't need to specify it.
+
+    If not defined, ``css_class`` will default to ``large-12``.
     """
     css_class = 'columns'
 
@@ -73,17 +116,19 @@ class Column(Div):
 
 class Fieldset(crispy_forms_layout.Fieldset):
     """
-    Layout object. It wraps fields in a <fieldset>
+    It wraps fields in a ``<fieldset>``:
 
-    Example::
+    .. sourcecode:: python
 
         Fieldset("Text for the legend",
             'form_field_1',
             'form_field_2'
         )
 
-    The first parameter is the text for the fieldset legend. This text is context aware,
-    so you can do things like : ::
+    The first parameter is the text for the fieldset legend. This text is 
+    context aware, so you can do things like :
+
+    .. sourcecode:: python
 
         Fieldset("Data for {{ user.username }}",
             'form_field_1',
@@ -98,7 +143,9 @@ class Field(crispy_forms_layout.Field):
     Layout object, It contains one field name, and you can add attributes to it easily.
     For setting class attributes, you need to use `css_class`, as `class` is a Python keyword.
 
-    Example::
+    Example:
+    
+    .. sourcecode:: python
 
         Field('field_name', style="color: #333;", css_class="whatever", id="field_name")
     """
@@ -106,7 +153,9 @@ class Field(crispy_forms_layout.Field):
 
 
 class MultiField(crispy_forms_layout.MultiField):
-    """ MultiField container. Renders to a MultiField <d.format(TEMPLATE_PACK)iv> """
+    """
+    MultiField container. Renders to a MultiField
+    """
     template = "{0}/layout/multifield.html".format(TEMPLATE_PACK)
     field_template = "{0}/multifield.html".format(TEMPLATE_PACK)
 
@@ -125,7 +174,9 @@ class InlineField(Field):
     """
     Layout object for rendering an inline field with Foundation
 
-    Example::
+    Example:
+    
+    .. sourcecode:: python
 
         InlineField('field_name')
     """
@@ -165,7 +216,9 @@ class SwitchField(crispy_forms_layout.Field):
     
     You should only use this with a checkbox field
 
-    Example::
+    Example:
+    
+    .. sourcecode:: python
 
         SwitchField('field_name', style="color: #333;", css_class="whatever", id="field_name")
     """
@@ -183,12 +236,14 @@ class SwitchField(crispy_forms_layout.Field):
 
 class ButtonHolder(crispy_forms_layout.ButtonHolder):
     """
-    Layout object. It wraps fields in a <div class="button-holder">
+    It wraps fields in a ``<div class="button-holder">``
 
     This is where you should put Layout objects that render to form buttons like Submit.
-    It should only hold `HTML` and `BaseInput` inherited objects.
+    It should only hold ``HTML`` and ``BaseInput`` inherited objects.
 
-    Example::
+    Example:
+    
+    .. sourcecode:: python
 
         ButtonHolder(
             HTML(<span style="display: hidden;">Information Saved</span>),
@@ -209,12 +264,14 @@ class ButtonHolderPanel(ButtonHolder):
 
 class ButtonGroup(crispy_forms_layout.LayoutObject):
     """
-    Layout object. It wraps fields in a <ul class="button-group">
+    It wraps fields in a ``<ul class="button-group">``
 
     This is where you should put Layout objects that render to form buttons like Submit.
     It should only hold `HTML` and `BaseInput` inherited objects.
 
-    Example: ::
+    Example:
+    
+    .. sourcecode:: python
 
         ButtonGroup(
             Submit('Save', 'Save'),
@@ -243,7 +300,9 @@ class Panel(crispy_forms_layout.Div):
     """
     Act like ``Div`` but add a ``panel`` css class.
     
-    Example: ::
+    Example:
+    
+    .. sourcecode:: python
 
         Panel('form_field_1', 'form_field_2', css_id='div-example', css_class='divs')
     """
@@ -254,7 +313,9 @@ class Panel(crispy_forms_layout.Div):
 
 class Button(crispy_forms_layout.Button):
     """
-    Used to create a Submit input descriptor for the {% crispy %} template tag : ::
+    Used to create a Submit input descriptor for the {% crispy %} template tag:
+    
+    .. sourcecode:: python
 
         button = Button('Button 1', 'Press Me!')
 
@@ -266,7 +327,9 @@ class Button(crispy_forms_layout.Button):
 
 class Submit(crispy_forms_layout.Submit):
     """
-    Used to create a Submit button descriptor for the {% crispy %} template tag : ::
+    Used to create a Submit button descriptor for the {% crispy %} template tag:
+
+    .. sourcecode:: python
 
         submit = Submit('Search the Site', 'search this site')
 
@@ -286,7 +349,9 @@ class Hidden(crispy_forms_layout.Hidden):
 
 class Reset(crispy_forms_layout.Reset):
     """
-    Used to create a Reset button input descriptor for the {% crispy %} template tag : ::
+    Used to create a Reset button input descriptor for the {% crispy %} template tag:
+
+    .. sourcecode:: python
 
         reset = Reset('Reset This Form', 'Revert Me!')
 

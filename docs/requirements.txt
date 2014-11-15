@@ -1,0 +1,1 @@
+crispy-forms-foundation==0.3.7
