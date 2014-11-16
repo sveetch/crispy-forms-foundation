@@ -1,9 +1,13 @@
 {% if formset.non_form_errors %}
-    <div class="nonfield-errors alert-box alert">
-        {% if formset_error_title %}<h3>{{ formset_error_title }}</h3>{% endif %}
-        <ol>
-            {{ formset.non_form_errors|unordered_list }}
-        </ol>
+    <div data-alert class="nonfield-errors alert-box alert">
+        <dl class="compact">
+        {% if form_error_title %}<dt>{{ form_error_title }}</dt>{% endif %}
+            <ul class="compact">
+                {% for error in form.non_field_errors %}
+                <li>{{ error }}</li>
+                {% endfor %}
+            <ul>
+        </dl>
     </div>
 {% endif %}
 

@@ -85,3 +85,11 @@ Then add the required attribute on a field widget like this :
 
     textarea_input = forms.CharField(label=_('Textarea'), widget=forms.Textarea(attrs={'required':''}), required=True)
 
+You can also set an abide error message directly on the field like this :
+
+.. sourcecode:: python
+
+    class SampleForm(forms.Form):
+        def __init__(self, *args, **kwargs):
+            super(SampleForm, self).__init__(*args, **kwargs)
+            self.fields['textarea_input'].abide_msg = "This field is required !"
