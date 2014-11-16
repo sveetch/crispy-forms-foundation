@@ -2,6 +2,18 @@
 Changelog
 =========
 
+Version 0.3.8
+*************
+
+* Redesign *non field errors*;
+* Add abide error message on field;
+* Add missing error message and help text on inline field;
+
+Version 0.3.7
+*************
+
+* Add better documentation with Sphinx in 'docs/';
+
 Version 0.3.6
 *************
 
