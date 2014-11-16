@@ -4,10 +4,14 @@
 .. _Foundation: http://github.com/zurb/foundation
 .. _Foundation Grid: http://foundation.zurb.com/docs/grid.php
 .. _crispy-forms-foundation-demo: https://github.com/sveetch/crispy-forms-foundation-demo
-.. _Abide: http://foundation.zurb.com/docs/components/abide.html
 
-Introduction
-============
+.. crispy-form-foundation documentation master file, created by
+   sphinx-quickstart on Sat Nov 15 20:21:48 2014.
+   You can adapt this file completely to your liking, but it should at least
+   contain the root `toctree` directive.
+
+Welcome to crispy-form-foundation's documentation!
+==================================================
 
 This is a `Django`_ application to add `django-crispy-forms`_ layout objects for `Foundation`_.
 
@@ -26,27 +30,12 @@ Requires
 
 * `django-crispy-forms`_ = 1.4.x;
 
-Installation
-============
+Table of contents
+*****************
 
-Just register the app in your project settings like that :
-
-.. sourcecode:: python
-
-    INSTALLED_APPS = (
-        ...
-        'crispy_forms',
-        'crispy_forms_foundation',
-        ...
-    )
-
-Then append this part to specify usage of the Foundation set :
-
-.. sourcecode:: python
-
-    # Default layout to use with "crispy_forms"
-    CRISPY_TEMPLATE_PACK = 'foundation-5'
-
-If not defined, the default template pack name used is ``foundation-5``, also you can use ``foundation-3``.
-
-All other `django-crispy-forms`_ settings option apply, see its documentation for more details.
+.. toctree::
+   :maxdepth: 2
+   
+   install.rst
+   usage.rst
+   changelog.rst
