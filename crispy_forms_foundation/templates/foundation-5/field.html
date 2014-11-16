@@ -27,14 +27,14 @@
         {% endif %}
 
         {% if field.field.abide_msg %}
-            <small {% if form_show_errors and not field.errors|length_is:"0" %}style="margin-bottom: 0"{% endif %} id="abide_error_{{ field.auto_id }}" class="error">
+            <small id="abide_error_{{ field.auto_id }}" class="error {% if form_show_errors and not field.errors|length_is:"0" %}compact{% endif %}">
                 {{ field.field.abide_msg }}
             </small>
         {% endif %}
 
         {% if form_show_errors %}
             {% for error in field.errors %}
-                <small {% if not forloop.last %}style="margin-bottom: 0"{% endif %} id="error_{{ forloop.counter }}_{{ field.auto_id }}" class="error">
+                <small id="error_{{ forloop.counter }}_{{ field.auto_id }}" class="error {% if not forloop.last %}compact{% endif %}">
                     {{ error }}
                 </small>
             {% endfor %}
