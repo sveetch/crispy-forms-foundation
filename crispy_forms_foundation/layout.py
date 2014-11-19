@@ -210,7 +210,7 @@ class InlineJustifiedField(InlineField):
         super(InlineJustifiedField, self).__init__(field, *args, **kwargs)
 
 
-class SwitchField(crispy_forms_layout.Field):
+class SwitchField(InlineField):
     """
     A specific field to use Foundation form switches
     
@@ -220,7 +220,8 @@ class SwitchField(crispy_forms_layout.Field):
     
     .. sourcecode:: python
 
-        SwitchField('field_name', style="color: #333;", css_class="whatever", id="field_name")
+        SwitchField('field_name', label_column='large-3', input_column='large-9', \
+                                  label_class='', switch_class="inline", id="field_name")
     """
     template = "{0}/switch.html".format(TEMPLATE_PACK)
     
