@@ -254,11 +254,11 @@ class InlineSwitchField(InlineField):
     def __init__(self, field, *args, **kwargs):
         self.switch_class = ['switch']+kwargs.pop('switch_class', '').split()
 
-        super(SwitchField, self).__init__(field, *args, **kwargs)
+        super(InlineSwitchField, self).__init__(field, *args, **kwargs)
 
     def render(self, form, form_style, context, template_pack=TEMPLATE_PACK):
         context['switch_class'] = " ".join(self.switch_class)
-        return super(SwitchField, self).render(form, form_style, context, template_pack)
+        return super(InlineSwitchField, self).render(form, form_style, context, template_pack)
 
 
 class ButtonHolder(crispy_forms_layout.ButtonHolder):
