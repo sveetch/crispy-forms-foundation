@@ -209,7 +209,8 @@ class InlineJustifiedField(InlineField):
         kwargs['label_class'] = kwargs.get('label_class', None) or 'right inline'
         super(InlineJustifiedField, self).__init__(field, *args, **kwargs)
 
-class SwitchField(InlineField):
+
+class SwitchField(crispy_forms_layout.Field):
     """
     .. deprecated:: 0.3.8.2
        Use ``InlineSwitchField`` instead.
@@ -233,6 +234,7 @@ class SwitchField(InlineField):
     def render(self, form, form_style, context, template_pack=TEMPLATE_PACK):
         context['switch_class'] = " ".join(self.switch_class)
         return super(SwitchField, self).render(form, form_style, context, template_pack)
+
 
 class InlineSwitchField(InlineField):
     """
