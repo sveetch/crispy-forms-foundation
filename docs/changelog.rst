@@ -1,6 +1,14 @@
+.. _crispy-forms-foundation-demo: https://github.com/sveetch/crispy-forms-foundation-demo
+
 =========
 Changelog
 =========
+
+Version 0.3.9
+*************
+
+* Add ``FoundationFormMixin``, ``FoundationForm`` and ``FoundationModelForm`` in ``forms.py`` to quickly and automatically create a Foundation layout;
+* Add ``InlineSwitchField`` layout element for better switches usage;
 
 Version 0.3.8
 *************
@@ -17,13 +25,13 @@ Version 0.3.7
 Version 0.3.6
 *************
 
-* Add `ButtonGroup`_ to use Foundation's Button groups instead of Button holder;
-* Add `Panel`_ layout element that act like a ``Div`` but add a ``panel`` css class name;
+* Add ``ButtonGroup`` to use Foundation's Button groups instead of Button holder;
+* Add ``Panel`` layout element that act like a ``Div`` but add a ``panel`` css class name;
 
 Version 0.3.5
 *************
 
-* Add `SwitchField`_ field;
+* Add ``SwitchField`` field;
 
 Version 0.3.3
 *************
@@ -34,13 +42,13 @@ Version 0.3.2
 *************
 
 * Fix some css class in templates;
-* Add documentation for `Abide`_ usage;
-* Add `ButtonHolderPanel`_ layout object;
+* Add documentation for ``Abide`` usage;
+* Add ``ButtonHolderPanel`` layout object;
 
 Version 0.3.1
 *************
 
-* Added `InlineField`_ and `InlineJustifiedField`_;
+* Added ``InlineField`` and ``InlineJustifiedField``;
 
 Version 0.3.0
 *************

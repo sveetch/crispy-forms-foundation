@@ -1,2 +1,2 @@
 django==1.5.9
-crispy-forms-foundation==0.3.8.2
+crispy-forms-foundation==0.3.9

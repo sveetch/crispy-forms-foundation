@@ -3,39 +3,14 @@ from django.core.urlresolvers import reverse, NoReverseMatch
 from crispy_forms.helper import FormHelper
 from crispy_forms_foundation.layout import Submit, HTML, InlineSwitchField
 
-
-class FoundationForm(forms.Form):
+class FoundationFormMixin(object):
     """
-    This class should be inherited from to quickly make a good looking form.
-
-    Example:
+    Mixin to implement the layout helper that will automatically build a form layout
     
-    .. sourcecode:: python
-
-        from crispy_forms_foundation.forms import FoundationForm
-
-        class YourForm(FoundationModelForm):
-            title = "Testing"
-            action = 'test'
-            layout = Layout(Fieldset("Section", "my_field", "my_field_2"))
-            switches = False
-            attrs = {'data_abide': ""}
-
-            class Meta:
-                model = MyModel
-                fields = ['my_field', 'my_field_2', 'my_field_3']
-
-
-    You should also add these styles to your scss to fix some style issues::
-
-        .compact {
-            margin-bottom: 0px !important;
-        }
-
-        label + select {
-            @include form-element;
-        }
-    """
+    Generally, you will prefer to use ``FoundationForm`` or ``FoundationModelForm`` instead.
+    
+    If you still want to directly use this mixin you'll just have to execute ``FoundationFormMixin.init_helper()`` in your form init.
+   """
 
     title = "" #: If set, defines the form's title
     layout = None #: If set, override the default layout for the form
@@ -47,10 +22,6 @@ class FoundationForm(forms.Form):
     attrs = {} #: Defines the attributes of the form
     switches = True #: True by default, will replace all fields checkboxes with switches
     input = True #: True by default, add a submit button on the form
-
-    def __init__(self, *args, **kwargs):
-        super(FoundationForm, self).__init__(*args, **kwargs)
-        self.init_helper()
 
     def init_helper(self):
         if "data_abide" in self.attrs:
@@ -100,9 +71,55 @@ class FoundationForm(forms.Form):
         else:
             self.helper.layout.fields[position[0]] = instead
 
+class FoundationForm(FoundationFormMixin, forms.Form):
+    """
+    A **Django form** that inherit from ``FoundationFormMixin`` to automatically build a form layout
 
-class FoundationModelForm(forms.ModelForm, FoundationForm):
+    Example:
+    
+    .. sourcecode:: python
 
+        from django import forms
+        from crispy_forms_foundation.forms import FoundationForm
+
+        class YourForm(FoundationForm):
+            title = "Testing"
+            action = 'test'
+            layout = Layout(Fieldset("Section", "my_field", "my_field_2"))
+            switches = False
+            attrs = {'data_abide': ""}
+            
+            title = forms.CharField(label='Title', required=True)
+            slug = forms.CharField(label='Slug', required=False)
+
+    """
+    def __init__(self, *args, **kwargs):
+        super(FoundationForm, self).__init__(*args, **kwargs)
+        self.init_helper()
+
+
+class FoundationModelForm(FoundationFormMixin, forms.ModelForm):
+    """
+    A **Django Model form** that inherit from ``FoundationFormMixin`` to automatically build a form layout
+
+    Example:
+    
+    .. sourcecode:: python
+
+        from crispy_forms_foundation.forms import FoundationModelForm
+
+        class YourForm(FoundationModelForm):
+            title = "Testing"
+            action = 'test'
+            layout = Layout(Fieldset("Section", "my_field", "my_field_2"))
+            switches = False
+            attrs = {'data_abide': ""}
+
+            class Meta:
+                model = MyModel
+                fields = ['my_field', 'my_field_2', 'my_field_3']
+
+    """
     def __init__(self, *args, **kwargs):
         super(FoundationModelForm, self).__init__(*args, **kwargs)
         self.init_helper()

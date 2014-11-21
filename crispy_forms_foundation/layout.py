@@ -179,6 +179,14 @@ class InlineField(Field):
     .. sourcecode:: python
 
         InlineField('field_name')
+        
+    Or:
+    
+    .. sourcecode:: python
+    
+        InlineField('field_name', label_column='large-8', input_column='large-4', label_class='')
+        
+    ``label_column``, ``input_column``, ``label_class``, are optional argument.
     """
     template = "{0}/layout/inline_field.html".format(TEMPLATE_PACK)
 
@@ -212,12 +220,10 @@ class InlineJustifiedField(InlineField):
 
 class SwitchField(crispy_forms_layout.Field):
     """
-    .. deprecated:: 0.3.8.2
-       Use ``InlineSwitchField`` instead.
-
     A specific field to use Foundation form switches
     
-    You should only use this with a checkbox field
+    You should only use this with a checkbox field and this is a *raw* usage of this 
+    Foundation element, you should see ``InlineSwitchField`` instead.
 
     Example:
     
@@ -238,21 +244,30 @@ class SwitchField(crispy_forms_layout.Field):
 
 class InlineSwitchField(InlineField):
     """
-    A specific field to use Foundation form switches
+    Like ``SwitchField`` it use Foundation form switches with checkbox field but within an ``InlineField``
     
-    You should only use this with a checkbox field
+    Contrary to ``SwitchField`` this play nice with the label to be able to display it (as Foundation form switches default behavior is to hide the label text)
 
     Example:
     
     .. sourcecode:: python
 
-        InlineSwitchField('field_name', label_column='large-3', input_column='large-9', \
-                                        label_class='', switch_class="inline", id="field_name")
+        InlineSwitchField('field_name')
+        
+    Or:
+    
+    .. sourcecode:: python
+
+        InlineSwitchField('field_name', label_column='large-8', input_column='large-4', label_class='', switch_class="inline")
+        
+    ``label_column``, ``input_column``, ``label_class``, ``switch_class`` are optional argument.
     """
     template = "{0}/inline_switch.html".format(TEMPLATE_PACK)
     
     def __init__(self, field, *args, **kwargs):
         self.switch_class = ['switch']+kwargs.pop('switch_class', '').split()
+        kwargs['label_column'] = kwargs.pop('label_column', 'large-8')
+        kwargs['input_column'] = kwargs.pop('input_column', 'large-4')
 
         super(InlineSwitchField, self).__init__(field, *args, **kwargs)
 

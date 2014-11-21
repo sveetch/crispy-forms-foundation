@@ -93,3 +93,11 @@ You can also set an abide error message directly on the field like this :
         def __init__(self, *args, **kwargs):
             super(SampleForm, self).__init__(*args, **kwargs)
             self.fields['textarea_input'].abide_msg = "This field is required !"
+
+Automatic form layout
+*********************
+
+There is some forms you can use to quickly and automatically create a Foundation layout for your forms. This is mostly for fast integration or prototyping because it probably never fit to your design.
+
+.. automodule:: crispy_forms_foundation.forms
+    :members:

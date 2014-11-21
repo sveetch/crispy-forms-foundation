@@ -47,6 +47,6 @@ Then append this part to specify usage of the Foundation set :
     # Default layout to use with "crispy_forms"
     CRISPY_TEMPLATE_PACK = 'foundation-5'
 
-If not defined, the default template pack name used is ``foundation-5``, also you can use ``foundation-3``.
+If not defined, the default template pack name used is ``foundation-5``, also there is a basic ``foundation-3`` support but it's not be maintained anymore.
 
 All other `django-crispy-forms`_ settings option apply, see its documentation for more details.
