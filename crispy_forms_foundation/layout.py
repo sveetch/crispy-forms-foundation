@@ -212,6 +212,9 @@ class InlineJustifiedField(InlineField):
 
 class SwitchField(crispy_forms_layout.Field):
     """
+    .. deprecated:: 0.3.8.2
+       Use ``InlineSwitchField`` instead.
+
     A specific field to use Foundation form switches
     
     You should only use this with a checkbox field
@@ -225,13 +228,37 @@ class SwitchField(crispy_forms_layout.Field):
     template = "{0}/switch.html".format(TEMPLATE_PACK)
     
     def __init__(self, field, *args, **kwargs):
-        self.switch_class = ['switch']+kwargs.pop('switch_class', '').split()
-
+        self.switch_class = ['switch'] + kwargs.pop('switch_class', '').split()
         super(SwitchField, self).__init__(field, *args, **kwargs)
 
     def render(self, form, form_style, context, template_pack=TEMPLATE_PACK):
         context['switch_class'] = " ".join(self.switch_class)
         return super(SwitchField, self).render(form, form_style, context, template_pack)
+
+
+class InlineSwitchField(InlineField):
+    """
+    A specific field to use Foundation form switches
+    
+    You should only use this with a checkbox field
+
+    Example:
+    
+    .. sourcecode:: python
+
+        InlineSwitchField('field_name', label_column='large-3', input_column='large-9', \
+                                        label_class='', switch_class="inline", id="field_name")
+    """
+    template = "{0}/inline_switch.html".format(TEMPLATE_PACK)
+    
+    def __init__(self, field, *args, **kwargs):
+        self.switch_class = ['switch']+kwargs.pop('switch_class', '').split()
+
+        super(InlineSwitchField, self).__init__(field, *args, **kwargs)
+
+    def render(self, form, form_style, context, template_pack=TEMPLATE_PACK):
+        context['switch_class'] = " ".join(self.switch_class)
+        return super(InlineSwitchField, self).render(form, form_style, context, template_pack)
 
 
 class ButtonHolder(crispy_forms_layout.ButtonHolder):
