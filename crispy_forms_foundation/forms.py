@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from django import forms
 from django.core.urlresolvers import reverse, NoReverseMatch
 from crispy_forms.helper import FormHelper
@@ -37,7 +38,7 @@ class FoundationFormMixin(object):
             self.helper.layout = self.layout
 
         if self.title:
-            self.helper.layout.insert(0, HTML("<h3 class=\"subheader\">{0}</h3>".format(self.title)))
+            self.helper.layout.insert(0, HTML(u"<h3 class=\"subheader\">{0}</h3>".format(self.title)))
         self.helper.form_id = self.id
         self.helper.form_class = self.classes
         try:
