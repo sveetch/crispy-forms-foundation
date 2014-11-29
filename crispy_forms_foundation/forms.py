@@ -21,7 +21,7 @@ class FoundationFormMixin(object):
     method = "post" #: Defines the method used for the action
     attrs = {} #: Defines the attributes of the form
     switches = True #: True by default, will replace all fields checkboxes with switches
-    input = True #: True by default, add a submit button on the form
+    submit = True #: True by default, add a submit button on the form
 
     def init_helper(self):
         if "data_abide" in self.attrs:
@@ -55,8 +55,13 @@ class FoundationFormMixin(object):
                 if isinstance(self.fields[pointer[1]].widget, forms.CheckboxInput):
                     self.replace_layout_object(pointer[0], InlineSwitchField(pointer[1], switch_class="inline"))
 
-        if self.input:
-            self.helper.add_input(Submit('submit', "Submit"))
+        if self.submit:
+            if isinstance(self.submit, Submit):
+                self.helper.add_input(self.submit)
+            elif isinstance(self.submit, str):
+                self.helper.add_input(Submit('submit', self.submit))
+            else:
+                self.helper.add_input(Submit('submit', "Submit"))
 
     def replace_layout_object(self, position, instead):
         previous_layout_object = None
