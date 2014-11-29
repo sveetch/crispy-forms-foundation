@@ -4,6 +4,19 @@
 Changelog
 =========
 
+Version 0.4
+***********
+
+* Allow unicode characters in the form title in ``forms.FoundationFormMixin``;
+* Extended ``forms.FoundationFormMixin.init_helper()`` to allow more customization:
+
+  * Renamed attribute input to submit as this is more descriptive
+  * Allow to give a string which is used as display text for the Submit button
+  * Allow to give a Submit instance wich is directly used
+
+* Added ``forms.FoundationFormMixin.title_templatestring`` attribute to store template string used to display form title;
+* Moved ``forms.FoundationFormMixin.id`` attribute name to ``forms.FoundationFormMixin.form_id``;
+
 Version 0.3.9
 *************
 

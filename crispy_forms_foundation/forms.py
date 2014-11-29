@@ -13,18 +13,20 @@ class FoundationFormMixin(object):
     If you still want to directly use this mixin you'll just have to execute ``FoundationFormMixin.init_helper()`` in your form init.
    """
 
-    title = "" #: If set, defines the form's title
+    title = None #: If set, defines the form's title
     layout = None #: If set, override the default layout for the form
     error_title = "Errors :" #: Defines the error title for non field errors
-    id = "" #: Defines the id of the form
+    form_id = None #: Defines the id of the form
     classes = "foundation-form" #: Defines the classes used on the form
     action = "" #: Defines the action of the form. ``reverse`` will be called on the value. On failure the value will be assigned as is
     method = "post" #: Defines the method used for the action
     attrs = {} #: Defines the attributes of the form
     switches = True #: True by default, will replace all fields checkboxes with switches
     submit = True #: True by default, add a submit button on the form
+    title_templatestring = u"<h3 class=\"subheader\">{0}</h3>" #: Template string used to display form title (if any)
 
     def init_helper(self):
+        # Put required HTML attribute on required fields so they are managed by Abide (if enabled)
         if "data_abide" in self.attrs:
             for field in self.fields.values():
                 if field.required:
@@ -32,26 +34,34 @@ class FoundationFormMixin(object):
                     field.abide_msg = "This field is required."
 
         if not self.layout:
+            # Start with an empty layout
             self.helper = FormHelper(self)
         else:
+            # Start from the given layout
             self.helper = FormHelper()
             self.helper.layout = self.layout
-
-        if self.title:
-            self.helper.layout.insert(0, HTML(u"<h3 class=\"subheader\">{0}</h3>".format(self.title)))
-        self.helper.form_id = self.id
-        self.helper.form_class = self.classes
+        
+        # Try to reverse form_action url, else fallback to use it as a simple string
         try:
             self.helper.form_action = reverse(self.action)
         except NoReverseMatch:
             self.helper.form_action = self.action
+
+        if self.title:
+            self.helper.layout.insert(0, HTML(self.title_templatestring.format(self.title)))
+            
+        if self.form_id is not None:
+            self.helper.form_id = self.form_id
+            
+        self.helper.form_class = self.classes
         self.helper.form_method = self.method
         self.helper.form_error_title = self.error_title
         self.helper.attrs = self.attrs
 
         if self.switches:
-            #This gets a list of all fields with their location within the layout
+            # Get a list of all fields with their location within the layout
             layout_field_names = self.helper.layout.get_field_names()
+            # Transform checkbox fields to switches element
             for pointer in layout_field_names:
                 if isinstance(self.fields[pointer[1]].widget, forms.CheckboxInput):
                     self.replace_layout_object(pointer[0], InlineSwitchField(pointer[1], switch_class="inline"))
