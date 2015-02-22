@@ -39,3 +39,4 @@ Table of contents
    install.rst
    usage.rst
    changelog.rst
+   credits.rst
