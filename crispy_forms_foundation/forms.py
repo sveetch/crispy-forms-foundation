@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+from copy import deepcopy
 from django import forms
 from django.core.urlresolvers import reverse, NoReverseMatch
 from crispy_forms.helper import FormHelper
@@ -21,8 +22,8 @@ class FoundationFormMixin(object):
     action = "" #: Defines the action of the form. ``reverse`` will be called on the value. On failure the value will be assigned as is
     method = "post" #: Defines the method used for the action
     attrs = {} #: Defines the attributes of the form
-    switches = True #: True by default, will replace all fields checkboxes with switches
-    submit = True #: True by default, add a submit button on the form
+    switches = True #: If True, will replace all fields checkboxes with switches
+    submit = True #: Adds a submit button on the form. Can be set to a Submit object or a string which will be used as the value of the submit button
     title_templatestring = u"<h3 class=\"subheader\">{0}</h3>" #: Template string used to display form title (if any)
 
     def init_helper(self):
@@ -39,7 +40,7 @@ class FoundationFormMixin(object):
         else:
             # Start from the given layout
             self.helper = FormHelper()
-            self.helper.layout = self.layout
+            self.helper.layout = deepcopy(self.layout)
         
         # Try to reverse form_action url, else fallback to use it as a simple string
         try:
