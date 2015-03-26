@@ -1,0 +1,6 @@
+<li class="accordion-navigation">
+    <a href="#{{ div.css_id }}">{{ div.name }}</a>
+    <div id="{{ div.css_id }}" class="content{% if div.active %} active{% endif %}">
+        {{ fields|safe }}
+    </div>
+</li>

@@ -1,8 +1,8 @@
 """
-Inherits from the "uni_form" Layout objects to force templates on TEMPLATE_PACK and 
+Inherits from the "uni_form" Layout objects to force templates on TEMPLATE_PACK and
 use of Foundation CSS classes
 
-Also the templates are more clean that the included ones from crispy_forms which produce 
+Also the templates are more clean that the included ones from crispy_forms which produce
 too much spaces and newlines in the final HTML.
 """
 from django.conf import settings
@@ -11,6 +11,7 @@ from django.template.loader import render_to_string
 
 from crispy_forms.utils import render_field
 from crispy_forms import layout as crispy_forms_layout
+from crispy_forms import bootstrap as crispy_forms_bootstrap
 
 TEMPLATE_PACK = getattr(settings, 'CRISPY_TEMPLATE_PACK', 'foundation-5')
 
@@ -18,6 +19,8 @@ class Layout(crispy_forms_layout.Layout): pass
 class UneditableField(crispy_forms_layout.HTML): pass
 class HTML(crispy_forms_layout.HTML): pass
 class MultiWidgetField(crispy_forms_layout.MultiWidgetField): pass
+class Container(crispy_forms_bootstrap.Container): pass
+class ContainerHolder(crispy_forms_bootstrap.ContainerHolder): pass
 
 
 class Div(crispy_forms_layout.Div):
@@ -40,7 +43,7 @@ class Row(Div):
     .. sourcecode:: python
 
         Row('form_field_1', 'form_field_2', 'form_field_3')
-        
+
     Act as a div container row, it will embed its items in a div like that:
 
     .. sourcecode:: html
@@ -52,7 +55,7 @@ class Row(Div):
 class RowFluid(Row):
     """
     It wraps fields in a div whose default class is "row row-fluid". Example:
-    
+
     .. sourcecode:: python
 
         RowFluid('form_field_1', 'form_field_2', 'form_field_3')
@@ -79,13 +82,13 @@ class RowFluid(Row):
 class Column(Div):
     """
     .. _Foundation Grid: http://foundation.zurb.com/docs/components/grid.html
-    
-    It wraps fields in a div. If not defined, CSS class will default to 
-    ``large-12 columns``. ``columns`` class is always appended, so you don't 
+
+    It wraps fields in a div. If not defined, CSS class will default to
+    ``large-12 columns``. ``columns`` class is always appended, so you don't
     need to specify it.
 
-    This is the column from the `Foundation Grid`_, all columns should be 
-    contained in a **Row** or a **RowFluid** and you will have to define the 
+    This is the column from the `Foundation Grid`_, all columns should be
+    contained in a **Row** or a **RowFluid** and you will have to define the
     column type in the ``css_class`` attribute.
 
     Example:
@@ -125,7 +128,7 @@ class Fieldset(crispy_forms_layout.Fieldset):
             'form_field_2'
         )
 
-    The first parameter is the text for the fieldset legend. This text is 
+    The first parameter is the text for the fieldset legend. This text is
     context aware, so you can do things like :
 
     .. sourcecode:: python
@@ -144,7 +147,7 @@ class Field(crispy_forms_layout.Field):
     For setting class attributes, you need to use `css_class`, as `class` is a Python keyword.
 
     Example:
-    
+
     .. sourcecode:: python
 
         Field('field_name', style="color: #333;", css_class="whatever", id="field_name")
@@ -162,9 +165,9 @@ class MultiField(crispy_forms_layout.MultiField):
 
 class SplitDateTimeField(Field):
     """
-    Just an inherit from ``crispy_forms.layout.Field`` to have a common Field for 
+    Just an inherit from ``crispy_forms.layout.Field`` to have a common Field for
     displaying field with the ``django.forms.extra.SplitDateTimeWidget`` widget.
-    
+
     Simply use a specific template
     """
     template="{0}/layout/splitdatetime_field.html".format(TEMPLATE_PACK)
@@ -175,17 +178,17 @@ class InlineField(Field):
     Layout object for rendering an inline field with Foundation
 
     Example:
-    
+
     .. sourcecode:: python
 
         InlineField('field_name')
-        
+
     Or:
-    
+
     .. sourcecode:: python
-    
+
         InlineField('field_name', label_column='large-8', input_column='large-4', label_class='')
-        
+
     ``label_column``, ``input_column``, ``label_class``, are optional argument.
     """
     template = "{0}/layout/inline_field.html".format(TEMPLATE_PACK)
@@ -221,18 +224,18 @@ class InlineJustifiedField(InlineField):
 class SwitchField(crispy_forms_layout.Field):
     """
     A specific field to use Foundation form switches
-    
-    You should only use this with a checkbox field and this is a *raw* usage of this 
+
+    You should only use this with a checkbox field and this is a *raw* usage of this
     Foundation element, you should see ``InlineSwitchField`` instead.
 
     Example:
-    
+
     .. sourcecode:: python
 
         SwitchField('field_name', style="color: #333;", css_class="whatever", id="field_name")
     """
     template = "{0}/switch.html".format(TEMPLATE_PACK)
-    
+
     def __init__(self, field, *args, **kwargs):
         self.switch_class = ['switch'] + kwargs.pop('switch_class', '').split()
         super(SwitchField, self).__init__(field, *args, **kwargs)
@@ -245,25 +248,25 @@ class SwitchField(crispy_forms_layout.Field):
 class InlineSwitchField(InlineField):
     """
     Like ``SwitchField`` it use Foundation form switches with checkbox field but within an ``InlineField``
-    
+
     Contrary to ``SwitchField`` this play nice with the label to be able to display it (as Foundation form switches default behavior is to hide the label text)
 
     Example:
-    
+
     .. sourcecode:: python
 
         InlineSwitchField('field_name')
-        
+
     Or:
-    
+
     .. sourcecode:: python
 
         InlineSwitchField('field_name', label_column='large-8', input_column='large-4', label_class='', switch_class="inline")
-        
+
     ``label_column``, ``input_column``, ``label_class``, ``switch_class`` are optional argument.
     """
     template = "{0}/inline_switch.html".format(TEMPLATE_PACK)
-    
+
     def __init__(self, field, *args, **kwargs):
         self.switch_class = ['switch']+kwargs.pop('switch_class', '').split()
         kwargs['label_column'] = kwargs.pop('label_column', 'large-8')
@@ -284,7 +287,7 @@ class ButtonHolder(crispy_forms_layout.ButtonHolder):
     It should only hold ``HTML`` and ``BaseInput`` inherited objects.
 
     Example:
-    
+
     .. sourcecode:: python
 
         ButtonHolder(
@@ -312,7 +315,7 @@ class ButtonGroup(crispy_forms_layout.LayoutObject):
     It should only hold `HTML` and `BaseInput` inherited objects.
 
     Example:
-    
+
     .. sourcecode:: python
 
         ButtonGroup(
@@ -341,9 +344,9 @@ class ButtonGroup(crispy_forms_layout.LayoutObject):
 class Panel(crispy_forms_layout.Div):
     """
     Act like ``Div`` but add a ``panel`` css class.
-    
+
     Example:
-    
+
     .. sourcecode:: python
 
         Panel('form_field_1', 'form_field_2', css_id='div-example', css_class='divs')
@@ -356,7 +359,7 @@ class Panel(crispy_forms_layout.Div):
 class Button(crispy_forms_layout.Button):
     """
     Used to create a Submit input descriptor for the {% crispy %} template tag:
-    
+
     .. sourcecode:: python
 
         button = Button('Button 1', 'Press Me!')
@@ -401,3 +404,50 @@ class Reset(crispy_forms_layout.Reset):
     """
     input_type = 'reset'
     field_classes = 'reset button'
+
+class Tab(crispy_forms_bootstrap.Tab):
+    """
+    Tab object. It wraps fields in a div whose default class is "tabs" and
+    takes a name as first argument. Example::
+
+        Tab('tab_name', 'form_field_1', 'form_field_2', 'form_field_3')
+    """
+    css_class = 'content'
+    link_template = "{0}/layout/tab-link.html".format(TEMPLATE_PACK)
+
+
+class TabHolder(crispy_forms_bootstrap.TabHolder):
+    """
+    TabHolder object. It wraps Tab objects in a container::
+
+        TabHolder(
+            Tab('form_field_1', 'form_field_2'),
+            Tab('form_field_3')
+        )
+    """
+    template = "{0}/layout/tab.html".format(TEMPLATE_PACK)
+
+class VerticalTabHolder(TabHolder):
+    """
+    VerticalTabHolder appends vertical class to TabHolder container
+    """
+    css_class = 'vertical'
+
+class AccordionGroup(crispy_forms_bootstrap.AccordionGroup):
+    """
+    Accordion Group object. It wraps given fields inside an accordion
+    tab. It takes accordion tab name as first argument::
+
+        AccordionGroup("group name", "form_field_1", "form_field_2")
+    """
+    template = "{0}/layout/accordion-group.html".format(TEMPLATE_PACK)
+
+class Accordion(crispy_forms_bootstrap.Accordion):
+    """
+    Accordion menu object. It wraps `AccordionGroup` objects in a container::
+
+        Accordion(
+            AccordionGroup("group name", "form_field_1", "form_field_2"),
+            AccordionGroup("another group name", "form_field")
+    """
+    template = "{0}/layout/accordion.html".format(TEMPLATE_PACK)
