@@ -1,5 +1,10 @@
 """
 Field layout items
+
+See :
+
+* `Foundation forms <http://foundation.zurb.com/docs/components/forms.html>`_ for input field components;
+* `Foundation Switches <http://foundation.zurb.com/docs/components/switch.html>`_ for switches components;
 """
 from django.conf import settings
 

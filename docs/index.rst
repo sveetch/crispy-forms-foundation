@@ -38,5 +38,6 @@ Table of contents
    
    install.rst
    usage.rst
+   layout.rst
    changelog.rst
    credits.rst

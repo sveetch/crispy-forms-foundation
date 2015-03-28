@@ -53,12 +53,6 @@ Import **crispy-forms-foundation** then you can use the layout objects in your f
 
 The embedded templates are in ``crispy_forms_foundation/templates/foundation``.
 
-Layout items
-************
-
-.. automodule:: crispy_forms_foundation.layout
-    :members:
-
 Use Foundation 5 Abide
 **********************
 

@@ -4,6 +4,12 @@
 Changelog
 =========
 
+Version 0.5.0 - Not released yet
+********************************
+
+* Better layout elements organization;
+* Added Foundation tabs and accordion components;
+
 Version 0.4.1
 *************
 

@@ -1,5 +1,11 @@
 """
 Form container layout objects
+
+See :
+
+* `Foundation forms <http://foundation.zurb.com/docs/components/forms.html>`_ for fieldset component;
+* `Foundation Accordion <http://foundation.zurb.com/docs/components/accordion.html>`_ for accordion components;
+* `Foundation Tabs <http://foundation.zurb.com/docs/components/tabs.html>`_ for tabs components;
 """
 from django.conf import settings
 
@@ -82,6 +88,7 @@ class Accordion(crispy_forms_bootstrap.Accordion):
 
         Accordion(
             AccordionGroup("group name", "form_field_1", "form_field_2"),
-            AccordionGroup("another group name", "form_field")
+            AccordionGroup("another group name", "form_field"),
+        )
     """
     template = "{0}/layout/accordion.html".format(TEMPLATE_PACK)

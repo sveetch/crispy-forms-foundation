@@ -1,5 +1,7 @@
 """
 Foundation grid layout objects
+
+See `Foundation Grid <http://foundation.zurb.com/docs/components/grid.html>`_ for grid components.
 """
 from django.conf import settings
 from django.template import Context
@@ -25,7 +27,7 @@ class Row(Div):
 
     .. sourcecode:: html
 
-        <div class"row">Your stuff</div>
+        <div class"row">Content</div>
     """
     css_class = 'row'
 
@@ -41,16 +43,44 @@ class RowFluid(Row):
 
     .. sourcecode:: html
 
-        <div class"row row-fluid">Your stuff</div>
+        <div class"row row-fluid">Content</div>
 
     The CSS to add should be something like that:
 
     .. sourcecode:: css
 
-        .row-fluid {
-            width: 100%;
+        /*
+        * Fluid row takes the full width but keep normal row and columns behaviors
+        */
+        @mixin row-fluid-mixin {
             max-width: 100%;
-            min-width: 100%;
+            // Restore the initial behavior restrained to the grid
+            .row{
+                margin: auto;
+                @include grid-row;
+                // Preserve nested fluid behavior
+                &.row-fluid{
+                    max-width: 100%;
+                }
+            }
+        }
+        .row.row-fluid{
+            @include row-fluid-mixin;
+        }
+        @media #{$small-up} {
+            .row.small-row-fluid{ @include row-fluid-mixin; }
+        }
+        @media #{$medium-up} {
+            .row.medium-row-fluid{ @include row-fluid-mixin; }
+        }
+        @media #{$large-up} {
+            .row.large-row-fluid{ @include row-fluid-mixin; }
+        }
+        @media #{$xlarge-up} {
+            .row.xlarge-row-fluid{ @include row-fluid-mixin; }
+        }
+        @media #{$xxlarge-up} {
+            .row.xxlarge-row-fluid{ @include row-fluid-mixin; }
         }
     """
     css_class = 'row row-fluid'
