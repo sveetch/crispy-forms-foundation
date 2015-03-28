@@ -40,4 +40,14 @@ Table of contents
    usage.rst
    layout.rst
    changelog.rst
-   credits.rst
+
+Contributors
+************
+
+.. _`@PhilipGarnero`: https://github.com/PhilipGarnero
+.. _`@jrast`: https://github.com/jrast
+.. _`@jayarnielsen`: https://github.com/jayarnielsen
+
+* Philip Garnero (`@PhilipGarnero`_);
+* Juerg Rast (`@jrast`_);
+* JR (`@jayarnielsen`_);

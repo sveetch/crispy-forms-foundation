@@ -51,7 +51,7 @@ Import **crispy-forms-foundation** then you can use the layout objects in your f
             
             super(YourForm, self).__init__(*args, **kwargs)
 
-The embedded templates are in ``crispy_forms_foundation/templates/foundation``.
+The embedded templates are in ``crispy_forms_foundation/templates/foundation-5``.
 
 Use Foundation 5 Abide
 **********************

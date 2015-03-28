@@ -9,6 +9,7 @@ Version 0.5.0 - Not released yet
 
 * Better layout elements organization;
 * Merged pull request #20 for *Added Foundation tabs and accordion components based on crispy-forms bootstrap3 implementation*;
+* Removed all stuff for Foundation 3 that is not supported anymore;
 * Update documentation;
 
 Version 0.4.1
