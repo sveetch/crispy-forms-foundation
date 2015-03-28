@@ -1,8 +1,11 @@
 # -*- coding: utf-8 -*-
 from copy import deepcopy
+
 from django import forms
 from django.core.urlresolvers import reverse, NoReverseMatch
+
 from crispy_forms.helper import FormHelper
+
 from crispy_forms_foundation.layout import Submit, HTML, InlineSwitchField
 
 class FoundationFormMixin(object):
