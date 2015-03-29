@@ -16,7 +16,7 @@ from crispy_forms_foundation.layout.fields import (MultiWidgetField, Field, Mult
 from crispy_forms_foundation.layout.buttons import (ButtonHolder, ButtonHolderPanel, 
                                                     ButtonGroup, Button, Submit, 
                                                     Hidden, Reset)
-from crispy_forms_foundation.layout.forms import (Container, ContainerHolder,
+from crispy_forms_foundation.layout.containers import (Container, ContainerHolder,
                                                   Fieldset, Tab, TabHolder, 
                                                   VerticalTabHolder, AccordionGroup, 
                                                   Accordion)
