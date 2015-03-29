@@ -10,7 +10,10 @@ See :
 from django.conf import settings
 
 from crispy_forms import layout as crispy_forms_layout
+from crispy_forms.utils import render_field
 from crispy_forms import bootstrap as crispy_forms_bootstrap
+from django.template import Context
+from django.template.loader import render_to_string
 
 TEMPLATE_PACK = getattr(settings, 'CRISPY_TEMPLATE_PACK', 'foundation-5')
 
@@ -53,6 +56,18 @@ class Tab(crispy_forms_bootstrap.Tab):
     css_class = 'content'
     link_template = "{0}/layout/tab-link.html".format(TEMPLATE_PACK)
 
+    def has_errors(self, form):
+        """
+        Find tab fields are listed as invalid
+        """
+        return any([fieldname_error for fieldname_error in form.errors.keys() if fieldname_error in self])
+
+    def render_link(self, form):
+        """
+        Render the link for the tab-pane. It must be called after render so css_class is updated
+        with active if needed.
+        """
+        return render_to_string(self.link_template, Context({'link': self, 'tab_has_errors': self.has_errors(form)}))
 
 class TabHolder(crispy_forms_bootstrap.TabHolder):
     """
@@ -64,6 +79,24 @@ class TabHolder(crispy_forms_bootstrap.TabHolder):
         )
     """
     template = "{0}/layout/tab.html".format(TEMPLATE_PACK)
+
+    def render(self, form, form_style, context, template_pack=TEMPLATE_PACK):
+        links, content = '', ''
+        for tab in self.fields:
+            tab.active = False
+
+        # The first tab with errors will be active
+        self.first_container_with_errors(form.errors.keys()).active = True
+
+        for tab in self.fields:
+            content += render_field(
+                tab, form, form_style, context, template_pack=template_pack
+            )
+            links += tab.render_link(form)
+
+        return render_to_string(self.template, Context({
+            'tabs': self, 'links': links, 'content': content
+        }))
 
 
 class VerticalTabHolder(TabHolder):
