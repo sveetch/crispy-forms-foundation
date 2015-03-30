@@ -46,15 +46,24 @@ class Fieldset(crispy_forms_layout.Fieldset):
     template = "{0}/layout/fieldset.html".format(TEMPLATE_PACK)
 
 
-class Tab(crispy_forms_bootstrap.Tab):
+class TabItem(crispy_forms_bootstrap.Tab):
     """
-    Tab object. It wraps fields in a div whose default class is "tabs" and
-    takes a name as first argument. Example::
+    Tab item object. It wraps fields in a div whose default class is "tabs" and
+    takes a name as first argument. 
+    
+    The item name is also slugified to build an id for the tab if you don't define 
+    it using ``css_id`` argument.
+    
+    Example:
 
-        Tab('tab_name', 'form_field_1', 'form_field_2', 'form_field_3')
+    .. sourcecode:: python
+
+        TabItem('My tab', 'form_field_1', 'form_field_2', 'form_field_3')
+    
+    ``TabItem`` layout item has no real utility out of a ``TabHolder``.
     """
     css_class = 'content'
-    link_template = "{0}/layout/tab-link.html".format(TEMPLATE_PACK)
+    link_template = "{0}/layout/tab-item.html".format(TEMPLATE_PACK)
 
     def has_errors(self, form):
         """
@@ -71,14 +80,18 @@ class Tab(crispy_forms_bootstrap.Tab):
 
 class TabHolder(crispy_forms_bootstrap.TabHolder):
     """
-    TabHolder object. It wraps Tab objects in a container::
+    Tabs holder object to wrap Tab item objects in a container:
+
+    .. sourcecode:: python
 
         TabHolder(
-            Tab('form_field_1', 'form_field_2'),
-            Tab('form_field_3')
+            TabItem('My tab 1', 'form_field_1', 'form_field_2'),
+            TabItem('My tab 2', 'form_field_3')
         )
+    
+    ``TabHolder`` directl children should allways be a ``TabItem`` layout item.
     """
-    template = "{0}/layout/tab.html".format(TEMPLATE_PACK)
+    template = "{0}/layout/tab-holder.html".format(TEMPLATE_PACK)
 
     def render(self, form, form_style, context, template_pack=TEMPLATE_PACK):
         links, content = '', ''
@@ -106,22 +119,31 @@ class VerticalTabHolder(TabHolder):
     css_class = 'vertical'
 
 
-class AccordionGroup(crispy_forms_bootstrap.AccordionGroup):
+class AccordionItem(crispy_forms_bootstrap.AccordionGroup):
     """
-    Accordion Group object. It wraps given fields inside an accordion
-    tab. It takes accordion tab name as first argument::
+    Accordion item object. It wraps given fields inside an accordion
+    tab. It takes accordion tab name as first argument.
+    
+    The item name is also slugified to build an id for the tab if you don't define 
+    it using ``css_id`` argument.
 
-        AccordionGroup("group name", "form_field_1", "form_field_2")
+    Example:
+
+    .. sourcecode:: python
+
+        AccordionItem("group name", "form_field_1", "form_field_2")
     """
-    template = "{0}/layout/accordion-group.html".format(TEMPLATE_PACK)
+    template = "{0}/layout/accordion-item.html".format(TEMPLATE_PACK)
 
-class Accordion(crispy_forms_bootstrap.Accordion):
+class AccordionHolder(crispy_forms_bootstrap.Accordion):
     """
-    Accordion menu object. It wraps `AccordionGroup` objects in a container::
+    Accordion items holder object to wrap Accordion item objects in a container:
 
-        Accordion(
-            AccordionGroup("group name", "form_field_1", "form_field_2"),
-            AccordionGroup("another group name", "form_field"),
+    .. sourcecode:: python
+
+        AccordionHolder(
+            AccordionItem("group name", "form_field_1", "form_field_2"),
+            AccordionItem("another group name", "form_field"),
         )
     """
-    template = "{0}/layout/accordion.html".format(TEMPLATE_PACK)
+    template = "{0}/layout/accordion-holder.html".format(TEMPLATE_PACK)

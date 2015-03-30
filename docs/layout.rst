@@ -42,6 +42,6 @@ Buttons
 Form containers
 ***************
 
-.. automodule:: crispy_forms_foundation.layout.forms
+.. automodule:: crispy_forms_foundation.layout.containers
     :members:
 

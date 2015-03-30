@@ -17,8 +17,8 @@ from crispy_forms_foundation.layout.buttons import (ButtonHolder, ButtonHolderPa
                                                     ButtonGroup, Button, Submit, 
                                                     Hidden, Reset)
 from crispy_forms_foundation.layout.containers import (Container, ContainerHolder,
-                                                  Fieldset, Tab, TabHolder, 
-                                                  VerticalTabHolder, AccordionGroup, 
-                                                  Accordion)
+                                                  Fieldset, TabItem, TabHolder, 
+                                                  VerticalTabHolder, AccordionItem, 
+                                                  AccordionHolder)
 
 TEMPLATE_PACK = getattr(settings, 'CRISPY_TEMPLATE_PACK', 'foundation-5')
