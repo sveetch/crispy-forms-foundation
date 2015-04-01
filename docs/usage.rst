@@ -93,7 +93,7 @@ Support within tabs
 
 Default **Abide** behavior is not aware of Tabs and so input errors can be hided when they are not in the active tab.
 
-**crispy-forms-foundation** ships a jQuery plugin that add support for this usage, first you will need to load it in your pages then initialize it on your form:
+**crispy-forms-foundation** ships a jQuery plugin that add support for this usage, you will need to load it in your pages then initialize it on your form:
 
 .. sourcecode:: html
 
@@ -107,6 +107,24 @@ Default **Abide** behavior is not aware of Tabs and so input errors can be hided
     </script>
 
 This way, all input errors will be raised to their tab name that will display an error mark.
+
+Support within accordions
+-------------------------
+
+Like with tabs, there is a jQuery plugin to add Abide support within accordions.
+
+You will need to load it in your pages then initialize it on your form:
+
+.. sourcecode:: html
+
+    <script type="text/javascript" src="{{ STATIC_URL }}js/crispy_forms_foundation/plugins.js"></script>
+    <script type="text/javascript">
+    //<![CDATA[
+    $(document).ready(function() {
+        $('form').abide_support_for_accordions();
+    });
+    //]]>
+    </script>
 
 Automatic form layout
 *********************

@@ -4,13 +4,15 @@
 Changelog
 =========
 
-Version 0.5.0 - Not released yet
-********************************
+Version 0.5.0
+*************
 
 * Better layout elements organization;
 * Merged pull request #20 for *Added Foundation tabs and accordion components based on crispy-forms bootstrap3 implementation*;
 * Removed all stuff for Foundation 3 that is not supported anymore;
-* Add jquery plugin to add support for abide in tabs so the input errors are raised to the tab name and not hided into tab contents, fix TabItem and TabHolder so tab inputs errors are raised to the Tab item;
+* Fix TabItem and TabHolder so tab inputs errors are raised to the Tab item;
+* Fix AccordionItem and AccordionHolder so accordion inputs errors are raised to the accordion item name;
+* Add jquery plugin to add Abide support within tabs and accordions so the input errors are raised to their title name and not hided into contents;
 * Update documentation;
 
 Version 0.4.1
