@@ -4,6 +4,11 @@
 Changelog
 =========
 
+Version 0.5.1
+*************
+
+* Fix 'disable_csrf' option that was not honored in template forms;
+
 Version 0.5.0
 *************
 

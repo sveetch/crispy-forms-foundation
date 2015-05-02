@@ -47,7 +47,9 @@ Contributors
 .. _`@PhilipGarnero`: https://github.com/PhilipGarnero
 .. _`@jrast`: https://github.com/jrast
 .. _`@jayarnielsen`: https://github.com/jayarnielsen
+.. _`@carsolcas`: https://github.com/carsolcas
 
 * Philip Garnero (`@PhilipGarnero`_);
 * Juerg Rast (`@jrast`_);
 * JR (`@jayarnielsen`_);
+* Carsolcas (`@carsolcas`_);
