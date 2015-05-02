@@ -2,4 +2,4 @@
 """
 Django application to add 'django-crispy-forms' layout objects for Foundation
 """
-__version__ = '0.5.0'
+__version__ = '0.5.1'
