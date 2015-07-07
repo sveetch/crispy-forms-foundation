@@ -4,6 +4,7 @@ from copy import deepcopy
 
 from django import forms
 from django.core.urlresolvers import reverse, NoReverseMatch
+from django.utils.translation import ugettext_lazy as _
 
 from crispy_forms.helper import FormHelper
 
@@ -20,7 +21,7 @@ class FoundationFormMixin(object):
 
     title = None  #: If set, defines the form's title
     layout = None  #: If set, override the default layout for the form
-    error_title = "Errors :"  #: Defines the error title for non field errors
+    error_title = _("Errors :")  #: Defines the error title for non field errors
     form_id = None  #: Defines the id of the form
     classes = "foundation-form" #: Defines the classes used on the form
     action = ""  #: Defines the action of the form. ``reverse`` will be called on the value. On failure the value will be assigned as is
@@ -36,7 +37,7 @@ class FoundationFormMixin(object):
             for field in self.fields.values():
                 if field.required:
                     field.widget.attrs["required"] = ""
-                    field.abide_msg = "This field is required."
+                    field.abide_msg = _("This field is required.")
 
         if not self.layout:
             # Start with an empty layout
@@ -77,7 +78,7 @@ class FoundationFormMixin(object):
             elif isinstance(self.submit, str):
                 self.helper.add_input(Submit('submit', self.submit))
             else:
-                self.helper.add_input(Submit('submit', "Submit"))
+                self.helper.add_input(Submit('submit', _("Submit")))
 
     def replace_layout_object(self, position, instead):
         previous_layout_object = None
