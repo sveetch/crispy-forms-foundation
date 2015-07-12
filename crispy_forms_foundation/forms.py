@@ -1,12 +1,14 @@
 # -*- coding: utf-8 -*-
+from __future__ import unicode_literals, absolute_import
 from copy import deepcopy
 
 from django import forms
 from django.core.urlresolvers import reverse, NoReverseMatch
+from django.utils.translation import ugettext_lazy as _
 
 from crispy_forms.helper import FormHelper
 
-from crispy_forms_foundation.layout import Submit, HTML, InlineSwitchField
+from .layout import Submit, HTML, InlineSwitchField
 
 class FoundationFormMixin(object):
     """
@@ -17,17 +19,17 @@ class FoundationFormMixin(object):
     If you still want to directly use this mixin you'll just have to execute ``FoundationFormMixin.init_helper()`` in your form init.
    """
 
-    title = None #: If set, defines the form's title
-    layout = None #: If set, override the default layout for the form
-    error_title = "Errors :" #: Defines the error title for non field errors
-    form_id = None #: Defines the id of the form
+    title = None  #: If set, defines the form's title
+    layout = None  #: If set, override the default layout for the form
+    error_title = _("Errors :")  #: Defines the error title for non field errors
+    form_id = None  #: Defines the id of the form
     classes = "foundation-form" #: Defines the classes used on the form
-    action = "" #: Defines the action of the form. ``reverse`` will be called on the value. On failure the value will be assigned as is
-    method = "post" #: Defines the method used for the action
-    attrs = {} #: Defines the attributes of the form
-    switches = True #: If True, will replace all fields checkboxes with switches
-    submit = True #: Adds a submit button on the form. Can be set to a Submit object or a string which will be used as the value of the submit button
-    title_templatestring = u"<h3 class=\"subheader\">{0}</h3>" #: Template string used to display form title (if any)
+    action = ""  #: Defines the action of the form. ``reverse`` will be called on the value. On failure the value will be assigned as is
+    method = "post"  #: Defines the method used for the action
+    attrs = {}  #: Defines the attributes of the form
+    switches = True  #: If True, will replace all fields checkboxes with switches
+    submit = True  #: Adds a submit button on the form. Can be set to a Submit object or a string which will be used as the value of the submit button
+    title_templatestring = u"<h3 class=\"subheader\">{0}</h3>"  #: Template string used to display form title (if any)
 
     def init_helper(self):
         # Put required HTML attribute on required fields so they are managed by Abide (if enabled)
@@ -35,7 +37,7 @@ class FoundationFormMixin(object):
             for field in self.fields.values():
                 if field.required:
                     field.widget.attrs["required"] = ""
-                    field.abide_msg = "This field is required."
+                    field.abide_msg = _("This field is required.")
 
         if not self.layout:
             # Start with an empty layout
@@ -76,7 +78,7 @@ class FoundationFormMixin(object):
             elif isinstance(self.submit, str):
                 self.helper.add_input(Submit('submit', self.submit))
             else:
-                self.helper.add_input(Submit('submit', "Submit"))
+                self.helper.add_input(Submit('submit', _("Submit")))
 
     def replace_layout_object(self, position, instead):
         previous_layout_object = None
