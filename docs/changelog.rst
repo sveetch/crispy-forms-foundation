@@ -4,6 +4,12 @@
 Changelog
 =========
 
+Version 0.5.2
+*************
+
+* Use relative imports and enforce absolute imports;
+* Add german and french translation with i18n;
+
 Version 0.5.1
 *************
 

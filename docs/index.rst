@@ -48,8 +48,10 @@ Contributors
 .. _`@jrast`: https://github.com/jrast
 .. _`@jayarnielsen`: https://github.com/jayarnielsen
 .. _`@carsolcas`: https://github.com/carsolcas
+.. _`@sbaechler`: https://github.com/sbaechler
 
 * Philip Garnero (`@PhilipGarnero`_);
 * Juerg Rast (`@jrast`_);
 * JR (`@jayarnielsen`_);
 * Carsolcas (`@carsolcas`_);
+* Simon Bächler (`@sbaechler`_);
