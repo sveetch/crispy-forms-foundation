@@ -6,7 +6,11 @@
 Install
 =======
 
-Register the app in your project settings like that :
+Get it from PyPi: ::
+
+    pip install crispy-forms-foundation
+
+Register the app in your project settings :
 
 .. sourcecode:: python
 
@@ -20,10 +24,12 @@ Register the app in your project settings like that :
 Then append this part to specify usage of the Foundation set :
 
 .. sourcecode:: python
-
+    
+    # Add 'foundation-5' layout pack
+    CRISPY_ALLOWED_TEMPLATE_PACKS = ('bootstrap', 'uni_form', 'bootstrap3', 'foundation-5')
     # Default layout to use with "crispy_forms"
     CRISPY_TEMPLATE_PACK = 'foundation-5'
 
-If not defined, the default template pack name used is ``foundation-5``, also you can use ``foundation-3`` but pay attention that is not really maintained.
+The default template pack name used will be ``foundation-5``.
 
 All other `django-crispy-forms`_ settings option apply, see its documentation for more details.

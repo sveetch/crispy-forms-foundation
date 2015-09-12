@@ -7,8 +7,6 @@
 
 .. crispy-form-foundation documentation master file, created by
    sphinx-quickstart on Sat Nov 15 20:21:48 2014.
-   You can adapt this file completely to your liking, but it should at least
-   contain the root `toctree` directive.
 
 Welcome to crispy-form-foundation's documentation!
 ==================================================
@@ -28,7 +26,7 @@ Links
 Requires
 ========
 
-* `django-crispy-forms`_ = 1.4.x;
+* `django-crispy-forms`_ >= 1.4.x;
 
 Table of contents
 *****************
