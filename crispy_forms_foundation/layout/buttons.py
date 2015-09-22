@@ -77,7 +77,7 @@ class ButtonGroup(crispy_forms_layout.LayoutObject):
         return render_to_string(self.template, Context({'buttongroup': self, 'field_list': field_list}))
 
 
-class Button(crispy_forms_layout.Button):
+class Button(crispy_forms_layout.BaseInput):
     """
     Used to create a Submit input descriptor for the {% crispy %} template tag:
 
@@ -91,7 +91,7 @@ class Button(crispy_forms_layout.Button):
     field_classes = 'button'
 
 
-class Submit(crispy_forms_layout.Submit):
+class Submit(crispy_forms_layout.BaseInput):
     """
     Used to create a Submit button descriptor for the {% crispy %} template tag:
 
@@ -113,7 +113,7 @@ class Hidden(crispy_forms_layout.Hidden):
     field_classes = 'hidden'
 
 
-class Reset(crispy_forms_layout.Reset):
+class Reset(crispy_forms_layout.BaseInput):
     """
     Used to create a Reset button input descriptor for the {% crispy %} template tag:
 
