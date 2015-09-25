@@ -24,4 +24,5 @@ Links
 Requires
 ========
 
-* `django-crispy-forms`_ = 1.4.x;
+* `Django`_ >= 1.4.x;
+* `django-crispy-forms`_ >= 1.4.x;
