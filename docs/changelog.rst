@@ -4,6 +4,12 @@
 Changelog
 =========
 
+Version 0.5.3
+*************
+
+* Fixed bugs with button layout elements since django-crispy-forms==1.5.x, this is backward compatible with previous django-crispy-forms<1.5.x (with pull request #26 to close #25);
+* Fixed package infos and README to be more explicit on Django compatibility (1.4 to 1.8 actually tested);
+
 Version 0.5.2
 *************
 

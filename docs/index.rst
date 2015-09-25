@@ -26,6 +26,7 @@ Links
 Requires
 ========
 
+* `Django`_ >= 1.4.x;
 * `django-crispy-forms`_ >= 1.4.x;
 
 Table of contents
@@ -47,9 +48,11 @@ Contributors
 .. _`@jayarnielsen`: https://github.com/jayarnielsen
 .. _`@carsolcas`: https://github.com/carsolcas
 .. _`@sbaechler`: https://github.com/sbaechler
+.. _`@bionikspoon`: https://github.com/bionikspoon
 
 * Philip Garnero (`@PhilipGarnero`_);
 * Juerg Rast (`@jrast`_);
 * JR (`@jayarnielsen`_);
 * Carsolcas (`@carsolcas`_);
 * Simon Bächler (`@sbaechler`_);
+* Manu Phatak (`@bionikspoon`_);
