@@ -19,7 +19,7 @@
 
     {% spaceless %}{% for field in multifield.bound_fields %}
         {% if field.help_text %}
-            <p id="hint_{{ field.auto_id }}" class="hint">{{ field.help_text|safe }}</p>
+            <p id="helptext_{{ field.auto_id }}" class="help-text">{{ field.help_text|safe }}</p>
         {% endif %}
     {% endfor %}{% endspaceless %}
 </div>
