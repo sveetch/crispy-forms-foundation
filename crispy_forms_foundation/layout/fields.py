@@ -114,6 +114,8 @@ class SwitchField(crispy_forms_layout.Field):
 
     def __init__(self, field, *args, **kwargs):
         self.switch_class = ['switch'] + kwargs.pop('switch_class', '').split()
+        kwargs['class'] = (kwargs.pop('class', '') + ' switch-input').strip()
+
         super(SwitchField, self).__init__(field, *args, **kwargs)
 
     def render(self, form, form_style, context, template_pack=TEMPLATE_PACK):
@@ -147,6 +149,7 @@ class InlineSwitchField(InlineField):
         self.switch_class = ['switch']+kwargs.pop('switch_class', '').split()
         kwargs['label_column'] = kwargs.pop('label_column', 'large-8')
         kwargs['input_column'] = kwargs.pop('input_column', 'large-4')
+        kwargs['class'] = (kwargs.pop('class', '') + ' switch-input').strip()
 
         super(InlineSwitchField, self).__init__(field, *args, **kwargs)
 
