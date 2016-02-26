@@ -3,8 +3,8 @@ Button layout items
 
 See :
 
-* `Foundation buttons <http://foundation.zurb.com/docs/components/buttons.html>`_ for button components;
-* `Foundation button groups <http://foundation.zurb.com/docs/components/button_groups.html>`_ for button groups components;
+* `Foundation buttons <http://foundation.zurb.com/sites/docs/v/5.5.3/components/buttons.html>`_ for button components;
+* `Foundation button groups <http://foundation.zurb.com/sites/docs/v/5.5.3/components/button_groups.html>`_ for button groups components;
 """
 from django.conf import settings
 from django.template import Context

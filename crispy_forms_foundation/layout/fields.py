@@ -3,8 +3,8 @@ Field layout items
 
 See :
 
-* `Foundation forms <http://foundation.zurb.com/docs/components/forms.html>`_ for input field components;
-* `Foundation Switches <http://foundation.zurb.com/docs/components/switch.html>`_ for switches components;
+* `Foundation forms <http://foundation.zurb.com/sites/docs/v/5.5.3/components/forms.html>`_ for input field components;
+* `Foundation Switches <http://foundation.zurb.com/sites/docs/v/5.5.3/components/switch.html>`_ for switches components;
 """
 from django.conf import settings
 
@@ -19,7 +19,7 @@ class MultiWidgetField(crispy_forms_layout.MultiWidgetField): pass
 
 class Field(crispy_forms_layout.Field):
     """
-    Layout object, It contains one field name, and you can add attributes to it easily.
+    Layout object, contain one field name and you can add attributes to it easily.
     For setting class attributes, you need to use `css_class`, as `class` is a Python keyword.
 
     Example:
@@ -33,7 +33,7 @@ class Field(crispy_forms_layout.Field):
 
 class MultiField(crispy_forms_layout.MultiField):
     """
-    MultiField container. Renders to a MultiField
+    MultiField container. Render to a MultiField
     """
     template = "{0}/layout/multifield.html".format(TEMPLATE_PACK)
     field_template = "{0}/multifield.html".format(TEMPLATE_PACK)

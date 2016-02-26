@@ -1,7 +1,9 @@
 """
+.. _Foundation Grid: http://foundation.zurb.com/sites/docs/v/5.5.3/components/grid.html
+
 Foundation grid layout objects
 
-See `Foundation Grid <http://foundation.zurb.com/docs/components/grid.html>`_ for grid components.
+See `Foundation Grid`_ for grid components.
 """
 from django.conf import settings
 from django.template import Context
@@ -17,7 +19,7 @@ TEMPLATE_PACK = getattr(settings, 'CRISPY_TEMPLATE_PACK', 'foundation-5')
 
 class Row(Div):
     """
-    It wraps fields in a div whose default class is ``row``. Example:
+    Wrap fields in a div whose default class is ``row``. Example:
 
     .. sourcecode:: python
 
@@ -33,7 +35,7 @@ class Row(Div):
 
 class RowFluid(Row):
     """
-    It wraps fields in a div whose default class is "row row-fluid". Example:
+    Wrap fields in a div whose default class is "row row-fluid". Example:
 
     .. sourcecode:: python
 
@@ -88,9 +90,7 @@ class RowFluid(Row):
 
 class Column(Div):
     """
-    .. _Foundation Grid: http://foundation.zurb.com/docs/components/grid.html
-
-    It wraps fields in a div. If not defined, CSS class will default to
+    Wrap fields in a div. If not defined, CSS class will default to
     ``large-12 columns``. ``columns`` class is always appended, so you don't
     need to specify it.
 

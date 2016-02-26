@@ -3,9 +3,9 @@ Form container layout objects
 
 See :
 
-* `Foundation forms <http://foundation.zurb.com/docs/components/forms.html>`_ for fieldset component;
-* `Foundation Accordion <http://foundation.zurb.com/docs/components/accordion.html>`_ for accordion components;
-* `Foundation Tabs <http://foundation.zurb.com/docs/components/tabs.html>`_ for tabs components;
+* `Foundation forms <http://foundation.zurb.com/sites/docs/v/5.5.3/components/forms.html>`_ for fieldset component;
+* `Foundation Accordion <http://foundation.zurb.com/sites/docs/v/5.5.3/components/accordion.html>`_ for accordion components;
+* `Foundation Tabs <http://foundation.zurb.com/sites/docs/v/5.5.3/components/tabs.html>`_ for tabs components;
 """
 from random import randint
 
@@ -60,18 +60,21 @@ class TabHolder(crispy_forms_bootstrap.TabHolder):
             TabItem('My tab 2', 'form_field_3')
         )
     
-    ``TabHolder`` directl children should allways be a ``TabItem`` layout item.
+    ``TabHolder`` direct children should allways be a ``TabItem`` layout item.
+    
+    The first ``TabItem`` containing a field error will be marked as 
+    *active* if any, else this will be just the first ``TabItem``.
     """
     template = "{0}/layout/tab-holder.html".format(TEMPLATE_PACK)
+    default_active_tab = None
 
     def render(self, form, form_style, context, template_pack=TEMPLATE_PACK):
         links, content = '', ''
         for tab in self.fields:
             tab.active = False
 
-        # The first tab with errors will be active
-        if self.first_container_with_errors(form.errors.keys()) is not None:
-            self.first_container_with_errors(form.errors.keys()).active = True
+        # Activate item
+        self.open_target_group_for_form(form)
 
         for tab in self.fields:
             content += render_field(
@@ -132,6 +135,11 @@ class AccordionHolder(crispy_forms_bootstrap.Accordion):
             AccordionItem("group name", "form_field_1", "form_field_2"),
             AccordionItem("another group name", "form_field"),
         )
+    
+    ``AccordionHolder`` direct children should allways be a ``AccordionItem`` layout item.
+    
+    The first ``AccordionItem`` containing a field error will be marked as 
+    *active* if any, else this will be just the first ``AccordionItem``.
     """
     template = "{0}/layout/accordion-holder.html".format(TEMPLATE_PACK)
 
@@ -142,10 +150,10 @@ class AccordionHolder(crispy_forms_bootstrap.Accordion):
         # know why). This needs to be a unique id
         if not self.css_id:
             self.css_id = "-".join(["accordion", text_type(randint(1000, 9999))])
-
-        # first group with errors or first group will be visible, others will be collapsed
-        if self.first_container_with_errors(form.errors.keys()) is not None:
-            self.first_container_with_errors(form.errors.keys()).active = True
+        
+        # Active first 'AccordionItem' containing a field error if any, else 
+        # active first holder item
+        self.open_target_group_for_form(form)
 
         for group in self.fields:
             group.data_parent = self.css_id

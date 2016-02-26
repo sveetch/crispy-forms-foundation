@@ -49,6 +49,7 @@ Contributors
 .. _`@carsolcas`: https://github.com/carsolcas
 .. _`@sbaechler`: https://github.com/sbaechler
 .. _`@bionikspoon`: https://github.com/bionikspoon
+.. _`@flesser`: https://github.com/flesser
 
 * Philip Garnero (`@PhilipGarnero`_);
 * Juerg Rast (`@jrast`_);
@@ -56,3 +57,4 @@ Contributors
 * Carsolcas (`@carsolcas`_);
 * Simon Bächler (`@sbaechler`_);
 * Manu Phatak (`@bionikspoon`_);
+* Florian Eßer (`@flesser`_);

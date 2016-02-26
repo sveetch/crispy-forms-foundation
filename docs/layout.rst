@@ -1,6 +1,5 @@
 .. _django-crispy-forms: https://github.com/maraujop/django-crispy-forms
 .. _Foundation: http://github.com/zurb/foundation
-.. _Foundation Grid: http://foundation.zurb.com/docs/components/grid.html
 .. _crispy-forms-foundation-demo: https://github.com/sveetch/crispy-forms-foundation-demo
 .. _Abide: http://foundation.zurb.com/docs/components/abide.html
 

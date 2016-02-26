@@ -4,6 +4,11 @@
 Changelog
 =========
 
+Version 0.5.4
+*************
+
+* Fixed ``TabHolder`` and ``AccordionHolder`` to have the right *active* behavior on their items: activate the first item with a field error if any, else just activate the first item;
+
 Version 0.5.3
 *************
 
