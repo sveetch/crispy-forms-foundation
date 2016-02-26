@@ -1,5 +1,5 @@
 <li class="accordion-item{% if div.active %} is-active{% endif %}">
-    <a class="accordion-title">{{ div.name|capfirst }}{% if div.item_has_errors %} <span class="label alert round mark">!</span>{% endif %}</a>
+    <a class="accordion-title">{{ div.name|capfirst }}{% if div.item_has_errors %} <span class="alert badge">!</span>{% endif %}</a>
     <div class="accordion-content" data-tab-content>
         {{ fields|safe }}
     </div>
