@@ -70,7 +70,8 @@ class TabHolder(crispy_forms_bootstrap.TabHolder):
             tab.active = False
 
         # The first tab with errors will be active
-        self.first_container_with_errors(form.errors.keys()).active = True
+        if self.first_container_with_errors(form.errors.keys()) is not None:
+            self.first_container_with_errors(form.errors.keys()).active = True
 
         for tab in self.fields:
             content += render_field(
@@ -142,8 +143,9 @@ class AccordionHolder(crispy_forms_bootstrap.Accordion):
         if not self.css_id:
             self.css_id = "-".join(["accordion", text_type(randint(1000, 9999))])
 
-        # first group with errors or first groupt will be visible, others will be collapsed
-        self.first_container_with_errors(form.errors.keys()).active = True
+        # first group with errors or first group will be visible, others will be collapsed
+        if self.first_container_with_errors(form.errors.keys()) is not None:
+            self.first_container_with_errors(form.errors.keys()).active = True
 
         for group in self.fields:
             group.data_parent = self.css_id
