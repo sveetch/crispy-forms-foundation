@@ -3,7 +3,7 @@
         {% for field in multifield.bound_fields %}
             {% if field.errors %}
                 {% for error in field.errors %}
-                    <p id="error_{{ forloop.counter }}_{{ field.auto_id }}" class="error">{{ error }}</p>
+                    <p id="error_{{ forloop.counter }}_{{ field.auto_id }}" class="alert label">{{ error }}</p>
                 {% endfor %}
             {% endif %}
         {% endfor %}
@@ -19,7 +19,7 @@
 
     {% spaceless %}{% for field in multifield.bound_fields %}
         {% if field.help_text %}
-            <p id="hint_{{ field.auto_id }}" class="hint">{{ field.help_text|safe }}</p>
+            <p id="helptext_{{ field.auto_id }}" class="help-text">{{ field.help_text|safe }}</p>
         {% endif %}
     {% endfor %}{% endspaceless %}
 </div>

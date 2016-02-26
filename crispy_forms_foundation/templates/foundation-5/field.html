@@ -3,7 +3,7 @@
 {% if field.is_hidden %}
     {{ field }}
 {% else %}
-    <div id="div_{{ field.auto_id }}" class="holder{% if wrapper_class %} {{ wrapper_class }}{% endif %}{% if field.errors and form_show_errors %} error{% endif %}{% if field|is_checkbox %} checkbox{% endif %}{% if field.css_classes %} {{ field.css_classes }}{% endif %}">{% spaceless %}
+    <div id="div_{{ field.auto_id }}" class="holder{% if wrapper_class %} {{ wrapper_class }}{% endif %}{% if field.errors and form_show_errors %} callout alert{% endif %}{% if field|is_checkbox %} checkbox{% endif %}{% if field.css_classes %} {{ field.css_classes }}{% endif %}">{% spaceless %}
 
         {% if field.label %}
             {% if field|is_checkbox %}
@@ -24,21 +24,21 @@
         {% endif %}
 
         {% if field.field.abide_msg %}
-            <small id="abide_error_{{ field.auto_id }}" class="error {% if form_show_errors and not field.errors|length_is:"0" %}compact{% endif %}">
+            <small id="abide_error_{{ field.auto_id }}" class="alert label {% if form_show_errors and not field.errors|length_is:"0" %}compact{% endif %}">
                 {{ field.field.abide_msg }}
             </small>
         {% endif %}
 
         {% if form_show_errors %}
             {% for error in field.errors %}
-                <small id="error_{{ forloop.counter }}_{{ field.auto_id }}" class="error {% if not forloop.last %}compact{% endif %}">
+                <small id="error_{{ forloop.counter }}_{{ field.auto_id }}" class="alert label {% if not forloop.last %}compact{% endif %}">
                     {{ error }}
                 </small>
             {% endfor %}
         {% endif %}
 
         {% if field.help_text %}
-            <div id="hint_{{ field.auto_id }}" class="hint">{{ field.help_text|safe }}</div>
+            <div id="helptext_{{ field.auto_id }}" class="help-text">{{ field.help_text|safe }}</div>
         {% endif %}
     {% endspaceless %}</div>
 {% endif %}

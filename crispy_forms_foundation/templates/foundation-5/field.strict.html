@@ -3,7 +3,7 @@
 {% if field.is_hidden %}
     {{ field }}
 {% else %}
-    <div id="div_{{ field.auto_id }}" class="holder{% if field.errors %} error{% endif %}{% if field|is_checkbox %} checkbox{% endif %}{% if field.field.widget.attrs.class %} {{ field.field.widget.attrs.class }}{% endif %}{% if field.css_classes %} {{ field.css_classes }}{% endif %}">
+    <div id="div_{{ field.auto_id }}" class="holder{% if field.errors %} callout alert{% endif %}{% if field|is_checkbox %} checkbox{% endif %}{% if field.field.widget.attrs.class %} {{ field.field.widget.attrs.class }}{% endif %}{% if field.css_classes %} {{ field.css_classes }}{% endif %}">
 
         {% if field|is_checkbox %}
             {% crispy_field field %}
@@ -20,13 +20,13 @@
         {% endif %}
 
         {% for error in field.errors %}
-            <small id="error_{{ forloop.counter }}_{{ field.auto_id }}" class="error">
+            <small id="error_{{ forloop.counter }}_{{ field.auto_id }}" class="alert label">
                 {{ error }}
             </small>
         {% endfor %}
 
         {% if field.help_text %}
-            <p id="hint_{{ field.auto_id }}" class="hint">{{ field.help_text|safe }}</p>
+            <p id="helptext_{{ field.auto_id }}" class="help-text">{{ field.help_text|safe }}</p>
         {% endif %}
     </div>
 {% endif %}
