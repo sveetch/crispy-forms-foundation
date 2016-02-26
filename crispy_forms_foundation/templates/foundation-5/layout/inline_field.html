@@ -3,7 +3,7 @@
 {% if field.is_hidden %}
     {{ field }}
 {% else %}
-    <div id="div_{{ field.auto_id }}" class="row inline-field{% if field|is_checkbox %} inline-checkbox{% endif %}">
+    <div id="div_{{ field.auto_id }}" class="row inline-field{% if field|is_checkbox %} inline-checkbox{% endif %}{% if field.errors and form_show_errors %} callout alert{% endif %}">
         <div class="{{ label_column }}">
             <label for="{{ field.id_for_label }}" class="{{ label_class }}{% if field.field.required %} required{% endif %}">
                 {{ field.label|safe }}{% if field.field.required %}<span class="asterisk">*</span>{% endif %}
@@ -27,7 +27,7 @@
         </div>
 
         {% if field.help_text %}
-            <div id="helptext_{{ field.auto_id }}" class="help-text">{{ field.help_text|safe }}</div>
+            <div id="helptext_{{ field.auto_id }}" class="help-text column">{{ field.help_text|safe }}</div>
         {% endif %}
     </div>
 {% endif %}
