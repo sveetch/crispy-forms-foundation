@@ -26,7 +26,7 @@ Then append this part to specify usage of the Foundation set :
 .. sourcecode:: python
     
     # Add 'foundation-5' layout pack
-    CRISPY_ALLOWED_TEMPLATE_PACKS = ('bootstrap', 'uni_form', 'bootstrap3', 'foundation-5')
+    CRISPY_ALLOWED_TEMPLATE_PACKS = ('bootstrap', 'uni_form', 'bootstrap3', 'bootstrap4', 'foundation-5')
     # Default layout to use with "crispy_forms"
     CRISPY_TEMPLATE_PACK = 'foundation-5'
 
