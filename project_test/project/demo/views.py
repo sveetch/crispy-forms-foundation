@@ -5,32 +5,46 @@ Views
 from django import template
 from django.core.urlresolvers import reverse
 from django.views.generic.edit import FormView
+from django.views.generic.base import TemplateView
 
-from crispy_forms_foundation import __version__ as crispy_forms_foundation_version
-from crispy_forms import __version__ as crispy_forms_version
+from crispy_forms_foundation import __version__ as crispy_foundation_version
+from crispy_forms import __version__ as crispy_version
 from .forms import FormByFieldsetsForm, FormByTabsForm, FormByAccordionsForm
 
-class FormContainersMixin(object):
+
+class CrispyFoundationMixin(object):
     def get_versions(self):
         return {
-            "django_crispy_forms": crispy_forms_version,
-            "crispy_forms_foundation": crispy_forms_foundation_version,
+            "foundation_version": self.kwargs.get('foundation_version'),
+            "django_crispy_forms": crispy_version,
+            "crispy_forms_foundation": crispy_foundation_version,
         }
-    
+
+    def get_context_data(self, **kwargs):
+        context = super(CrispyFoundationMixin, self).get_context_data(**kwargs)
+        context.update(self.get_versions())
+        return context
+
+
+class FormContainersMixin(object):
     def get_success_url(self):
-        return reverse('crispy-demo-success', args=[])
+        return reverse('crispy-demo-success')
 
 
-class FormF5ByFieldsetView(FormContainersMixin, FormView):
+class FormByFieldsetView(FormContainersMixin, CrispyFoundationMixin, FormView):
     template_name = 'crispy_demo/fieldsets.html'
     form_class = FormByFieldsetsForm
 
 
-class FormF5ByTabView(FormContainersMixin, FormView):
+class FormByTabView(FormContainersMixin, CrispyFoundationMixin, FormView):
     template_name = 'crispy_demo/tabs.html'
     form_class = FormByTabsForm
 
 
-class FormF5ByAccordionView(FormContainersMixin, FormView):
+class FormByAccordionView(FormContainersMixin, CrispyFoundationMixin, FormView):
     template_name = 'crispy_demo/accordions.html'
     form_class = FormByAccordionsForm
+
+
+class StaticPage(FormContainersMixin, CrispyFoundationMixin, TemplateView):
+    template_name = 'crispy_demo/success.html'

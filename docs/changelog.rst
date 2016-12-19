@@ -12,7 +12,8 @@ Devel - Unreleased
 * Added demo app taken from crispy-form-foundation-demo;
 * Added dev and test requirements files;
 * Updated setup.py;
-* Added minified basic assets for Foundation 5 and 6;
+* Added and enabled minified basic assets for Foundation 5 and 6;
+* Finished urls/templates dynamic structure to work on every versions;
 
 Version 0.5.4
 *************

@@ -2,4 +2,14 @@
 <script src="{% static 'foundation5/js/vendor/jquery.js' %}"></script>
 <script src="{% static 'foundation5/js/vendor/jquery.cookie.js' %}"></script>
 <script src="{% static 'foundation5/js/foundation.min.js' %}"></script>
+<script src="{% static 'js/crispy_forms_foundation/plugins.js' %}"></script>
 <script src="{% static 'foundation5/js/app.js' %}"></script>
+
+<script type="text/javascript">
+//<![CDATA[
+$(document).ready(function() {
+    $('form').abide_support_for_accordions();
+    $('form').abide_support_for_tabs();
+});
+//]]>
+</script>
