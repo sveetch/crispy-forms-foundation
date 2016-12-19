@@ -1,6 +1,8 @@
 {% extends "skeleton.html" %}
 {% load i18n crispy_forms_tags %}
 
+{% block header_assets %}{% include 'crispy_demo/assets/foundation5_header_assets.html' %}{% endblock header_assets %}
+
 {% block base_content %}<div class="row">
     <div class="small-12 columns">
         <h2>{% trans 'Crispy forms Foundation sample' %}</h2>
@@ -23,3 +25,5 @@
         {% crispy form %}
     </div>
 </div>{% endblock %}
+
+{% block footer_assets %}{% include 'crispy_demo/assets/foundation5_footer_assets.html' %}{% endblock footer_assets %}

@@ -1,9 +1,11 @@
-<!DOCTYPE html><html>{% spaceless %}
+<!DOCTYPE html><html class="no-js" lang="en">{% spaceless %}
 <head>
     <meta charset="utf-8">
     <title>{% block head_title %}Sample site{% endblock %}</title>
+    {% block header_assets %}{% endblock header_assets %}
 </head>
 
 {% endspaceless %}<body>
 {% block base_content %}{% endblock %}</body>{% spaceless %}
+    {% block footer_assets %}{% endblock footer_assets %}
 </html>{% endspaceless %}

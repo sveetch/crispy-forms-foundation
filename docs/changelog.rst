@@ -4,6 +4,16 @@
 Changelog
 =========
 
+Devel - Unreleased
+******************
+
+* Added default app settings file;
+* Added project test structure;
+* Added demo app taken from crispy-form-foundation-demo;
+* Added dev and test requirements files;
+* Updated setup.py;
+* Added minified basic assets for Foundation 5 and 6;
+
 Version 0.5.4
 *************
 
