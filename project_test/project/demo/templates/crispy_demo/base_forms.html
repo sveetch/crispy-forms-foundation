@@ -1,0 +1,25 @@
+{% extends "skeleton.html" %}
+{% load i18n crispy_forms_tags %}
+
+{% block base_content %}<div class="row">
+    <div class="small-12 columns">
+        <h2>{% trans 'Crispy forms Foundation sample' %}</h2>
+        <h3 class="subheader">{% trans 'By form containers' %}</h3>
+
+        {% comment %}{% with packages_versions=view.get_versions %}
+        <ul>
+            <li><small>django-crispy-forms=={{ packages_versions.django_crispy_forms }}</small></li>
+            <li><small>crispy-forms-foundation=={{ packages_versions.crispy_forms_foundation }}</small></li>
+        </ul>
+        {% endwith %}
+        <hr>{% endcomment %}
+
+        <ul class="stack-for-small round button-group">
+            <li><a href="{% url 'crispy-foundation:crispy-demo-form-fieldsets' %}" class="button{% block crispy_demo_menu_fieldsets_item %} secondary{% endblock %}">Form by fieldsets</a></li>
+            <li><a href="{% url 'crispy-foundation:crispy-demo-form-accordions' %}" class="button{% block crispy_demo_menu_accordions_item %} secondary{% endblock %}">Form by accordions</a></li>
+            <li><a href="{% url 'crispy-foundation:crispy-demo-form-tabs' %}" class="button{% block crispy_demo_menu_tabs_item %} secondary{% endblock %}">Form by tabs</a></li>
+        </ul>
+
+        {% crispy form %}
+    </div>
+</div>{% endblock %}

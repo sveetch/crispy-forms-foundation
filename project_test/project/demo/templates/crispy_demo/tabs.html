@@ -1,0 +1,14 @@
+{% extends "crispy_demo/base_forms.html" %}
+{% block crispy_demo_menu_tabs_item %}{% endblock %}
+
+{% block foot_more_js %}
+<script type="text/javascript" src="{{ STATIC_URL }}js/crispy_forms_foundation/plugins.js"></script>
+
+<script type="text/javascript">
+//<![CDATA[
+$(document).ready(function() {
+    $('form').abide_support_for_tabs();
+});
+//]]>
+</script>
+{% endblock %}

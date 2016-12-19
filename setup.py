@@ -30,6 +30,7 @@ setup(
         "Topic :: Software Development :: Libraries :: Python Modules",
     ],
     install_requires=[
+        'Django>=1.7,<1.9',
         'django-crispy-forms >= 1.4'
     ],
     include_package_data=True,
