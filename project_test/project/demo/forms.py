@@ -4,11 +4,13 @@ from django.utils.translation import ugettext_lazy as _
 from crispy_forms.helper import FormHelper
 from crispy_forms_foundation.layout import Layout, Fieldset, TabItem, TabHolder, AccordionHolder, AccordionItem
 
-from .crispies import (part_1_crispies, part_2_crispies, part_3_crispies, 
+from .crispies import (part_1_crispies, part_2_crispies, part_3_crispies,
                        part_4_crispies, buttons_crispies)
+
 
 SELECT_INPUT_CHOICES = [('item-{0}'.format(i), 'Option item {0}'.format(i)) for i in range(1, 6)]
 RADIO_INPUT_CHOICES = [('item-{0}'.format(i), 'Radio item {0}'.format(i)) for i in range(1, 4)]
+
 
 class BaseForm(forms.Form):
     """
@@ -26,7 +28,7 @@ class BaseForm(forms.Form):
     checkbox_switch_input_2 = forms.BooleanField(label=_('Checkbox inline switch'), required=False)
     inlinefield_input = forms.CharField(label=_('Inline field'), required=False)
     inlinejustifiedfield_input = forms.CharField(label=_('Inline justified field'), required=False)
-    
+
     def clean(self):
         cleaned_data = super(BaseForm, self).clean()
         checkbox_input = cleaned_data.get("checkbox_input")
@@ -40,19 +42,19 @@ class BaseForm(forms.Form):
     def save(self, commit=True):
         # Do nothing
         return
-    
+
 
 class FormByFieldsetsForm(BaseForm):
     def __init__(self, *args, **kwargs):
         self.helper = FormHelper()
         self.helper.attrs = {'data_abide': ''}
         self.helper.form_action = '.'
-        
+
         part1 = [_('Part 1')]+part_1_crispies()
         part2 = [_('Part 2')]+part_2_crispies()
         part3 = [_('Part 3')]+part_3_crispies()
         part4 = [_('Part 4')]+part_4_crispies()
-        
+
         self.helper.layout = Layout(
             Fieldset(*part1),
             Fieldset(*part2),
@@ -60,21 +62,21 @@ class FormByFieldsetsForm(BaseForm):
             Fieldset(*part4),
             *buttons_crispies()
         )
-        
+
         super(FormByFieldsetsForm, self).__init__(*args, **kwargs)
-    
+
 
 class FormByTabsForm(BaseForm):
     def __init__(self, *args, **kwargs):
         self.helper = FormHelper()
         self.helper.attrs = {'data_abide': ''}
         self.helper.form_action = '.'
-        
+
         part1 = [_('Part 1')]+part_1_crispies()
         part2 = [_('Part 2')]+part_2_crispies()
         part3 = [_('Part 3')]+part_3_crispies()
         part4 = [_('Part 4')]+part_4_crispies()
-        
+
         self.helper.layout = Layout(
             TabHolder(
                 TabItem(*part1),
@@ -84,21 +86,21 @@ class FormByTabsForm(BaseForm):
             ),
             *buttons_crispies()
         )
-        
+
         super(FormByTabsForm, self).__init__(*args, **kwargs)
-    
+
 
 class FormByAccordionsForm(BaseForm):
     def __init__(self, *args, **kwargs):
         self.helper = FormHelper()
         self.helper.attrs = {'data_abide': ''}
         self.helper.form_action = '.'
-        
+
         part1 = [_('Part 1')]+part_1_crispies()
         part2 = [_('Part 2')]+part_2_crispies()
         part3 = [_('Part 3')]+part_3_crispies()
         part4 = [_('Part 4')]+part_4_crispies()
-        
+
         self.helper.layout = Layout(
             AccordionHolder(
                 AccordionItem(*part1),
@@ -108,5 +110,5 @@ class FormByAccordionsForm(BaseForm):
             ),
             *buttons_crispies()
         )
-        
+
         super(FormByAccordionsForm, self).__init__(*args, **kwargs)
