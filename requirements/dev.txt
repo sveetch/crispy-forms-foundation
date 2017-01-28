@@ -1,5 +1,5 @@
  -r tests.txt
 flake8
-flake8-format-ansi
+#flake8-format-ansi
 sphinx==1.4.5
 sphinx-rtd-theme

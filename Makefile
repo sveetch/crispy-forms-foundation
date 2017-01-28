@@ -19,10 +19,10 @@ delpyc:
 	find . -name "*\.pyc"|xargs rm -f
 
 clean: delpyc
-	rm -Rf dist .tox autobreadcrumbs.egg-info .cache project_test/.cache/ project_test/tests/__pycache__/ docs/_build
+	rm -Rf dist .tox crispy_forms_foundation.egg-info .cache project_test/.cache/ project_test/tests/__pycache__/ docs/_build
 
 flake:
-	flake8 --show-source autobreadcrumbs
+	flake8 --show-source crispy_forms_foundation
 
 tests:
 	py.test -vv project_test/
