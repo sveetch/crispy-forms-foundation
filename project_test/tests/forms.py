@@ -54,7 +54,8 @@ class AdvancedForm(forms.Form):
                              required=True)
     opt_in = forms.BooleanField(
             label="Opt in",
-            widget=forms.CheckboxInput(attrs={'required': ''}), required=True)
+            widget=forms.CheckboxInput(attrs={'required': ''}),
+            required=True)
     longtext = forms.CharField(label='Address', required=False,
                               widget=forms.Textarea(attrs={'rows': 3}))
 
