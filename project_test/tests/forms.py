@@ -38,11 +38,9 @@ class BasicInputFormLayoutIncluded(BasicInputForm):
     Basic form with included layout
     """
     def __init__(self, *args, **kwargs):
-        foundation_version = kwargs.pop('foundation_version', None)
+        self.helper = kwargs.pop('helper', FormHelper())
 
-        self.helper = FormHelper()
         self.helper.form_action = '.'
-        self.helper.template_pack = "foundation-{}".format(foundation_version)
 
         self.helper.layout = Layout(
             'simple',
