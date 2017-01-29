@@ -101,7 +101,7 @@ class SwitchField(crispy_forms_layout.Field):
     """
     A specific field to use Foundation form switches
 
-    You should only use this with a checkbox field and this is a *raw* usage of this
+    You must only use this with a checkbox field and this is a *raw* usage of this
     Foundation element, you should see ``InlineSwitchField`` instead.
 
     Example:

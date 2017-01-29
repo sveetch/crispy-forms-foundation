@@ -1,5 +1,5 @@
 """
-Some dummy pinging to ensure urls are consistent
+Some dummy pinging to ensure demo urls are consistent
 
 WARNING: Keep this syncrhonized with enabled urls files
 """

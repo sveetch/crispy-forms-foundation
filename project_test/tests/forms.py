@@ -8,9 +8,9 @@ from crispy_forms_foundation.layout import (Layout, Row, Column, ButtonHolder,
                                             Submit)
 
 
-class BasicForm(forms.Form):
+class BasicInputForm(forms.Form):
     """
-    Basic form without defined layout for a single input
+    Basic form with a single CharField field
     """
     simple = forms.CharField(label='Simple text',
                              widget=forms.TextInput(attrs={'required':''}),
@@ -20,14 +20,23 @@ class BasicForm(forms.Form):
         return
 
 
-class LayoutForm(forms.Form):
+class BoolInputForm(forms.Form):
     """
-    Form with a layout for a single input
+    Basic form with a single BooleanField field
     """
-    simple = forms.CharField(label='Simple text',
-                             widget=forms.TextInput(attrs={'required':''}),
-                             required=True)
+    opt_in = forms.BooleanField(
+            label="Opt in",
+            widget=forms.CheckboxInput(attrs={'required': ''}),
+            required=True)
 
+    def save(self, commit=True):
+        return
+
+
+class BasicInputFormLayoutIncluded(BasicInputForm):
+    """
+    Basic form with included layout
+    """
     def __init__(self, *args, **kwargs):
         foundation_version = kwargs.pop('foundation_version', None)
 
@@ -39,10 +48,7 @@ class LayoutForm(forms.Form):
             'simple',
         )
 
-        super(LayoutForm, self).__init__(*args, **kwargs)
-
-    def save(self, commit=True):
-        return
+        super(BasicInputFormLayoutIncluded, self).__init__(*args, **kwargs)
 
 
 class AdvancedForm(forms.Form):
@@ -58,39 +64,6 @@ class AdvancedForm(forms.Form):
             required=True)
     longtext = forms.CharField(label='Address', required=False,
                               widget=forms.Textarea(attrs={'rows': 3}))
-
-    def __init__(self, *args, **kwargs):
-        foundation_version = kwargs.pop('foundation_version', None)
-
-        self.helper = FormHelper()
-        self.helper.form_action = '.'
-        self.helper.template_pack = "foundation-{}".format(foundation_version)
-
-        self.helper.layout = Layout(
-            Row(
-                Column(
-                    'simple',
-                    css_class='six'
-                ),
-                Column(
-                    'opt_in',
-                    css_class='six'
-                ),
-            ),
-            Row(
-                Column(
-                    'longtext'
-                ),
-            ),
-            Row(
-                Column(
-                    ButtonHolder(Submit('submit', 'Submit')),
-                ),
-                css_class="large"
-            ),
-        )
-
-        super(AdvancedForm, self).__init__(*args, **kwargs)
 
     def save(self, commit=True):
         return
