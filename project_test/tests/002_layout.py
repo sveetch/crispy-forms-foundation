@@ -16,7 +16,6 @@ def test_basic(output_test_path, rendered_template, helper, client):
     rendered = rendered_template(form, helper=helper)
 
     attempted = read_output(output_test_path, "test_basic.html")
-    #attempted = ""
     #write_output(output_test_path, "test_basic.html", rendered)
 
     assert rendered == attempted
@@ -28,7 +27,6 @@ def test_layout(output_test_path, rendered_template, helper, client):
     rendered = rendered_template(form)
 
     attempted = read_output(output_test_path, "test_layout.html")
-    #attempted = ""
     #write_output(output_test_path, "test_layout.html", rendered)
 
     assert rendered == attempted
@@ -64,7 +62,6 @@ def test_advanced(output_test_path, rendered_template, helper, client):
     rendered = rendered_template(form, helper=helper)
 
     attempted = read_output(output_test_path, "test_advanced.html")
-    #attempted = ""
     #write_output(output_test_path, "test_advanced.html", rendered)
 
     assert rendered == attempted

@@ -19,7 +19,6 @@ def test_inlinefield(output_test_path, rendered_template, helper, client):
     rendered = rendered_template(form, helper=helper)
 
     attempted = read_output(output_test_path, "test_inlinefield.html")
-    #attempted = ""
     #write_output(output_test_path, "test_inlinefield.html", rendered)
 
     assert rendered == attempted
@@ -35,7 +34,6 @@ def test_inlineswitchfield(output_test_path, rendered_template, helper, client):
     rendered = rendered_template(form, helper=helper)
 
     attempted = read_output(output_test_path, "test_inlineswitchfield.html")
-    #attempted = ""
     #write_output(output_test_path, "test_inlineswitchfield.html", rendered)
 
     assert rendered == attempted
