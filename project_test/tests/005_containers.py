@@ -28,18 +28,15 @@ def test_tab(output_test_path, rendered_template, helper, client):
 
 
 def test_accordion(output_test_path, rendered_template, helper, client):
-    """
-    NOTE: Fail because accordion generated id can be the same between two test.
-          Need to give an id and maybe another test to check id is correctly
-          generated ?
-    """
     form = AdvancedForm()
 
+    # Define 'css_id' to avoid test fails with automatic generated random ID
     helper.layout = Layout(
         AccordionHolder(
             AccordionItem('Group 1', 'simple'),
             AccordionItem('Group 2', 'opt_in'),
             AccordionItem('Group 3', 'longtext'),
+            css_id="meep-meep"
         )
     )
 
