@@ -1,7 +1,5 @@
 import pytest
 
-from django import forms
-
 from crispy_forms_foundation.layout import (Layout, ButtonGroup,
                                             Submit, Button)
 
