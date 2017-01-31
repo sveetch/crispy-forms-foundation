@@ -9,12 +9,14 @@ Layout items
 
 .. automodule:: crispy_forms_foundation.layout
     :members:
+    :show-inheritance:
 
 Base
 ****
 
 .. automodule:: crispy_forms_foundation.layout.base
     :members:
+    :show-inheritance:
 
 
 Fields
@@ -22,6 +24,7 @@ Fields
 
 .. automodule:: crispy_forms_foundation.layout.fields
     :members:
+    :show-inheritance:
 
 
 Grid
@@ -29,6 +32,7 @@ Grid
 
 .. automodule:: crispy_forms_foundation.layout.grid
     :members:
+    :show-inheritance:
 
 
 Buttons
@@ -36,6 +40,7 @@ Buttons
 
 .. automodule:: crispy_forms_foundation.layout.buttons
     :members:
+    :show-inheritance:
 
 
 Form containers
@@ -43,4 +48,5 @@ Form containers
 
 .. automodule:: crispy_forms_foundation.layout.containers
     :members:
+    :show-inheritance:
 

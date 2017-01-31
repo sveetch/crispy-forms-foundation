@@ -1,11 +1,9 @@
 #: -*- coding: utf-8 -*-
 """
-.. _Docutils Configuration: http://docutils.sourceforge.net/docs/user/config.html
-
 Settings
 ========
 
-Default settings rstviews needs. You can override them in your project
+Default required settings. You can override them in your project
 settings file.
 
 """  # noqa: E501

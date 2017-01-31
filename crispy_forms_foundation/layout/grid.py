@@ -84,6 +84,8 @@ class RowFluid(Row):
         @media #{$xxlarge-up} {
             .row.xxlarge-row-fluid{ @include row-fluid-mixin; }
         }
+
+    It must be included after Foundation grid component is imported.
     """
     css_class = 'row row-fluid'
 

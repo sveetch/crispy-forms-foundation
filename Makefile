@@ -31,6 +31,3 @@ quality: tests flake
 
 server:
 	cd project_test && ./manage.py runserver 0.0.0.0:8001
-
-docserver:
-	sphinx-autobuild --host 0.0.0.0 --port 9000 docs docs/_build/html

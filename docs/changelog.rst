@@ -9,11 +9,13 @@ Devel - Unreleased
 
 * Added default app settings file;
 * Added project test structure;
+* Added pretty simple tests to cover layout elements which include some code;
 * Added demo app taken from crispy-form-foundation-demo;
 * Added dev and test requirements files;
 * Updated setup.py;
 * Added and enabled minified basic assets for Foundation 5 and 6;
 * Finished urls/templates dynamic structure to work on every versions;
+* Dropped support for Python 2.6 and Django<1.8;
 
 Version 0.5.4
 *************

@@ -17,7 +17,7 @@ import os
 
 from crispy_forms_foundation import __version__ as crispy_forms_foundation_version
 
-# Push a dummy settings file required by Django that is imported in 
+# Push a dummy settings file required by Django that is imported in
 # "crispy_forms_foundation.layout"
 sys.path.append(os.path.join(os.path.dirname(__file__), '.'))
 os.environ['DJANGO_SETTINGS_MODULE'] = 'dummy_settings'
@@ -108,7 +108,15 @@ pygments_style = 'sphinx'
 
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.
-html_theme = 'default'
+html_theme = 'alabaster'
+try:
+    import sphinx_rtd_theme
+except ImportError:
+    pass
+else:
+    html_theme = "sphinx_rtd_theme"
+
+    html_theme_path = [sphinx_rtd_theme.get_html_theme_path()]
 
 # Theme options are theme-specific and customize the look and feel of a theme
 # further.  For a list of options available for each theme, see the

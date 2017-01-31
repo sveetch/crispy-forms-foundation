@@ -9,27 +9,23 @@ Usage
 =====
 
 Import **crispy-forms-foundation** then you can use the layout objects in your form :
-    
+
 .. sourcecode:: python
 
     from crispy_forms_foundation.layout import Layout, Fieldset, SplitDateTimeField, Row, Column, ButtonHolder, Submit
 
     class YourForm(forms.ModelForm):
-        """
-        *Page* form
-        """
         def __init__(self, *args, **kwargs):
-            # Init layout form with crispy
             self.helper = FormHelper()
             self.helper.form_action = '.'
             self.helper.layout = Layout(
                 Fieldset(
-                    ugettext('Content'),
+                    'Content',
                     'title',
                     'content',
                 ),
                 Fieldset(
-                    ugettext('Display settings'),
+                    'Display settings',
                     Row(
                         Column('template', css_class='large-6'),
                         Column('order', css_class='large-3'),
@@ -37,7 +33,7 @@ Import **crispy-forms-foundation** then you can use the layout objects in your f
                     ),
                 ),
                 Fieldset(
-                    ugettext('Publish settings'),
+                    'Publish settings',
                     'parent',
                     Row(
                         Column(SplitDateTimeField('published'), css_class='large-6'),
@@ -45,14 +41,15 @@ Import **crispy-forms-foundation** then you can use the layout objects in your f
                     ),
                 ),
                 ButtonHolder(
-                    Submit('submit_and_continue', ugettext('Save and continue')),
-                    Submit('submit', ugettext('Save')),
+                    Submit('submit_and_continue', 'Save and continue'),
+                    Submit('submit', 'Save'),
                 ),
             )
-            
+
             super(YourForm, self).__init__(*args, **kwargs)
 
 The embedded templates are in ``crispy_forms_foundation/templates/foundation-5``.
+
 
 Use Foundation Abide validation
 *******************************
@@ -70,18 +67,18 @@ To enable `Abide`_ on your form, you'll have to load its Javascript library (if 
     class SampleForm(forms.Form):
         title = forms.CharField(label=_('Title'), widget=forms.TextInput(attrs={'required':''}), required=True)
         textarea_input = forms.CharField(label=_('Textarea'), widget=forms.Textarea(attrs={'required':''}), required=True)
-        
+
         def __init__(self, *args, **kwargs):
             self.helper = FormHelper()
-            
+
             # Enable Abide validation on the form
             self.helper.attrs = {'data_abide': ''}
-            
+
             self.helper.form_action = '.'
             self.helper.layout = Layout(
                 ...
             )
-            
+
             super(SampleForm, self).__init__(*args, **kwargs)
 
 You can also set an `Abide`_ error message directly on the field like this :
@@ -92,6 +89,7 @@ You can also set an `Abide`_ error message directly on the field like this :
         def __init__(self, *args, **kwargs):
             super(SampleForm, self).__init__(*args, **kwargs)
             self.fields['textarea_input'].abide_msg = "This field is required !"
+
 
 Support within tabs
 -------------------
@@ -113,6 +111,7 @@ Default `Abide`_ behavior is not aware of Tabs and so input errors can be hided 
 
 This way, all input errors will be raised to their tab name that will display an error mark.
 
+
 Support within accordions
 -------------------------
 
@@ -131,6 +130,7 @@ You will need to load it in your pages then initialize it on your form:
     //]]>
     </script>
 
+
 Automatic form layout
 *********************
 
@@ -138,3 +138,4 @@ There is some forms you can use to quickly and automatically create a Foundation
 
 .. automodule:: crispy_forms_foundation.forms
     :members:
+    :show-inheritance:

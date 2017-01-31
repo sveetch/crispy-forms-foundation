@@ -1,2 +1,2 @@
-django==1.5.9
+Django>=1.8,<1.9
 crispy-forms-foundation
