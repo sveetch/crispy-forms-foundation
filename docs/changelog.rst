@@ -4,7 +4,7 @@
 Changelog
 =========
 
-Version 0.5.5 - Unreleased
+Version 0.5.5 - 2017/02/01
 **************************
 
 * Dropped support for Python 2.6 and Django<1.8;
