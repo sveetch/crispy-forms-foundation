@@ -23,7 +23,7 @@ Links
 Requires
 ========
 
-* `Django`_ >=1.7, <1.9;
+* `Django`_ >=1.8, <=1.10;
 * `django-crispy-forms`_ >= 1.4.x;
 
 Table of contents
