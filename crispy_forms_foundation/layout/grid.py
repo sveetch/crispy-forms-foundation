@@ -4,18 +4,14 @@
 Foundation grid layout objects
 
 See `Foundation Grid`_ for grid components.
-"""
+"""  # noqa: E501
 from django.conf import settings
-from django.template import Context
-from django.template.loader import render_to_string
-
-from crispy_forms.utils import render_field
-from crispy_forms import layout as crispy_forms_layout
-from crispy_forms import bootstrap as crispy_forms_bootstrap
 
 from crispy_forms_foundation.layout.base import Div
 
+
 TEMPLATE_PACK = getattr(settings, 'CRISPY_TEMPLATE_PACK', 'foundation-5')
+
 
 class Row(Div):
     """
@@ -33,6 +29,7 @@ class Row(Div):
     """
     css_class = 'row'
 
+
 class RowFluid(Row):
     """
     Wrap fields in a div whose default class is "row row-fluid". Example:
@@ -41,7 +38,10 @@ class RowFluid(Row):
 
         RowFluid('form_field_1', 'form_field_2', 'form_field_3')
 
-    It has a same behaviour than *Row* but add a CSS class "row-fluid" that you can use to have top level row that take all the container width. You have to put the CSS for this class to your CSS stylesheets. It will embed its items in a div like that:
+    It has a same behaviour than *Row* but add a CSS class "row-fluid" that you
+    can use to have top level row that take all the container width. You have
+    to put the CSS for this class to your CSS stylesheets. It will embed its
+    items in a div like that:
 
     .. sourcecode:: html
 
@@ -52,7 +52,8 @@ class RowFluid(Row):
     .. sourcecode:: css
 
         /*
-        * Fluid row takes the full width but keep normal row and columns behaviors
+        * Fluid row takes the full width but keep normal row and columns
+        * behaviors
         */
         @mixin row-fluid-mixin {
             max-width: 100%;

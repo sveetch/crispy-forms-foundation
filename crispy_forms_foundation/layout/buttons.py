@@ -5,7 +5,7 @@ See :
 
 * `Foundation buttons <http://foundation.zurb.com/sites/docs/v/5.5.3/components/buttons.html>`_ for button components;
 * `Foundation button groups <http://foundation.zurb.com/sites/docs/v/5.5.3/components/button_groups.html>`_ for button groups components;
-"""
+"""  # noqa: E501
 from django.conf import settings
 from django.template import Context
 from django.template.loader import render_to_string
@@ -13,14 +13,17 @@ from django.template.loader import render_to_string
 from crispy_forms.utils import render_field
 from crispy_forms import layout as crispy_forms_layout
 
+
 TEMPLATE_PACK = getattr(settings, 'CRISPY_TEMPLATE_PACK', 'foundation-5')
+
 
 class ButtonHolder(crispy_forms_layout.ButtonHolder):
     """
     It wraps fields in a ``<div class="button-holder">``
 
-    This is where you should put Layout objects that render to form buttons like Submit.
-    It should only hold ``HTML`` and ``BaseInput`` inherited objects.
+    This is where you should put Layout objects that render to form buttons
+    like Submit. It should only hold ``HTML`` and ``BaseInput`` inherited
+    objects.
 
     Example:
 
@@ -47,8 +50,8 @@ class ButtonGroup(crispy_forms_layout.LayoutObject):
     """
     It wraps fields in a ``<ul class="button-group">``
 
-    This is where you should put Layout objects that render to form buttons like Submit.
-    It should only hold `HTML` and `BaseInput` inherited objects.
+    This is where you should put Layout objects that render to form buttons
+    like Submit. It should only hold `HTML` and `BaseInput` inherited objects.
 
     Example:
 
@@ -71,10 +74,14 @@ class ButtonGroup(crispy_forms_layout.LayoutObject):
         field_list = []
         for field in self.fields:
             field_list.append(
-                render_field(field, form, form_style, context, template_pack=template_pack)
+                render_field(field, form, form_style, context,
+                             template_pack=template_pack)
             )
 
-        return render_to_string(self.template, Context({'buttongroup': self, 'field_list': field_list}))
+        return render_to_string(self.template, Context({
+            'buttongroup': self,
+            'field_list': field_list,
+        }))
 
 
 class Button(crispy_forms_layout.BaseInput):
@@ -85,7 +92,8 @@ class Button(crispy_forms_layout.BaseInput):
 
         button = Button('Button 1', 'Press Me!')
 
-    .. note:: The first argument is also slugified and turned into the id for the button.
+    .. note:: The first argument is also slugified and turned into the id for
+              the button.
     """
     input_type = 'button'
     field_classes = 'button'
@@ -93,13 +101,15 @@ class Button(crispy_forms_layout.BaseInput):
 
 class Submit(crispy_forms_layout.BaseInput):
     """
-    Used to create a Submit button descriptor for the {% crispy %} template tag:
+    Used to create a Submit button descriptor for the {% crispy %} template
+    tag:
 
     .. sourcecode:: python
 
         submit = Submit('Search the Site', 'search this site')
 
-    .. note:: The first argument is also slugified and turned into the id for the submit button.
+    .. note:: The first argument is also slugified and turned into the id for
+              the submit button.
     """
     input_type = 'submit'
     field_classes = 'submit button'
@@ -115,13 +125,15 @@ class Hidden(crispy_forms_layout.Hidden):
 
 class Reset(crispy_forms_layout.BaseInput):
     """
-    Used to create a Reset button input descriptor for the {% crispy %} template tag:
+    Used to create a Reset button input descriptor for the ``{% crispy %}``
+    template tag:
 
     .. sourcecode:: python
 
         reset = Reset('Reset This Form', 'Revert Me!')
 
-    .. note:: The first argument is also slugified and turned into the id for the reset.
+    .. note:: The first argument is also slugified and turned into the id for
+              the reset.
     """
     input_type = 'reset'
     field_classes = 'reset button'

@@ -5,28 +5,32 @@ See :
 
 * `Foundation forms <http://foundation.zurb.com/sites/docs/v/5.5.3/components/forms.html>`_ for input field components;
 * `Foundation Switches <http://foundation.zurb.com/sites/docs/v/5.5.3/components/switch.html>`_ for switches components;
-"""
+"""  # noqa: E501
 from django.conf import settings
 
 from crispy_forms.utils import render_field
 from crispy_forms import layout as crispy_forms_layout
 
+
 TEMPLATE_PACK = getattr(settings, 'CRISPY_TEMPLATE_PACK', 'foundation-5')
 
 
-class MultiWidgetField(crispy_forms_layout.MultiWidgetField): pass
+class MultiWidgetField(crispy_forms_layout.MultiWidgetField):
+    pass
 
 
 class Field(crispy_forms_layout.Field):
     """
-    Layout object, contain one field name and you can add attributes to it easily.
-    For setting class attributes, you need to use `css_class`, as `class` is a Python keyword.
+    Layout object, contain one field name and you can add attributes to it
+    easily. For setting class attributes, you need to use ``css_class``,
+    because ``class`` is a reserved Python keyword.
 
     Example:
 
     .. sourcecode:: python
 
-        Field('field_name', style="color: #333;", css_class="whatever", id="field_name")
+        Field('field_name', style="color: #333;", css_class="whatever",
+              id="field_name")
     """
     template = "{0}/field.html".format(TEMPLATE_PACK)
 
@@ -41,12 +45,13 @@ class MultiField(crispy_forms_layout.MultiField):
 
 class SplitDateTimeField(Field):
     """
-    Just an inherit from ``crispy_forms.layout.Field`` to have a common Field for
-    displaying field with the ``django.forms.extra.SplitDateTimeWidget`` widget.
+    Just an inherit from ``crispy_forms.layout.Field`` to have a common Field
+    for displaying field with the ``django.forms.extra.SplitDateTimeWidget``
+    widget.
 
     Simply use a specific template
     """
-    template="{0}/layout/splitdatetime_field.html".format(TEMPLATE_PACK)
+    template = "{0}/layout/splitdatetime_field.html".format(TEMPLATE_PACK)
 
 
 class InlineField(Field):
@@ -63,13 +68,15 @@ class InlineField(Field):
 
     .. sourcecode:: python
 
-        InlineField('field_name', label_column='large-8', input_column='large-4', label_class='')
+        InlineField('field_name', label_column='large-8',
+                    input_column='large-4', label_class='')
 
     ``label_column``, ``input_column``, ``label_class``, are optional argument.
     """
     template = "{0}/layout/inline_field.html".format(TEMPLATE_PACK)
 
-    def __init__(self, field, label_column='large-3', input_column='large-9', label_class='', *args, **kwargs):
+    def __init__(self, field, label_column='large-3', input_column='large-9',
+                 label_class='', *args, **kwargs):
         self.field = field
         self.label_column = label_column+' columns'
         self.input_column = input_column+' columns'
@@ -84,16 +91,20 @@ class InlineField(Field):
 
         html = ''
         for field in self.fields:
-            html += render_field(field, form, form_style, context, template=self.template, attrs=self.attrs, template_pack=template_pack)
+            html += render_field(field, form, form_style, context,
+                                 template=self.template, attrs=self.attrs,
+                                 template_pack=template_pack)
         return html
 
 
 class InlineJustifiedField(InlineField):
     """
-    Same as InlineField but default is to be right aligned with a vertical padding
+    Same as InlineField but default is to be right aligned with a vertical
+    padding
     """
     def __init__(self, field, *args, **kwargs):
-        kwargs['label_class'] = kwargs.get('label_class', None) or 'right inline'
+        default = 'right inline'
+        kwargs['label_class'] = kwargs.get('label_class', None) or default
         super(InlineJustifiedField, self).__init__(field, *args, **kwargs)
 
 
@@ -101,14 +112,15 @@ class SwitchField(crispy_forms_layout.Field):
     """
     A specific field to use Foundation form switches
 
-    You must only use this with a checkbox field and this is a *raw* usage of this
-    Foundation element, you should see ``InlineSwitchField`` instead.
+    You must only use this with a checkbox field and this is a *raw* usage of
+    this Foundation element, you should see ``InlineSwitchField`` instead.
 
     Example:
 
     .. sourcecode:: python
 
-        SwitchField('field_name', style="color: #333;", css_class="whatever", id="field_name")
+        SwitchField('field_name', style="color: #333;", css_class="whatever",
+                    id="field_name")
     """
     template = "{0}/switch.html".format(TEMPLATE_PACK)
 
@@ -118,14 +130,18 @@ class SwitchField(crispy_forms_layout.Field):
 
     def render(self, form, form_style, context, template_pack=TEMPLATE_PACK):
         context['switch_class'] = " ".join(self.switch_class)
-        return super(SwitchField, self).render(form, form_style, context, template_pack)
+        return super(SwitchField, self).render(form, form_style, context,
+                                               template_pack)
 
 
 class InlineSwitchField(InlineField):
     """
-    Like ``SwitchField`` it use Foundation form switches with checkbox field but within an ``InlineField``
+    Like ``SwitchField`` it use Foundation form switches with checkbox field
+    but within an ``InlineField``
 
-    Contrary to ``SwitchField`` this play nice with the label to be able to display it (as Foundation form switches default behavior is to hide the label text)
+    Contrary to ``SwitchField`` this play nice with the label to be able to
+    display it (as Foundation form switches default behavior is to hide the
+    label text)
 
     Example:
 
@@ -137,9 +153,12 @@ class InlineSwitchField(InlineField):
 
     .. sourcecode:: python
 
-        InlineSwitchField('field_name', label_column='large-8', input_column='large-4', label_class='', switch_class="inline")
+        InlineSwitchField('field_name', label_column='large-8',
+                          input_column='large-4', label_class='',
+                          switch_class="inline")
 
-    ``label_column``, ``input_column``, ``label_class``, ``switch_class`` are optional argument.
+    ``label_column``, ``input_column``, ``label_class``, ``switch_class`` are
+    optional argument.
     """
     template = "{0}/inline_switch.html".format(TEMPLATE_PACK)
 
@@ -152,4 +171,5 @@ class InlineSwitchField(InlineField):
 
     def render(self, form, form_style, context, template_pack=TEMPLATE_PACK):
         context['switch_class'] = " ".join(self.switch_class)
-        return super(InlineSwitchField, self).render(form, form_style, context, template_pack)
+        return super(InlineSwitchField, self).render(form, form_style, context,
+                                                     template_pack)

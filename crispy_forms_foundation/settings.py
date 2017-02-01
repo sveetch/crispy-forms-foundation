@@ -3,13 +3,20 @@
 Settings
 ========
 
-Default required settings. You can override them in your project
-settings file.
+Default required settings. You can override them in your project settings
+file.
 
-"""  # noqa: E501
+"""
 
 # Allowed layout pack
-CRISPY_ALLOWED_TEMPLATE_PACKS = ('bootstrap', 'uni_form', 'bootstrap3', 'bootstrap4', 'foundation-5')
+CRISPY_ALLOWED_TEMPLATE_PACKS = (
+    'bootstrap',
+    'uni_form',
+    'bootstrap3',
+    'bootstrap4',
+    'foundation-5'
+)
+
 
 # Default layout pack
 CRISPY_TEMPLATE_PACK = 'foundation-5'
