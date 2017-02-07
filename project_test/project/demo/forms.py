@@ -34,7 +34,11 @@ class BaseForm(forms.Form):
         checkbox_input = cleaned_data.get("checkbox_input")
 
         if checkbox_input and checkbox_input == True:
-            raise forms.ValidationError(['This is a global error', 'This is another global error', 'Uncheck the "Checkbox input" to ignore these errors'])
+            raise forms.ValidationError([
+                'This is a global error',
+                'This is another global error',
+                'Uncheck the "Checkbox input" to ignore these errors']
+            )
 
         # Always return the full collection of cleaned data.
         return cleaned_data
@@ -44,9 +48,21 @@ class BaseForm(forms.Form):
         return
 
 
-class FormByFieldsetsForm(BaseForm):
+class FormCrispyHelperMixin(object):
+    """
+    Form that define an empty helper and able to switch template pack
+    """
     def __init__(self, *args, **kwargs):
         self.helper = FormHelper()
+        self.helper.template_pack = kwargs.pop('pack')
+
+        super(FormCrispyHelperMixin, self).__init__(*args, **kwargs)
+
+
+class FormByFieldsetsForm(FormCrispyHelperMixin, BaseForm):
+    def __init__(self, *args, **kwargs):
+        super(FormByFieldsetsForm, self).__init__(*args, **kwargs)
+
         self.helper.attrs = {'data_abide': ''}
         self.helper.form_action = '.'
 
@@ -63,12 +79,11 @@ class FormByFieldsetsForm(BaseForm):
             *buttons_crispies()
         )
 
-        super(FormByFieldsetsForm, self).__init__(*args, **kwargs)
 
-
-class FormByTabsForm(BaseForm):
+class FormByTabsForm(FormCrispyHelperMixin, BaseForm):
     def __init__(self, *args, **kwargs):
-        self.helper = FormHelper()
+        super(FormByTabsForm, self).__init__(*args, **kwargs)
+
         self.helper.attrs = {'data_abide': ''}
         self.helper.form_action = '.'
 
@@ -87,12 +102,11 @@ class FormByTabsForm(BaseForm):
             *buttons_crispies()
         )
 
-        super(FormByTabsForm, self).__init__(*args, **kwargs)
 
-
-class FormByAccordionsForm(BaseForm):
+class FormByAccordionsForm(FormCrispyHelperMixin, BaseForm):
     def __init__(self, *args, **kwargs):
-        self.helper = FormHelper()
+        super(FormByAccordionsForm, self).__init__(*args, **kwargs)
+
         self.helper.attrs = {'data_abide': ''}
         self.helper.form_action = '.'
 
@@ -110,5 +124,3 @@ class FormByAccordionsForm(BaseForm):
             ),
             *buttons_crispies()
         )
-
-        super(FormByAccordionsForm, self).__init__(*args, **kwargs)

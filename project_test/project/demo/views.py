@@ -30,6 +30,16 @@ class FormContainersMixin(object):
     def get_success_url(self):
         return reverse('crispy-demo-success')
 
+    def get_form_kwargs(self):
+        """
+        Pass template pack argument
+        """
+        kwargs = super(FormContainersMixin, self).get_form_kwargs()
+        kwargs.update({
+            'pack': "foundation-{}".format(self.kwargs.get('foundation_version'))
+        })
+        return kwargs
+
 
 class FormByFieldsetView(FormContainersMixin, CrispyFoundationMixin, FormView):
     template_name = 'crispy_demo/fieldsets.html'
