@@ -1,0 +1,8 @@
+{% if form.form_html %}{% spaceless %}
+    {% if form_show_errors %}
+        {% include "foundation-5/errors.html" %}
+    {% endif %}
+    {{ form.form_html }}
+{% endspaceless %}{% else %}{% spaceless %}
+    {% include "foundation-5/uni_form.html" %}
+{% endspaceless %}{% endif %}

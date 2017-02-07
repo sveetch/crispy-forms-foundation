@@ -1,0 +1,14 @@
+{% if formset.non_form_errors %}{% spaceless %}
+    <div data-alert class="nonfield-errors alert-box alert">
+        <dl class="compact">
+            {% if form_error_title %}<dt>{{ form_error_title }}</dt>{% endif %}
+            <dd class="compact">
+                <ul class="compact">
+                    {% for error in form.non_field_errors %}
+                    <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+            </dd>
+        </dl>
+    </div>
+{% endspaceless %}{% endif %}

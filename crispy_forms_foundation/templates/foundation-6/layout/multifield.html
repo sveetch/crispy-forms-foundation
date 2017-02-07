@@ -1,0 +1,25 @@
+<div{% if multifield.css_id or errors %} id="{{ multifield.css_id }}"{% endif %}{% if multifield.css_class %} class="{{ multifield.css_class }}"{% endif %} {{ multifield.flat_attrs|safe }}>
+    {% spaceless %}{% if form_show_errors %}
+        {% for field in multifield.bound_fields %}
+            {% if field.errors %}
+                {% for error in field.errors %}
+                    <p id="error_{{ forloop.counter }}_{{ field.auto_id }}" class="alert label">{{ error }}</p>
+                {% endfor %}
+            {% endif %}
+        {% endfor %}
+    {% endif %}{% endspaceless %}
+
+    {% spaceless %}{% if multifield.label_html %}
+        <p{% if multifield.label_class %} class="{{ multifield.label_class }}"{% endif %}>{{ multifield.label_html|safe }}</p>
+    {% endif %}{% endspaceless %}
+
+    <div class="multiple-fields">
+        {{ fields_output|safe }}
+    </div>
+
+    {% spaceless %}{% for field in multifield.bound_fields %}
+        {% if field.help_text %}
+            <p id="helptext_{{ field.auto_id }}" class="help-text">{{ field.help_text|safe }}</p>
+        {% endif %}
+    {% endfor %}{% endspaceless %}
+</div>

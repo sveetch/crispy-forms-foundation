@@ -1,0 +1,42 @@
+{% load crispy_forms_field %}
+
+{% if field.is_hidden %}
+    {{ field }}
+{% else %}
+    <div id="div_{{ field.auto_id }}" class="row inline-field inline-checkbox">{% spaceless %}
+        <div class="{{ label_column }}">
+            <label{% if label_class or field.field.required %} class="{{ label_class }}{% if field.field.required %} required{% endif %}"{% endif %}>
+                {{ field.label|safe }}{% if field.field.required %}<span class="asterisk">*</span>{% endif %}
+            </label>
+        </div>
+
+        <div class="{{ input_column }}">
+            <div{% if switch_class %} class="{{ switch_class }}"{% endif %}>
+                {% if field|is_checkbox %}
+                    {% crispy_field field %}
+                {% endif %}
+
+                <label class="switch-paddle{% if field.field.required %} required{% endif %}" for="{{ field.id_for_label }}">
+                    <span class="show-for-sr">{{ field.label|safe }}{% if field.field.required %}<span class="asterisk">*</span>{% endif %}</span>
+                </label>
+                {% if field.field.abide_msg %}
+                    <small id="abide_error_{{ field.auto_id }}" class="alert label {% if form_show_errors and not field.errors|length_is:"0" %}compact{% endif %}">
+                        {{ field.field.abide_msg }}
+                    </small>
+                {% endif %}
+                {% if form_show_errors %}
+                    {% for error in field.errors %}
+                        <small id="error_{{ forloop.counter }}_{{ field.auto_id }}" class="alert label {% if not forloop.last %}compact{% endif %}">
+                            {{ error }}
+                        </small>
+                    {% endfor %}
+                {% endif %}
+            </div> 
+        </div>
+
+
+        {% if field.help_text %}
+            <div id="helptext_{{ field.auto_id }}" class="help-text">{{ field.help_text|safe }}</div>
+        {% endif %}
+    {% endspaceless %}</div>
+{% endif %}

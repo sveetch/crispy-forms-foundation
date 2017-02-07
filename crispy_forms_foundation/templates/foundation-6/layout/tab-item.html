@@ -1,0 +1,5 @@
+<li class="tab-title{% if 'active' in link.css_class %} active{% endif %}">
+    <a href="#{{ link.css_id }}">
+        {{ link.name|capfirst }}{% if item_has_errors %} <span class="label alert round mark">!</span>{% endif %}
+    </a>
+</li>
