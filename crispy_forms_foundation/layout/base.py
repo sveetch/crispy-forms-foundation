@@ -33,7 +33,7 @@ class Div(crispy_forms_layout.Div):
         Div('form_field_1', 'form_field_2', css_id='div-example',
             css_class='divs')
     """
-    template = "{0}/layout/div.html".format(TEMPLATE_PACK)
+    template = "%s/layout/div.html"
 
 
 class Panel(crispy_forms_layout.Div):

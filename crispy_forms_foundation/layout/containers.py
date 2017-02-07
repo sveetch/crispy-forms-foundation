@@ -51,7 +51,7 @@ class Fieldset(crispy_forms_layout.Fieldset):
             'form_field_2'
         )
     """
-    template = "{0}/layout/fieldset.html".format(TEMPLATE_PACK)
+    template = "%s/layout/fieldset.html"
 
 
 class TabHolder(crispy_forms_bootstrap.TabHolder):
@@ -70,10 +70,14 @@ class TabHolder(crispy_forms_bootstrap.TabHolder):
     The first ``TabItem`` containing a field error will be marked as
     *active* if any, else this will be just the first ``TabItem``.
     """
-    template = "{0}/layout/tab-holder.html".format(TEMPLATE_PACK)
+    template = "%s/layout/tab-holder.html"
     default_active_tab = None
 
     def render(self, form, form_style, context, template_pack=TEMPLATE_PACK):
+        """
+        Re-implement almost the same code from crispy_forms but passing
+        ``form`` instance to item ``render_link`` method.
+        """
         links, content = '', ''
         for tab in self.fields:
             tab.active = False
@@ -85,11 +89,16 @@ class TabHolder(crispy_forms_bootstrap.TabHolder):
             content += render_field(
                 tab, form, form_style, context, template_pack=template_pack
             )
-            links += tab.render_link(form)
+            links += tab.render_link(form, template_pack)
 
-        return render_to_string(self.template, Context({
-            'tabs': self, 'links': links, 'content': content
-        }))
+        context.update({
+            'tabs': self,
+            'links': links,
+            'content': content
+        })
+
+        template = self.get_template_name(template_pack)
+        return render_to_string(template, context.flatten())
 
 
 class VerticalTabHolder(TabHolder):
@@ -116,7 +125,7 @@ class TabItem(crispy_forms_bootstrap.Tab):
     ``TabItem`` layout item has no real utility out of a ``TabHolder``.
     """
     css_class = 'content'
-    link_template = "{0}/layout/tab-item.html".format(TEMPLATE_PACK)
+    link_template = "%s/layout/tab-item.html"
 
     def has_errors(self, form):
         """
@@ -125,16 +134,18 @@ class TabItem(crispy_forms_bootstrap.Tab):
         return any([fieldname_error for fieldname_error in form.errors.keys()
                     if fieldname_error in self])
 
-    def render_link(self, form):
+    def render_link(self, form, template_pack=TEMPLATE_PACK, **kwargs):
         """
         Render the link for the tab-pane. It must be called after render so
         ``css_class`` is updated with ``active`` class name if needed.
         """
-        return render_to_string(self.link_template,
-                                Context({
+        link_template = self.link_template % template_pack
+        return render_to_string(link_template,
+                                {
                                     'link': self,
                                     'item_has_errors': self.has_errors(form)
-                                }))
+                                })
+
 
 
 class AccordionHolder(crispy_forms_bootstrap.Accordion):
@@ -155,9 +166,14 @@ class AccordionHolder(crispy_forms_bootstrap.Accordion):
     The first ``AccordionItem`` containing a field error will be marked as
     *active* if any, else this will be just the first ``AccordionItem``.
     """
-    template = "{0}/layout/accordion-holder.html".format(TEMPLATE_PACK)
+    template = "%s/layout/accordion-holder.html"
 
-    def render(self, form, form_style, context, template_pack=TEMPLATE_PACK):
+    def render(self, form, form_style, context, template_pack=TEMPLATE_PACK,
+               **kwargs):
+        """
+        Re-implement almost the same code from crispy_forms but using
+        ``form`` instance to catch field errors.
+        """
         content = ''
 
         # accordion group needs the parent div id to set `data-parent` (I don't
@@ -176,13 +192,14 @@ class AccordionHolder(crispy_forms_bootstrap.Accordion):
                                          form.errors.keys()
                                          if fieldname_error in group])
             content += render_field(
-                group, form, form_style, context, template_pack=template_pack
+                group, form, form_style, context, template_pack=template_pack,
+                **kwargs
             )
 
-        return render_to_string(
-            self.template,
-            Context({'accordion': self, 'content': content})
-        )
+        template = self.get_template_name(template_pack)
+        context.update({'accordion': self, 'content': content})
+
+        return render_to_string(template, context.flatten())
 
 
 class AccordionItem(crispy_forms_bootstrap.AccordionGroup):
@@ -199,4 +216,4 @@ class AccordionItem(crispy_forms_bootstrap.AccordionGroup):
 
         AccordionItem("group name", "form_field_1", "form_field_2")
     """
-    template = "{0}/layout/accordion-item.html".format(TEMPLATE_PACK)
+    template = "%s/layout/accordion-item.html"

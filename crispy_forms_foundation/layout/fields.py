@@ -32,15 +32,15 @@ class Field(crispy_forms_layout.Field):
         Field('field_name', style="color: #333;", css_class="whatever",
               id="field_name")
     """
-    template = "{0}/field.html".format(TEMPLATE_PACK)
+    template = "%s/field.html"
 
 
 class MultiField(crispy_forms_layout.MultiField):
     """
     MultiField container. Render to a MultiField
     """
-    template = "{0}/layout/multifield.html".format(TEMPLATE_PACK)
-    field_template = "{0}/multifield.html".format(TEMPLATE_PACK)
+    template = "%s/layout/multifield.html"
+    field_template = "%s/multifield.html"
 
 
 class SplitDateTimeField(Field):
@@ -51,7 +51,7 @@ class SplitDateTimeField(Field):
 
     Simply use a specific template
     """
-    template = "{0}/layout/splitdatetime_field.html".format(TEMPLATE_PACK)
+    template = "%s/layout/splitdatetime_field.html"
 
 
 class InlineField(Field):
@@ -73,7 +73,7 @@ class InlineField(Field):
 
     ``label_column``, ``input_column``, ``label_class``, are optional argument.
     """
-    template = "{0}/layout/inline_field.html".format(TEMPLATE_PACK)
+    template = "%s/layout/inline_field.html"
 
     def __init__(self, field, label_column='large-3', input_column='large-9',
                  label_class='', *args, **kwargs):
@@ -90,9 +90,10 @@ class InlineField(Field):
         context['label_class'] = self.label_class
 
         html = ''
+        template = self.get_template_name(template_pack)
         for field in self.fields:
             html += render_field(field, form, form_style, context,
-                                 template=self.template, attrs=self.attrs,
+                                 template=template, attrs=self.attrs,
                                  template_pack=template_pack)
         return html
 
@@ -122,10 +123,13 @@ class SwitchField(crispy_forms_layout.Field):
         SwitchField('field_name', style="color: #333;", css_class="whatever",
                     id="field_name")
     """
-    template = "{0}/switch.html".format(TEMPLATE_PACK)
+    template = "%s/switch.html"
 
     def __init__(self, field, *args, **kwargs):
         self.switch_class = ['switch'] + kwargs.pop('switch_class', '').split()
+        # TODO: Don't do this for 'foundation-5'
+        #kwargs['class'] = (kwargs.pop('class', '') + ' switch-input').strip()
+
         super(SwitchField, self).__init__(field, *args, **kwargs)
 
     def render(self, form, form_style, context, template_pack=TEMPLATE_PACK):
@@ -160,12 +164,14 @@ class InlineSwitchField(InlineField):
     ``label_column``, ``input_column``, ``label_class``, ``switch_class`` are
     optional argument.
     """
-    template = "{0}/inline_switch.html".format(TEMPLATE_PACK)
+    template = "%s/inline_switch.html"
 
     def __init__(self, field, *args, **kwargs):
         self.switch_class = ['switch']+kwargs.pop('switch_class', '').split()
         kwargs['label_column'] = kwargs.pop('label_column', 'large-8')
         kwargs['input_column'] = kwargs.pop('input_column', 'large-4')
+        # TODO: Don't do this for 'foundation-5'
+        #kwargs['class'] = (kwargs.pop('class', '') + ' switch-input').strip()
 
         super(InlineSwitchField, self).__init__(field, *args, **kwargs)
 

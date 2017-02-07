@@ -34,7 +34,7 @@ class ButtonHolder(crispy_forms_layout.ButtonHolder):
             Submit('Save', 'Save')
         )
     """
-    template = "{0}/layout/buttonholder.html".format(TEMPLATE_PACK)
+    template = "%s/layout/buttonholder.html"
 
 
 class ButtonHolderPanel(ButtonHolder):
@@ -62,7 +62,7 @@ class ButtonGroup(crispy_forms_layout.LayoutObject):
             Button('Cancel', 'Cancel'),
         )
     """
-    template = "{0}/layout/buttongroup.html".format(TEMPLATE_PACK)
+    template = "%s/layout/buttongroup.html"
 
     def __init__(self, *fields, **kwargs):
         self.fields = list(fields)
@@ -72,13 +72,15 @@ class ButtonGroup(crispy_forms_layout.LayoutObject):
 
     def render(self, form, form_style, context, template_pack=TEMPLATE_PACK):
         field_list = []
+        template = self.get_template_name(template_pack)
+
         for field in self.fields:
             field_list.append(
                 render_field(field, form, form_style, context,
                              template_pack=template_pack)
             )
 
-        return render_to_string(self.template, Context({
+        return render_to_string(template, Context({
             'buttongroup': self,
             'field_list': field_list,
         }))
