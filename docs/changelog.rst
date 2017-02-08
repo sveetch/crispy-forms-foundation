@@ -10,6 +10,8 @@ Version 0.6.0 - Unreleased
 * Copied 'foundation-6' templates from @flesser branch ``foundation-6``;
 * Fixed demo views and forms so they can switch between template packs;
 * Fixed layout elements so their template does not include ``TEMPLATE_PACK`` anymore in class defintions;
+* Fixed switches;
+* Fixed button group;
 
 Version 0.5.5 - 2017/02/01
 **************************
