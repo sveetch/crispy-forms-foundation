@@ -8,15 +8,17 @@ from .crispies import (part_1_crispies, part_2_crispies, part_3_crispies,
                        part_4_crispies, buttons_crispies)
 
 
-SELECT_INPUT_CHOICES = [('item-{0}'.format(i), 'Option item {0}'.format(i)) for i in range(1, 6)]
-RADIO_INPUT_CHOICES = [('item-{0}'.format(i), 'Radio item {0}'.format(i)) for i in range(1, 4)]
+SELECT_INPUT_CHOICES = [('item-{0}'.format(i), 'Option item {0}'.format(i))
+                        for i in range(1, 6)]
+RADIO_INPUT_CHOICES = [('item-{0}'.format(i), 'Radio item {0}'.format(i))
+                       for i in range(1, 4)]
 
 
 class BaseForm(forms.Form):
     """
     Base form with inputs
     """
-    full_input = forms.CharField(label=_('Full width input'), widget=forms.TextInput(attrs={'required':''}), required=True)
+    full_input = forms.CharField(label=_('Full width input'), widget=forms.TextInput(attrs={'required':''}), required=True, help_text="This is a sample field help text.")
     column_input_1 = forms.CharField(label=_('Column input 1'), required=False)
     column_input_2 = forms.CharField(label=_('Column input 2'), required=True)
     column_input_3 = forms.CharField(label=_('Column input 3'), required=False)

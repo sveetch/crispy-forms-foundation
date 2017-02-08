@@ -27,7 +27,7 @@
         </div>
 
         {% if field.help_text %}
-            <div id="helptext_{{ field.auto_id }}" class="help-text column">{{ field.help_text|safe }}</div>
+            <p id="helptext_{{ field.auto_id }}" class="help-text">{{ field.help_text|safe }}</p>
         {% endif %}
     </div>
 {% endif %}
