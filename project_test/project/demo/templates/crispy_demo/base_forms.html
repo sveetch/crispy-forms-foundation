@@ -19,11 +19,26 @@
         {% endwith %}
         <hr>
 
+        {% if foundation_version == '5' %}
         <ul class="stack-for-small round button-group">
-            <li><a href="{% url 'crispy-foundation:crispy-demo-form-fieldsets' foundation_version=foundation_version %}" class="button{% block crispy_demo_menu_fieldsets_item %} secondary{% endblock %}">Form by fieldsets</a></li>
-            <li><a href="{% url 'crispy-foundation:crispy-demo-form-accordions' foundation_version=foundation_version %}" class="button{% block crispy_demo_menu_accordions_item %} secondary{% endblock %}">Form by accordions</a></li>
-            <li><a href="{% url 'crispy-foundation:crispy-demo-form-tabs' foundation_version=foundation_version %}" class="button{% block crispy_demo_menu_tabs_item %} secondary{% endblock %}">Form by tabs</a></li>
+        {% else %}
+        <div class="stacked-for-small round button-group">
+        {% endif %}
+            {% if foundation_version == '5' %}<li>{% endif %}
+                <a href="{% url 'crispy-foundation:crispy-demo-form-fieldsets' foundation_version=foundation_version %}" class="button{% block crispy_demo_menu_fieldsets_item %} secondary{% endblock %}">Form by fieldsets</a>
+            {% if foundation_version == '5' %}</li>{% endif %}
+            {% if foundation_version == '5' %}<li>{% endif %}
+                <a href="{% url 'crispy-foundation:crispy-demo-form-accordions' foundation_version=foundation_version %}" class="button{% block crispy_demo_menu_accordions_item %} secondary{% endblock %}">Form by accordions</a>
+            {% if foundation_version == '5' %}</li>{% endif %}
+            {% if foundation_version == '5' %}<li>{% endif %}
+                <a href="{% url 'crispy-foundation:crispy-demo-form-tabs' foundation_version=foundation_version %}" class="button{% block crispy_demo_menu_tabs_item %} secondary{% endblock %}">Form by tabs</a>
+            {% if foundation_version == '5' %}</li>{% endif %}
+        {% if foundation_version == '5' %}
         </ul>
+        {% else %}
+        </div>
+        {% endif %}
+
 
         {% crispy form %}
     </div>
