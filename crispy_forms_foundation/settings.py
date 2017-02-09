@@ -21,3 +21,9 @@ CRISPY_ALLOWED_TEMPLATE_PACKS = (
 
 # Default layout pack
 CRISPY_TEMPLATE_PACK = 'foundation-5'
+
+# Default class names on input
+CRISPY_CLASS_CONVERTERS = {
+    'inputelement': None,
+    'errorcondition': 'is-invalid-input',
+}

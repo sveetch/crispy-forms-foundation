@@ -10,7 +10,6 @@ See :
 from random import randint
 
 from django.conf import settings
-from django.template import Context
 from django.template.loader import render_to_string
 
 from crispy_forms import layout as crispy_forms_layout
@@ -145,7 +144,6 @@ class TabItem(crispy_forms_bootstrap.Tab):
                                     'link': self,
                                     'item_has_errors': self.has_errors(form)
                                 })
-
 
 
 class AccordionHolder(crispy_forms_bootstrap.Accordion):

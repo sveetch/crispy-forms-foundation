@@ -7,14 +7,16 @@ Changelog
 Version 0.6.0 - Unreleased
 **************************
 
-Adds **Foundation for site 6** support, version 5 is still available.
+Adds **Foundation for site 6** support, version 5 support is still available for now.
 
 * Copied 'foundation-6' templates from @flesser branch ``foundation-6``;
 * Fixed demo views and forms so they can switch between template packs;
 * Fixed layout elements so their template does not include ``TEMPLATE_PACK`` anymore in class defintions;
-* Fixed switches;
-* Fixed button group;
+* Fixed switches for Foundation-6;
+* Fixed button group for Foundation-6;
+* Fixed ``InlineJustifiedField`` for Foundation-6;
 * ``.help-text`` is allways a ``<p>`` in Foundation6 (does not have real meaning in Foundation5);
+* Added ``crispy_forms_foundation.templatetags.crispy_forms_foundation_field`` to re-implement ``crispy_field`` filter so we can have the right input field error for Foundation-6;
 
 Version 0.5.5 - 2017/02/01
 **************************

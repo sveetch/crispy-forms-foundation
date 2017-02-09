@@ -104,12 +104,12 @@ class InlineJustifiedField(InlineField):
     padding
     """
     def __init__(self, field, *args, **kwargs):
-        default = 'right inline'
+        default = 'text-right inline'
         kwargs['label_class'] = kwargs.get('label_class', None) or default
         super(InlineJustifiedField, self).__init__(field, *args, **kwargs)
 
 
-class SwitchField(crispy_forms_layout.Field):
+class SwitchField(Field):
     """
     A specific field to use Foundation form switches
 

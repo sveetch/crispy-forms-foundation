@@ -1,17 +1,17 @@
-{% load crispy_forms_field %}
+{% load crispy_forms_field crispy_forms_foundation_field %}
 
 {% if field.is_hidden %}
     {{ field }}
 {% else %}
-    <div id="div_{{ field.auto_id }}" class="holder{% if wrapper_class %} {{ wrapper_class }}{% endif %}{% if field.errors and form_show_errors %} callout alert{% endif %}{% if field|is_checkbox %} checkbox{% endif %}{% if field.css_classes %} {{ field.css_classes }}{% endif %}">{% spaceless %}
+    <div id="div_{{ field.auto_id }}" class="holder{% if wrapper_class %} {{ wrapper_class }}{% endif %}{% if field|is_checkbox %} checkbox{% endif %}{% if field.css_classes %} {{ field.css_classes }}{% endif %}">{% spaceless %}
 
         {% if field.label %}
             {% if field|is_checkbox %}
                 {% crispy_field field %}
             {% endif %}
 
-            <label for="{{ field.id_for_label }}" {% if field.field.required %}class="required"{% endif %}>
-                {{ field.label|safe }}{% if field.field.required %}<span class="asterisk">*</span>{% endif %}
+            <label for="{{ field.id_for_label }}" {% if field.errors and form_show_errors or field.field.required %}class="{% if field.field.required %}required{% endif %} {% if field.errors and form_show_errors %}is-invalid-label{% endif %}"{% endif %}>
+                DT3: {{ field.label|safe }}{% if field.field.required %}<span class="asterisk">*</span>{% endif %}
             </label>
         {% endif %}
 
@@ -24,14 +24,14 @@
         {% endif %}
 
         {% if field.field.abide_msg %}
-            <small id="abide_error_{{ field.auto_id }}" class="alert label {% if form_show_errors and not field.errors|length_is:"0" %}compact{% endif %}">
+            <span id="abide_error_{{ field.auto_id }}" class="form-error is-visible{% if form_show_errors and not field.errors|length_is:"0" %} compact{% endif %}">
                 {{ field.field.abide_msg }}
-            </small>
+            </span>
         {% endif %}
 
         {% if form_show_errors %}
             {% for error in field.errors %}
-                <small id="error_{{ forloop.counter }}_{{ field.auto_id }}" class="alert label {% if not forloop.last %}compact{% endif %}">
+                <small id="error_{{ forloop.counter }}_{{ field.auto_id }}" class="form-error is-visible{% if not forloop.last %} compact{% endif %}">
                     {{ error }}
                 </small>
             {% endfor %}
