@@ -11,7 +11,7 @@
                     {% crispy_field field %}
                 {% endif %}
 
-                <label class="switch-paddle{% if field.field.required %} required{% endif %}" for="{{ field.id_for_label }}">
+                <label class="switch-paddle{% if field.errors and form_show_errors %} is-invalid-label{% endif %}{% if field.field.required %} required{% endif %}" for="{{ field.id_for_label }}">
                     <span class="show-for-sr">{{ field.label|safe }}{% if field.field.required %}<span class="asterisk">*</span>{% endif %}</span>
                 </label>
             </div>
@@ -27,9 +27,9 @@
 
         {% if form_show_errors %}
             {% for error in field.errors %}
-            <small id="error_{{ forloop.counter }}_{{ field.auto_id }}" class="alert label">
+            <span id="error_{{ forloop.counter }}_{{ field.auto_id }}" class="form-error is-visible">
                 {{ error }}
-            </small>
+            </span>
             {% endfor %}
         {% endif %}
 

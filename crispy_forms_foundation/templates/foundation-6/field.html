@@ -31,9 +31,9 @@
 
         {% if form_show_errors %}
             {% for error in field.errors %}
-                <small id="error_{{ forloop.counter }}_{{ field.auto_id }}" class="form-error is-visible{% if not forloop.last %} compact{% endif %}">
+                <span id="error_{{ forloop.counter }}_{{ field.auto_id }}" class="form-error is-visible{% if not forloop.last %} compact{% endif %}">
                     {{ error }}
-                </small>
+                </span>
             {% endfor %}
         {% endif %}
 

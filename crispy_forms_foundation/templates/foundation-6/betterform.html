@@ -1,5 +1,5 @@
 {% for fieldset in form.fieldsets %}{% spaceless %}
-    <fieldset class="fieldset-{{ forloop.counter }} {{ fieldset.classes }}">
+    <fieldset class="fieldset item-{{ forloop.counter }} {{ fieldset.classes }}">
         {% if fieldset.legend %}
             <legend>{{ fieldset.legend }}</legend>
         {% endif %}

@@ -3,8 +3,7 @@
 {% endif %}
 
 {% if form_style == "" or form_style %}
-    <fieldset class="{{ form_style }}">
-        <legend></legend>
+    <fieldset class="fieldset {{ form_style }}">
 {% endif %}
 
 {% for field in form %}

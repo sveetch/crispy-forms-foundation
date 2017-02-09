@@ -3,9 +3,9 @@
 {% if field.is_hidden %}
     {{ field }}
 {% else %}
-    <div id="div_{{ field.auto_id }}" class="row inline-field{% if field|is_checkbox %} inline-checkbox{% endif %}{% if field.errors and form_show_errors %} callout alert{% endif %}">
+    <div id="div_{{ field.auto_id }}" class="row inline-field{% if field|is_checkbox %} inline-checkbox{% endif %}">
         <div class="{{ label_column }}">
-            <label for="{{ field.id_for_label }}" class="{{ label_class }}{% if field.field.required %} required{% endif %}">
+            <label for="{{ field.id_for_label }}" class="{{ label_class }}{% if field.errors and form_show_errors %} is-invalid-label{% endif %}{% if field.field.required %} required{% endif %}">
                 {{ field.label|safe }}{% if field.field.required %}<span class="asterisk">*</span>{% endif %}
             </label>
         </div>
@@ -13,15 +13,15 @@
             {% crispy_field field %}
 
             {% if field.field.abide_msg %}
-                <small id="abide_error_{{ field.auto_id }}" class="alert label {% if form_show_errors and not field.errors|length_is:"0" %}compact{% endif %}">
+                <span id="abide_error_{{ field.auto_id }}" class="form-error is-visible{% if form_show_errors and not field.errors|length_is:"0" %} compact{% endif %}">
                     {{ field.field.abide_msg }}
-                </small>
+                </span>
             {% endif %}
             {% if form_show_errors %}
                 {% for error in field.errors %}
-                    <small id="error_{{ forloop.counter }}_{{ field.auto_id }}" class="alert label {% if not forloop.last %}compact{% endif %}">
+                    <span id="error_{{ forloop.counter }}_{{ field.auto_id }}" class="form-error is-visible{% if not forloop.last %} compact{% endif %}">
                         {{ error }}
-                    </small>
+                    </span>
                 {% endfor %}
             {% endif %}
         </div>
