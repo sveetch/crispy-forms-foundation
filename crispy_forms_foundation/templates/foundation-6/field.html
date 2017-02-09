@@ -10,13 +10,13 @@
                 {% crispy_field field %}
             {% endif %}
 
-            <label for="{{ field.id_for_label }}" {% if field.errors and form_show_errors or field.field.required %}class="{% if field.field.required %}required{% endif %} {% if field.errors and form_show_errors %}is-invalid-label{% endif %}"{% endif %}>
-                DT3: {{ field.label|safe }}{% if field.field.required %}<span class="asterisk">*</span>{% endif %}
+            <label for="{{ field.id_for_label }}" {% if field.errors and form_show_errors or field.field.required %}class="{% if field.field.required %}required{% endif %}{% if field.errors and form_show_errors %} is-invalid-label{% endif %}"{% endif %}>
+                {{ field.label|safe }}{% if field.field.required %}<span class="asterisk">*</span>{% endif %}
             </label>
         {% endif %}
 
         {% if field|is_checkboxselectmultiple %}
-            {% include 'foundation-5/layout/checkboxselectmultiple.html' %}
+            {% include 'foundation-6/layout/checkboxselectmultiple.html' %}
         {% endif %}
 
         {% if not field|is_checkbox and not field|is_checkboxselectmultiple %}

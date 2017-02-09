@@ -10,7 +10,7 @@
         {% endif %}
 
         {% if field.label %}
-            <label for="{{ field.id_for_label }}" class="inline-label">
+            <label for="{{ field.id_for_label }}" class="inline-label{% if field.errors and form_show_errors %} is-invalid-label{% endif %}">
                 {{ field.label|safe }}{% if field.field.required %}<em>*</em>{% endif %}
             </label>
         {% endif %}
@@ -20,7 +20,7 @@
         {% endif %}
 
         {% for error in field.errors %}
-            <small id="error_{{ forloop.counter }}_{{ field.auto_id }}" class="alert label">
+            <small id="error_{{ forloop.counter }}_{{ field.auto_id }}" class="form-error is-visible">
                 {{ error }}
             </small>
         {% endfor %}
