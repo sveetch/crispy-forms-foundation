@@ -9,7 +9,12 @@ Version 0.6.0 - Unreleased
 
 This release adds **Foundation for site version 6** support, version 5 support is still available for now.
 
-* Copied 'foundation-6' templates from @flesser branch ``foundation-6``;
+* Added 'foundation-6' templates, copied from @flesser branch ``foundation-6``;
+* Added ``base.Callout`` element;
+* ``.help-text`` is allways a ``<p>`` in Foundation6 (does not have real meaning in Foundation5);
+* Added ``crispy_forms_foundation.templatetags.crispy_forms_foundation_field`` to re-implement ``crispy_field`` filter so we can have the right input field error for Foundation-6;
+* Changed ``containers.TabHolder`` so it build a random id for container if ``css_id`` is not given;
+* Changed ``containers.Container`` to be able to manage the *active* classname ``active_css_class`` Class attribute or its ``get_active_css_class`` method, and add it a condition to use another class name for Foundation-6 (``is-active`` instead of ``active``);
 * Fixed demo views and forms so they can switch between template packs;
 * Fixed layout elements so their template does not include ``TEMPLATE_PACK`` anymore in class defintions;
 * Fixed switches for Foundation-6;
@@ -17,9 +22,7 @@ This release adds **Foundation for site version 6** support, version 5 support i
 * Fixed ``InlineJustifiedField`` for Foundation-6;
 * Fixed error messages for Foundation-6;
 * Fixed Accordion for Foundation-6;
-* Added ``base.Callout`` element;
-* ``.help-text`` is allways a ``<p>`` in Foundation6 (does not have real meaning in Foundation5);
-* Added ``crispy_forms_foundation.templatetags.crispy_forms_foundation_field`` to re-implement ``crispy_field`` filter so we can have the right input field error for Foundation-6;
+* Fixed Tabs for Foundation-6;
 
 Version 0.5.5 - 2017/02/01
 **************************
@@ -35,6 +38,11 @@ Version 0.5.5 - 2017/02/01
 * Finished demo urls/templates to work on every Foundation versions;
 * Fixed Flake issues;
 * Validated test with Tox for Python 2.7, Python 3.5 and Django>=1.8,<=1.10;
+
+Backward compatibility change for foundation-5 template pack:
+
+* Moved Tab link template ``tab-item.html`` to ``tab-link.html``;
+* Added ``tab-item.html`` to build the Tab item instead of using the Div default template;
 
 Everything should still work as with previous version.
 

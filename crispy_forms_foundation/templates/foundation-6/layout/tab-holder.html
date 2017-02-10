@@ -1,6 +1,6 @@
-<ul{% if tabs.css_id %} id="{{ tabs.css_id }}"{% endif %} class="tabs{% if 'vertical' in tabs.css_class %} vertical{% endif %}" data-tab>
+<ul{% if tabs.css_id %} id="{{ tabs.css_id }}"{% endif %} class="tabs{% if 'vertical' in tabs.css_class %} vertical{% endif %}" data-tabs>
     {{ links|safe }}
 </ul>
-<div class="tabs-content">
+<div class="tabs-content" data-tabs-content="{{ tabs.css_id }}">
     {{ content|safe }}
 </div>

@@ -15,6 +15,7 @@ def test_tab(output_test_path, rendered_template, helper, client):
             TabItem('My tab 1', 'simple'),
             TabItem('My tab 2', 'opt_in'),
             TabItem('My tab 3', 'longtext'),
+            css_id="meep-meep"
         )
     )
 
@@ -24,7 +25,7 @@ def test_tab(output_test_path, rendered_template, helper, client):
     #attempted = ""
     #write_output(output_test_path, "test_tab.html", rendered)
 
-    assert rendered == attempted
+    assert attempted == rendered
 
 
 def test_accordion(output_test_path, rendered_template, helper, client):
@@ -46,4 +47,4 @@ def test_accordion(output_test_path, rendered_template, helper, client):
     #attempted = ""
     #write_output(output_test_path, "test_accordion.html", rendered)
 
-    assert rendered == attempted
+    assert attempted == rendered

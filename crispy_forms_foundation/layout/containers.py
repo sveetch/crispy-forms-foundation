@@ -22,7 +22,29 @@ TEMPLATE_PACK = getattr(settings, 'CRISPY_TEMPLATE_PACK', 'foundation-5')
 
 
 class Container(crispy_forms_bootstrap.Container):
-    pass
+    """
+    Overrides original Container element to get the "active" classname from
+    Class attribute ``active_css_class``.
+    """
+    css_class = ""
+    active_css_class = "active"
+
+    def get_active_css_class(self, template_pack):
+        # Foundation-6 addon only which use unusual class name
+        if template_pack == 'foundation-6':
+            return "is-active"
+        return self.active_css_class
+
+    def render(self, form, form_style, context, template_pack=TEMPLATE_PACK,
+               **kwargs):
+        active_classname = self.get_active_css_class(template_pack)
+        if self.active:
+            if active_classname and active_classname not in self.css_class:
+                self.css_class += ' ' + active_classname
+        else:
+            self.css_class = self.css_class.replace(active_classname, '')
+        return super(Container, self).render(form, form_style, context,
+                                             template_pack)
 
 
 class ContainerHolder(crispy_forms_bootstrap.ContainerHolder):
@@ -78,6 +100,13 @@ class TabHolder(crispy_forms_bootstrap.TabHolder):
         ``form`` instance to item ``render_link`` method.
         """
         links, content = '', ''
+
+        # accordion group needs the parent div id to set `data-parent` (I don't
+        # know why). This needs to be a unique id
+        if not self.css_id:
+            self.css_id = "-".join(["tabsholder",
+                                    text_type(randint(1000, 9999))])
+
         for tab in self.fields:
             tab.active = False
 
@@ -107,13 +136,16 @@ class VerticalTabHolder(TabHolder):
     css_class = 'vertical'
 
 
-class TabItem(crispy_forms_bootstrap.Tab):
+class TabItem(Container):
     """
     Tab item object. It wraps fields in a div whose default class is "tabs" and
     takes a name as first argument.
 
-    The item name is also slugified to build an id for the tab if you don't
+    The item name is slugified to build an id for the tab if you don't
     define it using ``css_id`` argument.
+
+    Tab item is also responsible of building is associated tab link with its
+    ``render_link`` using the ``link_template`` attribute.
 
     Example:
 
@@ -123,8 +155,8 @@ class TabItem(crispy_forms_bootstrap.Tab):
 
     ``TabItem`` layout item has no real utility out of a ``TabHolder``.
     """
-    css_class = 'content'
-    link_template = "%s/layout/tab-item.html"
+    template = "%s/layout/tab-item.html"
+    link_template = "%s/layout/tab-link.html"
 
     def has_errors(self, form):
         """
