@@ -28,7 +28,9 @@ class CrispyFoundationMixin(object):
 
 class FormContainersMixin(object):
     def get_success_url(self):
-        return reverse('crispy-demo-success')
+        return reverse('crispy-foundation:crispy-demo-success', kwargs={
+            'foundation_version': int(self.kwargs.get('foundation_version'))
+        })
 
     def get_form_kwargs(self):
         """

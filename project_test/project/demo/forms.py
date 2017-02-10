@@ -65,7 +65,7 @@ class FormByFieldsetsForm(FormCrispyHelperMixin, BaseForm):
     def __init__(self, *args, **kwargs):
         super(FormByFieldsetsForm, self).__init__(*args, **kwargs)
 
-        self.helper.attrs = {'data_abide': ''}
+        self.helper.attrs = {'data_abide': '', 'novalidate': ''}
         self.helper.form_action = '.'
 
         part1 = [_('Part 1')]+part_1_crispies(pack=self.helper.template_pack)
