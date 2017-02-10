@@ -15,6 +15,7 @@ This release adds **Foundation for site version 6** support, version 5 support i
 * Added ``crispy_forms_foundation.templatetags.crispy_forms_foundation_field`` to re-implement ``crispy_field`` filter so we can have the right input field error for Foundation-6;
 * Changed ``containers.TabHolder`` so it build a random id for container if ``css_id`` is not given;
 * Changed ``containers.Container`` to be able to manage the *active* classname ``active_css_class`` Class attribute or its ``get_active_css_class`` method, and add it a condition to use another class name for Foundation-6 (``is-active`` instead of ``active``);
+* Improved unittests to perform for both foundation-5 and foundation-6 template packs;
 * Fixed demo views and forms so they can switch between template packs;
 * Fixed layout elements so their template does not include ``TEMPLATE_PACK`` anymore in class defintions;
 * Fixed switches for Foundation-6;

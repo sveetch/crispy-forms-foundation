@@ -49,7 +49,7 @@ def rendered_template():
 
 @pytest.fixture(scope='function', params=[
     "foundation-5",
-    #"foundation-6"
+    "foundation-6"
 ])
 def helper(request):
     """

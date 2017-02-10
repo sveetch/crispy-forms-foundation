@@ -9,6 +9,7 @@ from utils import read_output, write_output
 
 def test_buttongroup(output_test_path, rendered_template, helper, client):
     form = BasicInputForm()
+    pack = helper.template_pack
 
     helper.layout = Layout(
         'simple',
@@ -20,8 +21,7 @@ def test_buttongroup(output_test_path, rendered_template, helper, client):
 
     rendered = rendered_template(form, helper=helper)
 
-    attempted = read_output(output_test_path, "test_buttongroup.html")
-    #attempted = ""
-    #write_output(output_test_path, "test_buttongroup.html", rendered)
+    attempted = read_output(output_test_path, pack, "test_buttongroup.html")
+    #write_output(output_test_path, pack, "test_buttongroup.html", rendered)
 
     assert rendered == attempted

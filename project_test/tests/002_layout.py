@@ -9,28 +9,31 @@ from utils import read_output, write_output
 
 def test_basic(output_test_path, rendered_template, helper, client):
     form = BasicInputForm()
+    pack = helper.template_pack
 
     rendered = rendered_template(form, helper=helper)
 
-    attempted = read_output(output_test_path, "test_basic.html")
-    #write_output(output_test_path, "test_basic.html", rendered)
+    attempted = read_output(output_test_path, pack, "test_basic.html")
+    #write_output(output_test_path, pack, "test_basic.html", rendered)
 
     assert rendered == attempted
 
 
 def test_layout(output_test_path, rendered_template, helper, client):
     form = BasicInputFormLayoutIncluded(helper=helper)
+    pack = helper.template_pack
 
     rendered = rendered_template(form)
 
-    attempted = read_output(output_test_path, "test_layout.html")
-    #write_output(output_test_path, "test_layout.html", rendered)
+    attempted = read_output(output_test_path, pack, "test_layout.html")
+    #write_output(output_test_path, pack, "test_layout.html", rendered)
 
     assert rendered == attempted
 
 
 def test_advanced(output_test_path, rendered_template, helper, client):
     form = AdvancedForm()
+    pack = helper.template_pack
 
     helper.layout = Layout(
         Row(
@@ -58,7 +61,7 @@ def test_advanced(output_test_path, rendered_template, helper, client):
 
     rendered = rendered_template(form, helper=helper)
 
-    attempted = read_output(output_test_path, "test_advanced.html")
-    #write_output(output_test_path, "test_advanced.html", rendered)
+    attempted = read_output(output_test_path, pack, "test_advanced.html")
+    #write_output(output_test_path, pack, "test_advanced.html", rendered)
 
     assert rendered == attempted

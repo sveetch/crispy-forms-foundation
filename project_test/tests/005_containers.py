@@ -9,6 +9,7 @@ from utils import read_output, write_output
 
 def test_tab(output_test_path, rendered_template, helper, client):
     form = AdvancedForm()
+    pack = helper.template_pack
 
     helper.layout = Layout(
         TabHolder(
@@ -21,15 +22,15 @@ def test_tab(output_test_path, rendered_template, helper, client):
 
     rendered = rendered_template(form, helper=helper)
 
-    attempted = read_output(output_test_path, "test_tab.html")
-    #attempted = ""
-    #write_output(output_test_path, "test_tab.html", rendered)
+    attempted = read_output(output_test_path, pack, "test_tab.html")
+    #write_output(output_test_path, pack, "test_tab.html", rendered)
 
     assert attempted == rendered
 
 
 def test_accordion(output_test_path, rendered_template, helper, client):
     form = AdvancedForm()
+    pack = helper.template_pack
 
     # Define 'css_id' to avoid test fails with automatic generated random ID
     helper.layout = Layout(
@@ -43,8 +44,7 @@ def test_accordion(output_test_path, rendered_template, helper, client):
 
     rendered = rendered_template(form, helper=helper)
 
-    attempted = read_output(output_test_path, "test_accordion.html")
-    #attempted = ""
-    #write_output(output_test_path, "test_accordion.html", rendered)
+    attempted = read_output(output_test_path, pack, "test_accordion.html")
+    #write_output(output_test_path, pack, "test_accordion.html", rendered)
 
     assert attempted == rendered
