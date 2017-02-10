@@ -68,17 +68,17 @@ class FormByFieldsetsForm(FormCrispyHelperMixin, BaseForm):
         self.helper.attrs = {'data_abide': ''}
         self.helper.form_action = '.'
 
-        part1 = [_('Part 1')]+part_1_crispies()
-        part2 = [_('Part 2')]+part_2_crispies()
-        part3 = [_('Part 3')]+part_3_crispies()
-        part4 = [_('Part 4')]+part_4_crispies()
+        part1 = [_('Part 1')]+part_1_crispies(pack=self.helper.template_pack)
+        part2 = [_('Part 2')]+part_2_crispies(pack=self.helper.template_pack)
+        part3 = [_('Part 3')]+part_3_crispies(pack=self.helper.template_pack)
+        part4 = [_('Part 4')]+part_4_crispies(pack=self.helper.template_pack)
 
         self.helper.layout = Layout(
             Fieldset(*part1),
             Fieldset(*part2),
             Fieldset(*part3),
             Fieldset(*part4),
-            *buttons_crispies()
+            *buttons_crispies(pack=self.helper.template_pack)
         )
 
 
@@ -89,10 +89,10 @@ class FormByTabsForm(FormCrispyHelperMixin, BaseForm):
         self.helper.attrs = {'data_abide': ''}
         self.helper.form_action = '.'
 
-        part1 = [_('Part 1')]+part_1_crispies()
-        part2 = [_('Part 2')]+part_2_crispies()
-        part3 = [_('Part 3')]+part_3_crispies()
-        part4 = [_('Part 4')]+part_4_crispies()
+        part1 = [_('Part 1')]+part_1_crispies(pack=self.helper.template_pack)
+        part2 = [_('Part 2')]+part_2_crispies(pack=self.helper.template_pack)
+        part3 = [_('Part 3')]+part_3_crispies(pack=self.helper.template_pack)
+        part4 = [_('Part 4')]+part_4_crispies(pack=self.helper.template_pack)
 
         self.helper.layout = Layout(
             TabHolder(
@@ -101,7 +101,7 @@ class FormByTabsForm(FormCrispyHelperMixin, BaseForm):
                 TabItem(*part3),
                 TabItem(*part4),
             ),
-            *buttons_crispies()
+            *buttons_crispies(pack=self.helper.template_pack)
         )
 
 
@@ -112,10 +112,10 @@ class FormByAccordionsForm(FormCrispyHelperMixin, BaseForm):
         self.helper.attrs = {'data_abide': ''}
         self.helper.form_action = '.'
 
-        part1 = [_('Part 1')]+part_1_crispies()
-        part2 = [_('Part 2')]+part_2_crispies()
-        part3 = [_('Part 3')]+part_3_crispies()
-        part4 = [_('Part 4')]+part_4_crispies()
+        part1 = [_('Part 1')]+part_1_crispies(pack=self.helper.template_pack)
+        part2 = [_('Part 2')]+part_2_crispies(pack=self.helper.template_pack)
+        part3 = [_('Part 3')]+part_3_crispies(pack=self.helper.template_pack)
+        part4 = [_('Part 4')]+part_4_crispies(pack=self.helper.template_pack)
 
         self.helper.layout = Layout(
             AccordionHolder(
@@ -124,5 +124,5 @@ class FormByAccordionsForm(FormCrispyHelperMixin, BaseForm):
                 AccordionItem(*part3),
                 AccordionItem(*part4),
             ),
-            *buttons_crispies()
+            *buttons_crispies(pack=self.helper.template_pack)
         )

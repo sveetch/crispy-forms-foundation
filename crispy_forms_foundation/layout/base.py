@@ -40,6 +40,8 @@ class Panel(crispy_forms_layout.Div):
     """
     Act like ``Div`` but add a ``panel`` css class.
 
+    ``Panel`` component has been replaced with the ``Callout`` in Foundation-6.
+
     Example:
 
     .. sourcecode:: python
@@ -50,3 +52,22 @@ class Panel(crispy_forms_layout.Div):
     def __init__(self, field, *args, **kwargs):
         kwargs['css_class'] = kwargs.get('css_class', '')+' panel'
         super(Panel, self).__init__(field, *args, **kwargs)
+
+
+class Callout(crispy_forms_layout.Div):
+    """
+    Act like ``Div`` but add a ``callout`` css class.
+
+    ``Callout`` component is the Foundation-6 replacement of ``Panel``
+    component.
+
+    Example:
+
+    .. sourcecode:: python
+
+        Callout('form_field_1', 'form_field_2', css_id='div-example',
+              css_class='divs')
+    """
+    def __init__(self, field, *args, **kwargs):
+        kwargs['css_class'] = kwargs.get('css_class', '')+' callout'
+        super(Callout, self).__init__(field, *args, **kwargs)

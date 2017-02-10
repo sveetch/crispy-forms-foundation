@@ -8,7 +8,7 @@ and implements Foundation components.
 from __future__ import absolute_import
 from django.conf import settings
 
-from .base import Div, Panel, Layout, UneditableField, HTML
+from .base import Div, Panel, Callout, Layout, UneditableField, HTML
 from .grid import Row, RowFluid, Column
 from .fields import (MultiWidgetField, Field, MultiField,
                      SplitDateTimeField, InlineField,
@@ -29,6 +29,7 @@ __all__ = [
     "ButtonHolder", "ButtonHolderPanel", "ButtonGroup", "Button", "Submit",
     "Hidden", "Reset", "Container", "ContainerHolder", "Fieldset", "TabItem",
     "TabHolder", "VerticalTabHolder", "AccordionItem", "AccordionHolder",
+    "Callout",
 ]
 
 

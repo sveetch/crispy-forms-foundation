@@ -104,7 +104,7 @@ class InlineJustifiedField(InlineField):
     padding
     """
     def __init__(self, field, *args, **kwargs):
-        default = 'text-right inline'
+        default = 'middle text-right inline'
         kwargs['label_class'] = kwargs.get('label_class', None) or default
         super(InlineJustifiedField, self).__init__(field, *args, **kwargs)
 

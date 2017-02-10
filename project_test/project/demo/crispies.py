@@ -5,13 +5,13 @@ from django.utils.translation import ugettext_lazy as _
 
 from crispy_forms.helper import FormHelper
 from crispy_forms_foundation.layout import (
-    Layout, Fieldset, HTML, Row, Column, Panel, 
-    ButtonHolder, ButtonHolderPanel, ButtonGroup, Button, Submit, 
-    InlineField, InlineJustifiedField, 
+    Layout, Fieldset, HTML, Row, Column, Panel, Callout,
+    ButtonHolder, ButtonHolderPanel, ButtonGroup, Button, Submit,
+    InlineField, InlineJustifiedField,
     SwitchField, InlineSwitchField
 )
 
-def part_1_crispies():
+def part_1_crispies(pack=None):
     return [
         Row(
             Column('full_input'),
@@ -37,7 +37,7 @@ def part_1_crispies():
     ]
 
 
-def part_2_crispies():
+def part_2_crispies(pack=None):
     return [
         Row(
             Column(
@@ -76,7 +76,7 @@ def part_2_crispies():
     ]
 
 
-def part_3_crispies():
+def part_3_crispies(pack=None):
     return [
         Row(
             Column('textarea_input'),
@@ -84,14 +84,17 @@ def part_3_crispies():
     ]
 
 
-def part_4_crispies():
+def part_4_crispies(pack=None):
     return [
         InlineField('inlinefield_input'),
         InlineJustifiedField('inlinejustifiedfield_input'),
     ]
 
 
-def buttons_crispies():
+def buttons_crispies(pack=None):
+    box = Panel
+    if pack == 'foundation-6':
+        box = Callout
     return [
         Row(
             Column(
@@ -106,7 +109,7 @@ def buttons_crispies():
         ),
         Row(
             Column(
-                Panel(
+                box(
                     ButtonGroup(
                         Submit('submit', _('Submit'), css_class='success'),
                         Button('cancel', _('Cancel')),
