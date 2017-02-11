@@ -33,7 +33,11 @@ Table of contents
 
    install.rst
    usage.rst
-   layout.rst
+   layout/base.rst
+   layout/fields.rst
+   layout/buttons.rst
+   layout/grid.rst
+   layout/containers.rst
 
 
 History

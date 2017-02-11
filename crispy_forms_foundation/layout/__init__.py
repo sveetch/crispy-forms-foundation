@@ -6,7 +6,6 @@ the right ``TEMPLATE_PACK`` (defined from ``settings.CRISPY_TEMPLATE_PACK``)
 and implements Foundation components.
 """
 from __future__ import absolute_import
-from django.conf import settings
 
 from .base import Div, Panel, Callout, Layout, UneditableField, HTML
 from .grid import Row, RowFluid, Column
@@ -31,6 +30,3 @@ __all__ = [
     "TabHolder", "VerticalTabHolder", "AccordionItem", "AccordionHolder",
     "Callout",
 ]
-
-
-TEMPLATE_PACK = getattr(settings, 'CRISPY_TEMPLATE_PACK', 'foundation-5')

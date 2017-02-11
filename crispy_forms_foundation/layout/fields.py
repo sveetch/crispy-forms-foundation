@@ -1,5 +1,11 @@
 """
-Field layout items.
+Fields
+======
+
+.. _django-crispy-forms: https://github.com/maraujop/django-crispy-forms
+.. _Foundation: http://github.com/zurb/foundation
+.. _crispy-forms-foundation-demo: https://github.com/sveetch/crispy-forms-foundation-demo
+.. _Abide: http://foundation.zurb.com/docs/components/abide.html
 
 See :
 
@@ -12,8 +18,10 @@ from crispy_forms.utils import render_field, TEMPLATE_PACK
 from crispy_forms import layout as crispy_forms_layout
 
 
-class MultiWidgetField(crispy_forms_layout.MultiWidgetField):
-    pass
+__all__ = [
+    "Field", "MultiWidgetField", "MultiField", "SplitDateTimeField",
+    "InlineField", "InlineJustifiedField", "SwitchField", "InlineSwitchField",
+]
 
 
 class Field(crispy_forms_layout.Field):
@@ -30,6 +38,10 @@ class Field(crispy_forms_layout.Field):
               id="field_name")
     """
     template = "%s/field.html"
+
+
+class MultiWidgetField(crispy_forms_layout.MultiWidgetField):
+    pass
 
 
 class MultiField(crispy_forms_layout.MultiField):

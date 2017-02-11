@@ -1,5 +1,11 @@
 """
-Form container layout objects.
+Form containers
+===============
+
+.. _django-crispy-forms: https://github.com/maraujop/django-crispy-forms
+.. _Foundation: http://github.com/zurb/foundation
+.. _crispy-forms-foundation-demo: https://github.com/sveetch/crispy-forms-foundation-demo
+.. _Abide: http://foundation.zurb.com/docs/components/abide.html
 
 See :
 
@@ -16,6 +22,36 @@ from crispy_forms import layout as crispy_forms_layout
 from crispy_forms.utils import render_field, TEMPLATE_PACK
 from crispy_forms import bootstrap as crispy_forms_bootstrap
 from crispy_forms.compatibility import text_type
+
+
+__all__ = [
+    "Fieldset", "Container", "ContainerHolder", "TabHolder",
+    "VerticalTabHolder", "TabItem", "AccordionHolder", "AccordionItem",
+]
+
+
+class Fieldset(crispy_forms_layout.Fieldset):
+    """
+    It wraps fields in a ``<fieldset>``:
+
+    .. sourcecode:: python
+
+        Fieldset("Text for the legend",
+            'form_field_1',
+            'form_field_2'
+        )
+
+    The first parameter is the text for the fieldset legend. This text is
+    context aware, so you can do things like :
+
+    .. sourcecode:: python
+
+        Fieldset("Data for {{ user.username }}",
+            'form_field_1',
+            'form_field_2'
+        )
+    """
+    template = "%s/layout/fieldset.html"
 
 
 class Container(crispy_forms_bootstrap.Container):
@@ -46,30 +82,6 @@ class Container(crispy_forms_bootstrap.Container):
 
 class ContainerHolder(crispy_forms_bootstrap.ContainerHolder):
     pass
-
-
-class Fieldset(crispy_forms_layout.Fieldset):
-    """
-    It wraps fields in a ``<fieldset>``:
-
-    .. sourcecode:: python
-
-        Fieldset("Text for the legend",
-            'form_field_1',
-            'form_field_2'
-        )
-
-    The first parameter is the text for the fieldset legend. This text is
-    context aware, so you can do things like :
-
-    .. sourcecode:: python
-
-        Fieldset("Data for {{ user.username }}",
-            'form_field_1',
-            'form_field_2'
-        )
-    """
-    template = "%s/layout/fieldset.html"
 
 
 class TabHolder(crispy_forms_bootstrap.TabHolder):

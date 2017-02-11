@@ -1,11 +1,23 @@
 """
-Basic layout items
+Basic elements
+==============
+
+.. _django-crispy-forms: https://github.com/maraujop/django-crispy-forms
+.. _Foundation: http://github.com/zurb/foundation
+.. _crispy-forms-foundation-demo: https://github.com/sveetch/crispy-forms-foundation-demo
+.. _Abide: http://foundation.zurb.com/docs/components/abide.html
+
 """
 from django.conf import settings
 
 from crispy_forms import layout as crispy_forms_layout
 
 from crispy_forms.utils import TEMPLATE_PACK
+
+
+__all__ = [
+    "Layout", "UneditableField", "HTML", "Div", "Panel", "Callout",
+]
 
 
 class Layout(crispy_forms_layout.Layout):
@@ -22,9 +34,10 @@ class HTML(crispy_forms_layout.HTML):
 
 class Div(crispy_forms_layout.Div):
     """
-    It wraps fields in a <div>
+    It wraps fields inside a ``<div>`` element.
 
-    You can set ``css_id`` for a DOM id and ``css_class`` for a DOM class.
+    You can set ``css_id`` for element id and ``css_class`` for a element
+    class names.
 
     Example:
 
