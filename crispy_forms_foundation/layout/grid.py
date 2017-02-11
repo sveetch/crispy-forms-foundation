@@ -1,16 +1,14 @@
 """
 .. _Foundation Grid: http://foundation.zurb.com/sites/docs/v/5.5.3/components/grid.html
 
-Foundation grid layout objects
+Foundation grid layout objects.
 
 See `Foundation Grid`_ for grid components.
 """  # noqa: E501
 from django.conf import settings
 
 from crispy_forms_foundation.layout.base import Div
-
-
-TEMPLATE_PACK = getattr(settings, 'CRISPY_TEMPLATE_PACK', 'foundation-5')
+from crispy_forms.utils import TEMPLATE_PACK
 
 
 class Row(Div):

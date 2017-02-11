@@ -1,6 +1,8 @@
 .. _django-crispy-forms: https://github.com/maraujop/django-crispy-forms
 .. _Foundation: http://github.com/zurb/foundation
 
+.. _install-intro:
+
 =======
 Install
 =======
@@ -27,7 +29,7 @@ Install
 
         from crispy_forms_foundation.settings import *
 
-    Default template pack name used will be ``foundation-5``.
+    Default template pack name used will be ``foundation-6``.
 
     All other `django-crispy-forms`_ settings option apply, see its documentation for more details.
 

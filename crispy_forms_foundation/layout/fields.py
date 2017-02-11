@@ -1,5 +1,5 @@
 """
-Field layout items
+Field layout items.
 
 See :
 
@@ -8,11 +8,8 @@ See :
 """  # noqa: E501
 from django.conf import settings
 
-from crispy_forms.utils import render_field
+from crispy_forms.utils import render_field, TEMPLATE_PACK
 from crispy_forms import layout as crispy_forms_layout
-
-
-TEMPLATE_PACK = getattr(settings, 'CRISPY_TEMPLATE_PACK', 'foundation-5')
 
 
 class MultiWidgetField(crispy_forms_layout.MultiWidgetField):

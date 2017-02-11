@@ -1,5 +1,5 @@
 """
-Button layout items
+Button layout items.
 
 See :
 
@@ -10,11 +10,8 @@ from django.conf import settings
 from django.template import Context
 from django.template.loader import render_to_string
 
-from crispy_forms.utils import render_field
+from crispy_forms.utils import render_field, TEMPLATE_PACK
 from crispy_forms import layout as crispy_forms_layout
-
-
-TEMPLATE_PACK = getattr(settings, 'CRISPY_TEMPLATE_PACK', 'foundation-5')
 
 
 class ButtonHolder(crispy_forms_layout.ButtonHolder):

@@ -5,7 +5,7 @@ from django.conf import settings
 
 from crispy_forms import layout as crispy_forms_layout
 
-TEMPLATE_PACK = getattr(settings, 'CRISPY_TEMPLATE_PACK', 'foundation-5')
+from crispy_forms.utils import TEMPLATE_PACK
 
 
 class Layout(crispy_forms_layout.Layout):

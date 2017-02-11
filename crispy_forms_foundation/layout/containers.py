@@ -1,5 +1,5 @@
 """
-Form container layout objects
+Form container layout objects.
 
 See :
 
@@ -13,12 +13,9 @@ from django.conf import settings
 from django.template.loader import render_to_string
 
 from crispy_forms import layout as crispy_forms_layout
-from crispy_forms.utils import render_field
+from crispy_forms.utils import render_field, TEMPLATE_PACK
 from crispy_forms import bootstrap as crispy_forms_bootstrap
 from crispy_forms.compatibility import text_type
-
-
-TEMPLATE_PACK = getattr(settings, 'CRISPY_TEMPLATE_PACK', 'foundation-5')
 
 
 class Container(crispy_forms_bootstrap.Container):
@@ -88,6 +85,9 @@ class TabHolder(crispy_forms_bootstrap.TabHolder):
 
     ``TabHolder`` direct children should allways be a ``TabItem`` layout item.
 
+    A random id is builded for the tab holder if you don't define it using
+    ``css_id`` argument.
+
     The first ``TabItem`` containing a field error will be marked as
     *active* if any, else this will be just the first ``TabItem``.
     """
@@ -141,10 +141,7 @@ class TabItem(Container):
     Tab item object. It wraps fields in a div whose default class is "tabs" and
     takes a name as first argument.
 
-    The item name is slugified to build an id for the tab if you don't
-    define it using ``css_id`` argument.
-
-    Tab item is also responsible of building is associated tab link with its
+    Tab item is also responsible of building its associated tab link with its
     ``render_link`` using the ``link_template`` attribute.
 
     Example:
@@ -192,6 +189,9 @@ class AccordionHolder(crispy_forms_bootstrap.Accordion):
 
     ``AccordionHolder`` direct children should allways be a ``AccordionItem``
     layout item.
+
+    A random id is builded for the accordion holder if you don't define it
+    using ``css_id`` argument.
 
     The first ``AccordionItem`` containing a field error will be marked as
     *active* if any, else this will be just the first ``AccordionItem``.

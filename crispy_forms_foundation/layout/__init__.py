@@ -1,5 +1,5 @@
 """
-Layout items for Foundation components
+Layout items for Foundation components.
 
 Inherits from the default **crispy_forms** layout objects to force templates on
 the right ``TEMPLATE_PACK`` (defined from ``settings.CRISPY_TEMPLATE_PACK``)
