@@ -30,3 +30,5 @@ Install
     Default template pack name used will be ``foundation-5``.
 
     All other `django-crispy-forms`_ settings option apply, see its documentation for more details.
+
+#. Finally you will need to install Foundation assets in your project. For novices, a quick way is to use last `Foundation compiled version from CDN links <http://foundation.zurb.com/sites/docs/installation.html#cdn-links>`_.

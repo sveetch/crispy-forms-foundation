@@ -1,14 +1,13 @@
-.. _docutils: http://docutils.sourceforge.net/
 .. _Django: https://www.djangoproject.com/
 .. _django-crispy-forms: https://github.com/maraujop/django-crispy-forms
-.. _Foundation for sites: http://github.com/zurb/foundation
+.. _Foundation for sites: http://foundation.zurb.com/
 
 Introduction
 ============
 
 This is a `Django`_ application to add `django-crispy-forms`_ layout objects for `Foundation for sites`_.
 
-This app does not include a `Foundation for sites`_ release, you will have to install it yourself in your projects.
+This app does not include `Foundation for sites`_ assets, you will have to install them yourself in your projects.
 
 Links
 *****

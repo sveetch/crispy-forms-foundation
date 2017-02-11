@@ -8,6 +8,9 @@
 Usage
 =====
 
+Sample
+******
+
 Import **crispy-forms-foundation** then you can use the layout objects in your form :
 
 .. sourcecode:: python
@@ -72,7 +75,7 @@ To enable `Abide`_ on your form, you'll have to load its Javascript library (if 
             self.helper = FormHelper()
 
             # Enable Abide validation on the form
-            self.helper.attrs = {'data_abide': ''}
+            self.helper.attrs = {'data_abide': '', 'novalidate': ''}
 
             self.helper.form_action = '.'
             self.helper.layout = Layout(
@@ -81,7 +84,7 @@ To enable `Abide`_ on your form, you'll have to load its Javascript library (if 
 
             super(SampleForm, self).__init__(*args, **kwargs)
 
-You can also set an `Abide`_ error message directly on the field like this :
+If needed, you can define an `Abide`_ error message directly on the field like this :
 
 .. sourcecode:: python
 

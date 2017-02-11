@@ -25,6 +25,7 @@ This release adds **Foundation for site version 6** support, version 5 support i
 * Fixed Accordion for Foundation-6;
 * Fixed Tabs for Foundation-6;
 
+
 Version 0.5.5 - 2017/02/01
 **************************
 
@@ -47,30 +48,35 @@ Backward compatibility change for foundation-5 template pack:
 
 Everything should still work as with previous version.
 
-Version 0.5.4
-*************
+
+Version 0.5.4 - 2016/02/26
+**************************
 
 * Fixed ``TabHolder`` and ``AccordionHolder`` to have the right *active* behavior on their items: activate the first item with a field error if any, else just activate the first item;
 
-Version 0.5.3
-*************
+
+Version 0.5.3 - 2015/09/25
+**************************
 
 * Fixed bugs with button layout elements since django-crispy-forms==1.5.x, this is backward compatible with previous django-crispy-forms<1.5.x (with pull request #26 to close #25);
 * Fixed package infos and README to be more explicit on Django compatibility (1.4 to 1.8 actually tested);
 
-Version 0.5.2
-*************
+
+Version 0.5.2 - 2015/07/12
+**************************
 
 * Use relative imports and enforce absolute imports;
 * Add german and french translation with i18n;
 
-Version 0.5.1
-*************
+
+Version 0.5.1 - 2015/05/02
+**************************
 
 * Fix 'disable_csrf' option that was not honored in template forms;
 
-Version 0.5.0
-*************
+
+Version 0.5.0 - 2015/04/02
+**************************
 
 * Better layout elements organization;
 * Merged pull request #20 for *Added Foundation tabs and accordion components based on crispy-forms bootstrap3 implementation*;
@@ -80,15 +86,17 @@ Version 0.5.0
 * Add jquery plugin to add Abide support within tabs and accordions so the input errors are raised to their title name and not hided into contents;
 * Update documentation;
 
-Version 0.4.1
-*************
+
+Version 0.4.1 - 2015/02/22
+**************************
 
 * Added docs for submit button;
 * Fixed bug where the class layout property was being used and modified by instances;
 * Added Contributors to the doc;
 
-Version 0.4
-***********
+
+Version 0.4 - 2014/11/29
+************************
 
 * Allow unicode characters in the form title in ``forms.FoundationFormMixin``;
 * Extended ``forms.FoundationFormMixin.init_helper()`` to allow more customization:
@@ -100,23 +108,27 @@ Version 0.4
 * Added ``forms.FoundationFormMixin.title_templatestring`` attribute to store template string used to display form title;
 * Moved ``forms.FoundationFormMixin.id`` attribute name to ``forms.FoundationFormMixin.form_id``;
 
-Version 0.3.9
-*************
+
+Version 0.3.9 - 2014/11/21
+**************************
 
 * Added ``FoundationFormMixin``, ``FoundationForm`` and ``FoundationModelForm`` in ``forms.py`` to quickly and automatically create a Foundation layout;
 * Added ``InlineSwitchField`` layout element for better switches usage;
 
-Version 0.3.8
-*************
+
+Version 0.3.8 - 2014/11/16
+**************************
 
 * Redesigned *non field errors*;
 * Added abide error message on field;
 * Added missing error message and help text on inline field;
 
-Version 0.3.7
-*************
+
+Version 0.3.7 - 2014/11/15
+**************************
 
 * Added better documentation with Sphinx in 'docs/';
+
 
 Version 0.3.6
 *************
@@ -124,15 +136,18 @@ Version 0.3.6
 * Added ``ButtonGroup`` to use Foundation's Button groups instead of Button holder;
 * Added ``Panel`` layout element that act like a ``Div`` but add a ``panel`` css class name;
 
+
 Version 0.3.5
 *************
 
 * Added ``SwitchField`` field;
 
+
 Version 0.3.3
 *************
 
 * Fix bad template includes in some templates;
+
 
 Version 0.3.2
 *************
@@ -141,13 +156,15 @@ Version 0.3.2
 * Added documentation for ``Abide`` usage;
 * Added ``ButtonHolderPanel`` layout object;
 
+
 Version 0.3.1
 *************
 
 * Added ``InlineField`` and ``InlineJustifiedField``;
 
-Version 0.3.0
-*************
+
+Version 0.3.0 - 2014/03/28
+**************************
 
 Some backward incompatible change have been done, be sure to check them before upgrading.
 
@@ -163,3 +180,9 @@ Some backward incompatible change have been done, be sure to check them before u
   * ``formHint`` has changed to ``hint``;
   * ``inlineLabel`` has changed to ``inline-label``;
   * ``multiField`` has changed to ``multiple-fields``;
+
+
+Version 0.1.0 - 2012/12/23
+**************************
+
+First commit.
