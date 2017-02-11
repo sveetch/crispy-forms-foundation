@@ -4,7 +4,7 @@
 Changelog
 =========
 
-Version 0.6.0 - Unreleased
+Version 0.6.0 - 2017/02/11
 **************************
 
 This release adds **Foundation for site version 6** support, version 5 support is still available for now.
