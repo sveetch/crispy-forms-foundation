@@ -6,18 +6,17 @@ Grid
 .. _Foundation: http://github.com/zurb/foundation
 .. _crispy-forms-foundation-demo: https://github.com/sveetch/crispy-forms-foundation-demo
 .. _Abide: http://foundation.zurb.com/docs/components/abide.html
-.. _Foundation Grid: http://foundation.zurb.com/sites/docs/v/5.5.3/components/grid.html
 
-See `Foundation Grid`_ for grid components.
+References
+    * `Foundation 5 Grid <http://foundation.zurb.com/sites/docs/v/5.5.3/components/grid.html>`_;
+    * `Foundation 6 Grid <http://foundation.zurb.com/sites/docs/grid.html>`_;
+
 """  # noqa: E501
-from django.conf import settings
-
 from crispy_forms_foundation.layout.base import Div
-from crispy_forms.utils import TEMPLATE_PACK
 
 
 __all__ = [
-    "Row", "RowFluid", "Column",
+    'Row', 'RowFluid', 'Column',
 ]
 
 
@@ -105,8 +104,8 @@ class Column(Div):
     ``large-12 columns``. ``columns`` class is always appended, so you don't
     need to specify it.
 
-    This is the column from the `Foundation Grid`_, all columns should be
-    contained in a **Row** or a **RowFluid** and you will have to define the
+    This is the column from the Foundation Grid component, all columns should
+    be contained in a **Row** or a **RowFluid** and you will have to define the
     column type in the ``css_class`` attribute.
 
     Example:

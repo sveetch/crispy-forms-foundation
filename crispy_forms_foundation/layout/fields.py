@@ -7,20 +7,20 @@ Fields
 .. _crispy-forms-foundation-demo: https://github.com/sveetch/crispy-forms-foundation-demo
 .. _Abide: http://foundation.zurb.com/docs/components/abide.html
 
-See :
+References
+    * `Foundation 5 Forms <http://foundation.zurb.com/sites/docs/v/5.5.3/components/forms.html>`_;
+    * `Foundation 5 Switches <http://foundation.zurb.com/sites/docs/v/5.5.3/components/switch.html>`_;
+    * `Foundation 6 Forms <http://foundation.zurb.com/sites/docs/forms.html>`_;
+    * `Foundation 6 Switches <http://foundation.zurb.com/sites/docs/switch.html>`_;
 
-* `Foundation forms <http://foundation.zurb.com/sites/docs/v/5.5.3/components/forms.html>`_ for input field components;
-* `Foundation Switches <http://foundation.zurb.com/sites/docs/v/5.5.3/components/switch.html>`_ for switches components;
 """  # noqa: E501
-from django.conf import settings
-
 from crispy_forms.utils import render_field, TEMPLATE_PACK
 from crispy_forms import layout as crispy_forms_layout
 
 
 __all__ = [
-    "Field", "MultiWidgetField", "MultiField", "SplitDateTimeField",
-    "InlineField", "InlineJustifiedField", "SwitchField", "InlineSwitchField",
+    'Field', 'MultiWidgetField', 'MultiField', 'SplitDateTimeField',
+    'InlineField', 'InlineJustifiedField', 'SwitchField', 'InlineSwitchField',
 ]
 
 

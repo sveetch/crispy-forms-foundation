@@ -7,15 +7,17 @@ Form containers
 .. _crispy-forms-foundation-demo: https://github.com/sveetch/crispy-forms-foundation-demo
 .. _Abide: http://foundation.zurb.com/docs/components/abide.html
 
-See :
+References
+    * `Foundation 5 fieldset <http://foundation.zurb.com/sites/docs/v/5.5.3/components/forms.html>`_;
+    * `Foundation 5 Accordion <http://foundation.zurb.com/sites/docs/v/5.5.3/components/accordion.html>`_;
+    * `Foundation 5 Tabs <http://foundation.zurb.com/sites/docs/v/5.5.3/components/tabs.html>`_;
+    * `Foundation 6 fieldset <http://foundation.zurb.com/sites/docs/forms.html#fieldset-styles>`_;
+    * `Foundation 6 Accordion <http://foundation.zurb.com/sites/docs/accordion.html>`_;
+    * `Foundation 6 Tabs <http://foundation.zurb.com/sites/docs/tabs.html>`_;
 
-* `Foundation forms <http://foundation.zurb.com/sites/docs/v/5.5.3/components/forms.html>`_ for fieldset component;
-* `Foundation Accordion <http://foundation.zurb.com/sites/docs/v/5.5.3/components/accordion.html>`_ for accordion components;
-* `Foundation Tabs <http://foundation.zurb.com/sites/docs/v/5.5.3/components/tabs.html>`_ for tabs components;
 """  # noqa: E501
 from random import randint
 
-from django.conf import settings
 from django.template.loader import render_to_string
 
 from crispy_forms import layout as crispy_forms_layout
@@ -25,8 +27,8 @@ from crispy_forms.compatibility import text_type
 
 
 __all__ = [
-    "Fieldset", "Container", "ContainerHolder", "TabHolder",
-    "VerticalTabHolder", "TabItem", "AccordionHolder", "AccordionItem",
+    'Fieldset', 'Container', 'ContainerHolder', 'TabHolder',
+    'VerticalTabHolder', 'TabItem', 'AccordionHolder', 'AccordionItem',
 ]
 
 
@@ -57,7 +59,8 @@ class Fieldset(crispy_forms_layout.Fieldset):
 class Container(crispy_forms_bootstrap.Container):
     """
     Overrides original Container element to get the "active" classname from
-    Class attribute ``active_css_class``.
+    Class attribute ``active_css_class`` so it's compatible with Foundation
+    5 and 6.
     """
     css_class = ""
     active_css_class = "active"
@@ -169,7 +172,7 @@ class TabItem(Container):
 
     def has_errors(self, form):
         """
-        Find tab fields are listed as invalid
+        Find tab fields listed as invalid
         """
         return any([fieldname_error for fieldname_error in form.errors.keys()
                     if fieldname_error in self])

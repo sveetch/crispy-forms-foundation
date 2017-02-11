@@ -14,7 +14,7 @@ Links
 
 * Read the documentation on `Read the docs <http://crispy-forms-foundation.readthedocs.io/>`_;
 * Download his `PyPi package <http://pypi.python.org/pypi/crispy-forms-foundation>`_;
-* Clone it on his `Github repository <https://github.com/sveetch/crispy-forms-foundation>`_;
+* Clone it on its `Github repository <https://github.com/sveetch/crispy-forms-foundation>`_;
 
 Requires
 ========

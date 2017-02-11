@@ -2,21 +2,20 @@
 Basic elements
 ==============
 
-.. _django-crispy-forms: https://github.com/maraujop/django-crispy-forms
 .. _Foundation: http://github.com/zurb/foundation
-.. _crispy-forms-foundation-demo: https://github.com/sveetch/crispy-forms-foundation-demo
-.. _Abide: http://foundation.zurb.com/docs/components/abide.html
+.. _Foundation 5 Panel: http://foundation.zurb.com/sites/docs/v/5.5.3/components/panels.html
+.. _Foundation 6 Callout: http://foundation.zurb.com/sites/docs/callout.html
 
-"""
-from django.conf import settings
+References:
+    * `Foundation 5 Panel`_;
+    * `Foundation 6 Callout`_;
 
+"""  # noqa: E501
 from crispy_forms import layout as crispy_forms_layout
-
-from crispy_forms.utils import TEMPLATE_PACK
 
 
 __all__ = [
-    "Layout", "UneditableField", "HTML", "Div", "Panel", "Callout",
+    'Layout', 'UneditableField', 'HTML', 'Div', 'Panel', 'Callout',
 ]
 
 
@@ -51,7 +50,7 @@ class Div(crispy_forms_layout.Div):
 
 class Panel(crispy_forms_layout.Div):
     """
-    Act like ``Div`` but add a ``panel`` css class.
+    Act like ``Div`` but add a ``panel`` class name.
 
     ``Panel`` component has been replaced with the ``Callout`` in Foundation-6.
 
@@ -69,7 +68,7 @@ class Panel(crispy_forms_layout.Div):
 
 class Callout(crispy_forms_layout.Div):
     """
-    Act like ``Div`` but add a ``callout`` css class.
+    Act like ``Div`` but add a ``callout`` class name.
 
     ``Callout`` component is the Foundation-6 replacement of ``Panel``
     component.

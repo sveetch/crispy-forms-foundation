@@ -2,17 +2,15 @@
 Buttons
 =======
 
-.. _django-crispy-forms: https://github.com/maraujop/django-crispy-forms
 .. _Foundation: http://github.com/zurb/foundation
-.. _crispy-forms-foundation-demo: https://github.com/sveetch/crispy-forms-foundation-demo
-.. _Abide: http://foundation.zurb.com/docs/components/abide.html
 
-See :
+References
+    * `Foundation 5 Button <http://foundation.zurb.com/sites/docs/v/5.5.3/components/buttons.html>`_;
+    * `Foundation 5 Button Group <http://foundation.zurb.com/sites/docs/v/5.5.3/components/button_groups.html>`_;
+    * `Foundation 6 Button <http://foundation.zurb.com/sites/docs/button.html>`_;
+    * `Foundation 6 Button Group <http://foundation.zurb.com/sites/docs/button-group.html>`_;
 
-* `Foundation buttons <http://foundation.zurb.com/sites/docs/v/5.5.3/components/buttons.html>`_ for button components;
-* `Foundation button groups <http://foundation.zurb.com/sites/docs/v/5.5.3/components/button_groups.html>`_ for button groups components;
 """  # noqa: E501
-from django.conf import settings
 from django.template import Context
 from django.template.loader import render_to_string
 
@@ -21,14 +19,14 @@ from crispy_forms import layout as crispy_forms_layout
 
 
 __all__ = [
-    "ButtonHolder", "ButtonHolderPanel", "ButtonGroup", "Button", "Submit",
-    "Hidden", "Reset",
+    'ButtonHolder', 'ButtonHolderPanel', 'ButtonHolderCallout', 'ButtonGroup',
+    'Button', 'Submit', 'Hidden', 'Reset',
 ]
 
 
 class ButtonHolder(crispy_forms_layout.ButtonHolder):
     """
-    It wraps fields in a ``<div class="button-holder">``
+    It wraps fields in an element ``<div class="button-holder">``.
 
     This is where you should put Layout objects that render to form buttons
     like Submit. It should only hold ``HTML`` and ``BaseInput`` inherited
@@ -48,16 +46,27 @@ class ButtonHolder(crispy_forms_layout.ButtonHolder):
 
 class ButtonHolderPanel(ButtonHolder):
     """
-    Act like ``ButtonHolder`` but add a ``panel`` css class on the main div
+    Act like ``ButtonHolder`` but add a ``panel`` class name on the main
+    ``div``.
     """
     def __init__(self, field, *args, **kwargs):
         kwargs['css_class'] = kwargs.get('css_class', '')+' panel'
         super(ButtonHolderPanel, self).__init__(field, *args, **kwargs)
 
 
+class ButtonHolderCallout(ButtonHolder):
+    """
+    Act like ``ButtonHolder`` but add a ``callout`` class name on the main
+    ``div``.
+    """
+    def __init__(self, field, *args, **kwargs):
+        kwargs['css_class'] = kwargs.get('css_class', '')+' callout'
+        super(ButtonHolderPanel, self).__init__(field, *args, **kwargs)
+
+
 class ButtonGroup(crispy_forms_layout.LayoutObject):
     """
-    It wraps fields in a ``<ul class="button-group">``
+    It wraps fields in an element ``<div class="button-group">``.
 
     This is where you should put Layout objects that render to form buttons
     like Submit. It should only hold `HTML` and `BaseInput` inherited objects.

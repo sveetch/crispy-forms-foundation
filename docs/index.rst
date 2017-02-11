@@ -17,7 +17,7 @@ Links
 
 * Read the documentation on `Read the docs <http://crispy-forms-foundation.readthedocs.io/>`_;
 * Download his `PyPi package <http://pypi.python.org/pypi/crispy-forms-foundation>`_;
-* Clone it on his `Github repository <https://github.com/sveetch/crispy-forms-foundation>`_;
+* Clone it on its `Github repository <https://github.com/sveetch/crispy-forms-foundation>`_;
 
 Requires
 ========
@@ -32,12 +32,15 @@ Table of contents
    :maxdepth: 2
 
    install.rst
+   settings.rst
    usage.rst
    layout/base.rst
    layout/fields.rst
    layout/buttons.rst
    layout/grid.rst
    layout/containers.rst
+   abide.rst
+   form_objects.rst
 
 
 History
