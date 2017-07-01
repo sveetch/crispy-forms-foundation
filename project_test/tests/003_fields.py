@@ -3,8 +3,8 @@ import pytest
 from crispy_forms_foundation.layout import (Layout, InlineField,
                                             InlineSwitchField)
 
-from forms import BasicInputForm, BoolInputForm
-from utils import read_output, write_output
+from project_test.tests.forms import BasicInputForm, BoolInputForm
+from project_test.tests.utils import read_output, write_output
 
 
 def test_inlinefield(output_test_path, rendered_template, helper, client):

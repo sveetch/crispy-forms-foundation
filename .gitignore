@@ -1,9 +1,5 @@
-#buildout's specific
-.installed.cfg
-eggs/*
-bin/*
-build/*
-dist/*
+# virtualenv
+/venv
 
 #egg's specific
 *.egg-info

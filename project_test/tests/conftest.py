@@ -36,7 +36,8 @@ def get_rendered_template(form, **kwargs):
 @pytest.fixture(scope='session')
 def output_test_path(pytestconfig):
     """Return absolute path to test outputs directory"""
-    return os.path.join(pytestconfig.rootdir.strpath, 'project_test', 'tests', 'output')
+    #return os.path.join(pytestconfig.rootdir.strpath, 'project_test', 'tests', 'output')
+    return os.path.join(pytestconfig.rootdir.strpath, 'tests', 'output')
 
 
 @pytest.fixture(scope='session')

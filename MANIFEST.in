@@ -1,4 +1,13 @@
 include MANIFEST.in
 include LICENCE.txt
 include README.rst
+
 recursive-include crispy_forms_foundation/templates *
+recursive-include crispy_forms_foundation/static *
+recursive-include crispy_forms_foundation/locale *
+recursive-include crispy_forms_foundation/test_fixtures *
+
+recursive-exclude project_test *
+recursive-exclude project_test .cache
+recursive-exclude project_test __pycache__
+recursive-exclude project_test *.pyc

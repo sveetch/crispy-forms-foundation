@@ -1,7 +1,7 @@
 """
 Urls for "crispy form foundation" demo
 """
-from django.conf.urls import url, patterns
+from django.conf.urls import url
 from django.views.generic.base import TemplateView
 
 from .views import FormByFieldsetView, FormByTabView, FormByAccordionView, StaticPage

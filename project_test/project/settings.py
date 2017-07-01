@@ -132,7 +132,7 @@ STATIC_ROOT = os.path.join(PROJECT_PATH, 'static')
 INSTALLED_APPS = INSTALLED_APPS+(
     'crispy_forms',
     'crispy_forms_foundation',
-    'project.demo',
+    'project_test.project.demo',
 )
 
 TEMPLATES[0]['DIRS'] = (os.path.join(PROJECT_PATH, "templates"),)

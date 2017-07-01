@@ -3,8 +3,8 @@ import pytest
 from crispy_forms_foundation.layout import (Layout, Row, Column, ButtonHolder,
                                             Submit)
 
-from forms import BasicInputForm, BasicInputFormLayoutIncluded, AdvancedForm
-from utils import read_output, write_output
+from project_test.tests.forms import BasicInputForm, BasicInputFormLayoutIncluded, AdvancedForm
+from project_test.tests.utils import read_output, write_output
 
 
 def test_basic(output_test_path, rendered_template, helper, client):

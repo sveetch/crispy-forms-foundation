@@ -1,6 +1,8 @@
-PYTHON2_PATH=`which python2.7`
+PYTHON=python3
 
-.PHONY: help clean delpyc tests flake quality
+PIP=venv/bin/python -m pip
+
+.PHONY: help clean delpyc install tests flake quality runserver
 
 help:
 	@echo "Please use \`make <target>' where <target> is one of"
@@ -12,22 +14,31 @@ help:
 	@echo "  tests               -- to launch tests using py.test"
 	@echo "  quality             -- to launch Flake8 checking and tests with py.test"
 	@echo
-	@echo "  server              -- to launch a Django instance on 0.0.0.0:8001"
+	@echo "  runserver           -- to launch a Django instance on 0.0.0.0:8001"
 	@echo
 
 delpyc:
 	find . -name "*\.pyc"|xargs rm -f
 
 clean: delpyc
-	rm -Rf dist .tox crispy_forms_foundation.egg-info .cache project_test/.cache/ project_test/tests/__pycache__/ docs/_build
+	rm -Rf venv dist .tox crispy_forms_foundation.egg-info .cache project_test/.cache/ project_test/__pycache__/ project_test/tests/__pycache__/ docs/_build
+
+venv:
+	$(PYTHON) -m venv venv
+
+install: venv
+	$(PIP) install -e .
+
+install-dev: install
+	$(PIP) install -r requirements/dev.txt
 
 flake:
 	flake8 --show-source crispy_forms_foundation
 
 tests:
-	py.test -vv project_test/
+	venv/bin/py.test -vv project_test/
 
 quality: tests flake
 
-server:
+runserver:
 	cd project_test && ./manage.py runserver 0.0.0.0:8001

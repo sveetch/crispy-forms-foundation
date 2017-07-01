@@ -3,8 +3,8 @@ import pytest
 from crispy_forms_foundation.layout import (Layout, TabHolder, TabItem,
                                             AccordionHolder, AccordionItem)
 
-from forms import AdvancedForm
-from utils import read_output, write_output
+from project_test.tests.forms import AdvancedForm
+from project_test.tests.utils import read_output, write_output
 
 
 def test_tab(output_test_path, rendered_template, helper, client):
