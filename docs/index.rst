@@ -19,15 +19,15 @@ Links
 * Download his `PyPi package <http://pypi.python.org/pypi/crispy-forms-foundation>`_;
 * Clone it on its `Github repository <https://github.com/sveetch/crispy-forms-foundation>`_;
 
+
 Requires
 ========
 
 * `Django`_ >=1.8, <=1.10;
-* `django-crispy-forms`_ >= 1.4.x;
+* `django-crispy-forms`_ >= 1.6.x;
 
-Table of contents
-*****************
-
+User’s Guide
+************
 .. toctree::
    :maxdepth: 2
 
@@ -42,13 +42,13 @@ Table of contents
    abide.rst
    form_objects.rst
 
-
-History
-*******
+Developer’s Guide
+*****************
 
 .. toctree::
    :maxdepth: 1
 
+   development.rst
    changelog.rst
 
 Contributors

@@ -20,4 +20,4 @@ Requires
 ========
 
 * `Django`_ >=1.8, <=1.10;
-* `django-crispy-forms`_ >= 1.4.x;
+* `django-crispy-forms`_ >= 1.6.1;

@@ -4,12 +4,14 @@
 Changelog
 =========
 
-Version 0.6.1 - 2017/06/02
+Version 0.6.1 - 2017/07/03
 **************************
 
 * Cleaned tests structure so it runs everywhere;
 * Fixed tests to pass with tox on every supported Django versions;
 * Better Makefile;
+* Upgraded dependancy ``django-crispy-forms`` to ``1.6.1`` since it backward compatible with Django 1.8;
+* Updated documentation;
 
 Version 0.6.0 - 2017/02/11
 **************************
