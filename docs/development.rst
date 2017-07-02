@@ -27,7 +27,7 @@ Every requirement is available in file ``requirements/dev.txt`` (except for tox)
 Install for development
 ***********************
 
-First ensure you have `pip`_ and `python-venv`_ installed, clone crispy-form-foundation repository, enter its directory and just type: ::
+First ensure you have `pip`_ and ``python-venv`` package installed, clone crispy-form-foundation repository, enter its directory and just type: ::
 
     make install-dev
 
