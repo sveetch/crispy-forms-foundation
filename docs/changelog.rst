@@ -4,6 +4,12 @@
 Changelog
 =========
 
+Version 0.6.2 - 2017/07/03
+**************************
+
+* Validated working with Django 1.11 from unittests;
+* Dropped testing for Django >= 1.10 with Python 2.x in tox config;
+
 Version 0.6.1 - 2017/07/03
 **************************
 

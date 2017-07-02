@@ -17,6 +17,7 @@ setup(
         "Framework :: Django :: 1.8",
         "Framework :: Django :: 1.9",
         "Framework :: Django :: 1.10",
+        "Framework :: Django :: 1.11",
         "License :: OSI Approved :: BSD License",
         "Operating System :: OS Independent",
         "Programming Language :: Python",
@@ -29,7 +30,7 @@ setup(
         "Topic :: Software Development :: Libraries :: Python Modules",
     ],
     install_requires=[
-        'Django>=1.8,<1.11',
+        'Django>=1.8,<1.12',
         'django-crispy-forms >= 1.6.1'
     ],
     include_package_data=True,
