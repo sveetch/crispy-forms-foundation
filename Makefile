@@ -1,6 +1,9 @@
 PYTHON=python3
 
 PIP=venv/bin/python -m pip
+FLAKE=venv/bin/flake8
+PYTEST=venv/bin/py.test
+DJANGOMANAGER=venv/bin/python project_test/manage.py
 
 .PHONY: help clean delpyc install tests flake quality runserver
 
@@ -33,12 +36,12 @@ install-dev: install
 	$(PIP) install -r requirements/dev.txt
 
 flake:
-	flake8 --show-source crispy_forms_foundation
+	$(FLAKE) --show-source crispy_forms_foundation
 
 tests:
-	venv/bin/py.test -vv project_test/
+	$(PYTEST) -vv project_test/
 
 quality: tests flake
 
 runserver:
-	cd project_test && ./manage.py runserver 0.0.0.0:8001
+	$(DJANGOMANAGER) runserver 0.0.0.0:8001

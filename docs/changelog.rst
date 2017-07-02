@@ -4,6 +4,13 @@
 Changelog
 =========
 
+Version 0.6.1 - 2017/06/02
+**************************
+
+* Cleaned tests structure so it runs everywhere;
+* Fixed tests to pass with tox on every supported Django versions;
+* Better Makefile;
+
 Version 0.6.0 - 2017/02/11
 **************************
 

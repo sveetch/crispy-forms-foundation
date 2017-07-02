@@ -1,13 +1,16 @@
+import os
+
 import pytest
 
 from crispy_forms_foundation.layout import (Layout, InlineField,
                                             InlineSwitchField)
 
 from project_test.tests.forms import BasicInputForm, BoolInputForm
-from project_test.tests.utils import read_output, write_output
+#from project_test.tests.utils import write_output
 
 
-def test_inlinefield(output_test_path, rendered_template, helper, client):
+def test_inlinefield(output_test_path, render_output, rendered_template,
+                     helper, client):
     form = BasicInputForm()
     pack = helper.template_pack
 
@@ -18,13 +21,15 @@ def test_inlinefield(output_test_path, rendered_template, helper, client):
 
     rendered = rendered_template(form, helper=helper)
 
-    attempted = read_output(output_test_path, pack, "test_inlinefield.html")
+    attempted = render_output(os.path.join(output_test_path, pack,
+                                           "test_inlinefield.html"))
     #write_output(output_test_path, pack, "test_inlinefield.html", rendered)
 
     assert rendered == attempted
 
 
-def test_inlineswitchfield(output_test_path, rendered_template, helper, client):
+def test_inlineswitchfield(output_test_path, render_output, rendered_template,
+                           helper, client):
     form = BoolInputForm()
     pack = helper.template_pack
 
@@ -36,7 +41,8 @@ def test_inlineswitchfield(output_test_path, rendered_template, helper, client):
 
     rendered = rendered_template(form, helper=helper)
 
-    attempted = read_output(output_test_path, pack, "test_inlineswitchfield.html")
+    attempted = render_output(os.path.join(output_test_path, pack,
+                                           "test_inlineswitchfield.html"))
     #write_output(output_test_path, pack, "test_inlineswitchfield.html", rendered)
 
     assert rendered == attempted

@@ -1,13 +1,16 @@
+import os
+
 import pytest
 
 from crispy_forms_foundation.layout import (Layout, TabHolder, TabItem,
                                             AccordionHolder, AccordionItem)
 
 from project_test.tests.forms import AdvancedForm
-from project_test.tests.utils import read_output, write_output
+#from project_test.tests.utils import write_output
 
 
-def test_tab(output_test_path, rendered_template, helper, client):
+def test_tab(output_test_path, render_output, rendered_template, helper,
+             client):
     form = AdvancedForm()
     pack = helper.template_pack
 
@@ -22,13 +25,15 @@ def test_tab(output_test_path, rendered_template, helper, client):
 
     rendered = rendered_template(form, helper=helper)
 
-    attempted = read_output(output_test_path, pack, "test_tab.html")
+    attempted = render_output(os.path.join(output_test_path, pack,
+                                           "test_tab.html"))
     #write_output(output_test_path, pack, "test_tab.html", rendered)
 
     assert attempted == rendered
 
 
-def test_accordion(output_test_path, rendered_template, helper, client):
+def test_accordion(output_test_path, render_output, rendered_template, helper,
+                   client):
     form = AdvancedForm()
     pack = helper.template_pack
 
@@ -44,7 +49,8 @@ def test_accordion(output_test_path, rendered_template, helper, client):
 
     rendered = rendered_template(form, helper=helper)
 
-    attempted = read_output(output_test_path, pack, "test_accordion.html")
+    attempted = render_output(os.path.join(output_test_path, pack,
+                                           "test_accordion.html"))
     #write_output(output_test_path, pack, "test_accordion.html", rendered)
 
     assert attempted == rendered

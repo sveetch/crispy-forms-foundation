@@ -1,13 +1,16 @@
+import os
+
 import pytest
 
 from crispy_forms_foundation.layout import (Layout, ButtonGroup,
                                             Submit, Button)
 
 from project_test.tests.forms import BasicInputForm
-from project_test.tests.utils import read_output, write_output
+#from project_test.tests.utils import write_output
 
 
-def test_buttongroup(output_test_path, rendered_template, helper, client):
+def test_buttongroup(output_test_path, render_output, rendered_template,
+                     helper, client):
     form = BasicInputForm()
     pack = helper.template_pack
 
@@ -21,7 +24,8 @@ def test_buttongroup(output_test_path, rendered_template, helper, client):
 
     rendered = rendered_template(form, helper=helper)
 
-    attempted = read_output(output_test_path, pack, "test_buttongroup.html")
+    attempted = render_output(os.path.join(output_test_path, pack,
+                                           "test_buttongroup.html"))
     #write_output(output_test_path, pack, "test_buttongroup.html", rendered)
 
     assert rendered == attempted

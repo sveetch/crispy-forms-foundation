@@ -30,7 +30,7 @@ setup(
     ],
     install_requires=[
         'Django>=1.8,<1.11',
-        'django-crispy-forms >= 1.4'
+        'django-crispy-forms >= 1.6.1'
     ],
     include_package_data=True,
     zip_safe=False

@@ -1,37 +1,41 @@
+import os
+
 import pytest
 
 from crispy_forms_foundation.layout import (Layout, Row, Column, ButtonHolder,
                                             Submit)
 
 from project_test.tests.forms import BasicInputForm, BasicInputFormLayoutIncluded, AdvancedForm
-from project_test.tests.utils import read_output, write_output
+#from project_test.tests.utils import write_output
 
 
-def test_basic(output_test_path, rendered_template, helper, client):
+def test_basic(output_test_path, render_output, rendered_template, helper, client):
     form = BasicInputForm()
     pack = helper.template_pack
 
     rendered = rendered_template(form, helper=helper)
 
-    attempted = read_output(output_test_path, pack, "test_basic.html")
+    attempted = render_output(os.path.join(output_test_path, pack,
+                                           "test_basic.html"))
     #write_output(output_test_path, pack, "test_basic.html", rendered)
 
     assert rendered == attempted
 
 
-def test_layout(output_test_path, rendered_template, helper, client):
+def test_layout(output_test_path, render_output, rendered_template, helper, client):
     form = BasicInputFormLayoutIncluded(helper=helper)
     pack = helper.template_pack
 
     rendered = rendered_template(form)
 
-    attempted = read_output(output_test_path, pack, "test_layout.html")
+    attempted = render_output(os.path.join(output_test_path, pack,
+                                           "test_layout.html"))
     #write_output(output_test_path, pack, "test_layout.html", rendered)
 
     assert rendered == attempted
 
 
-def test_advanced(output_test_path, rendered_template, helper, client):
+def test_advanced(output_test_path, render_output, rendered_template, helper, client):
     form = AdvancedForm()
     pack = helper.template_pack
 
@@ -61,7 +65,8 @@ def test_advanced(output_test_path, rendered_template, helper, client):
 
     rendered = rendered_template(form, helper=helper)
 
-    attempted = read_output(output_test_path, pack, "test_advanced.html")
+    attempted = render_output(os.path.join(output_test_path, pack,
+                                           "test_advanced.html"))
     #write_output(output_test_path, pack, "test_advanced.html", rendered)
 
     assert rendered == attempted
