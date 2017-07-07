@@ -24,7 +24,7 @@
         {% endif %}
 
         {% if field.field.abide_msg %}
-            <span id="abide_error_{{ field.auto_id }}" class="form-error is-visible{% if form_show_errors and not field.errors|length_is:"0" %} compact{% endif %}">
+            <span id="abide_error_{{ field.auto_id }}" class="form-error{% if form_show_errors and not field.errors|length_is:"0" %} compact{% endif %}" data-form-error-for="{{ field.id_for_label }}">
                 {{ field.field.abide_msg }}
             </span>
         {% endif %}
