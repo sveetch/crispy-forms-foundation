@@ -4,6 +4,11 @@
 Changelog
 =========
 
+Version 0.6.3 - Unreleased
+**************************
+
+* Removed ``is-visible`` class and added missing ``data-form-error-for`` attribute in Foundation6 field templates close #33;
+
 Version 0.6.2 - 2017/07/03
 **************************
 
