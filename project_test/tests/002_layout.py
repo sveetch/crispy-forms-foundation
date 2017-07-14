@@ -19,7 +19,7 @@ def test_basic(output_test_path, render_output, rendered_template, helper, clien
                                            "test_basic.html"))
     #write_output(output_test_path, pack, "test_basic.html", rendered)
 
-    assert rendered == attempted
+    assert attempted == rendered
 
 
 def test_layout(output_test_path, render_output, rendered_template, helper, client):
@@ -32,7 +32,7 @@ def test_layout(output_test_path, render_output, rendered_template, helper, clie
                                            "test_layout.html"))
     #write_output(output_test_path, pack, "test_layout.html", rendered)
 
-    assert rendered == attempted
+    assert attempted == rendered
 
 
 def test_advanced(output_test_path, render_output, rendered_template, helper, client):
@@ -69,4 +69,4 @@ def test_advanced(output_test_path, render_output, rendered_template, helper, cl
                                            "test_advanced.html"))
     #write_output(output_test_path, pack, "test_advanced.html", rendered)
 
-    assert rendered == attempted
+    assert attempted == rendered

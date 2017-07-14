@@ -28,4 +28,4 @@ def test_buttongroup(output_test_path, render_output, rendered_template,
                                            "test_buttongroup.html"))
     #write_output(output_test_path, pack, "test_buttongroup.html", rendered)
 
-    assert rendered == attempted
+    assert attempted == rendered

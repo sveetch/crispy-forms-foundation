@@ -25,7 +25,7 @@ def test_inlinefield(output_test_path, render_output, rendered_template,
                                            "test_inlinefield.html"))
     #write_output(output_test_path, pack, "test_inlinefield.html", rendered)
 
-    assert rendered == attempted
+    assert attempted == rendered
 
 
 def test_inlineswitchfield(output_test_path, render_output, rendered_template,
@@ -45,4 +45,4 @@ def test_inlineswitchfield(output_test_path, render_output, rendered_template,
                                            "test_inlineswitchfield.html"))
     #write_output(output_test_path, pack, "test_inlineswitchfield.html", rendered)
 
-    assert rendered == attempted
+    assert attempted == rendered
