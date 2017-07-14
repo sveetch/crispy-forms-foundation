@@ -8,6 +8,9 @@ Version 0.6.3 - Unreleased
 **************************
 
 * Removed ``is-visible`` class and added missing ``data-form-error-for`` attribute in Foundation6 field templates close #33;
+* Added new field ``FakeField``;
+* Fixed tests to always compare rendered value to attempted value, so the test error output diffs are allways in the same order;
+* Updated documentation;
 
 Version 0.6.2 - 2017/07/03
 **************************

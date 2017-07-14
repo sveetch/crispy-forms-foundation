@@ -12,7 +12,7 @@ from .grid import Row, RowFluid, Column
 from .fields import (MultiWidgetField, Field, MultiField,
                      SplitDateTimeField, InlineField,
                      InlineJustifiedField, SwitchField,
-                     InlineSwitchField)
+                     InlineSwitchField, FakeField)
 from .buttons import (ButtonHolder, ButtonHolderPanel,
                       ButtonGroup, Button, Submit, Hidden, Reset)
 from .containers import (Container, ContainerHolder,
@@ -25,6 +25,7 @@ __all__ = [
     "Div", "Panel", "Layout", "UneditableField", "HTML", "Row", "RowFluid",
     "Column", "MultiWidgetField", "Field", "MultiField", "SplitDateTimeField",
     "InlineField", "InlineJustifiedField", "SwitchField", "InlineSwitchField",
+    "FakeField",
     "ButtonHolder", "ButtonHolderPanel", "ButtonGroup", "Button", "Submit",
     "Hidden", "Reset", "Container", "ContainerHolder", "Fieldset", "TabItem",
     "TabHolder", "VerticalTabHolder", "AccordionItem", "AccordionHolder",

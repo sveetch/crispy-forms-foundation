@@ -19,8 +19,9 @@ from crispy_forms import layout as crispy_forms_layout
 
 
 __all__ = [
-    'Field', 'MultiWidgetField', 'MultiField', 'SplitDateTimeField',
-    'InlineField', 'InlineJustifiedField', 'SwitchField', 'InlineSwitchField',
+    'Field', 'FakeField', 'MultiWidgetField', 'MultiField',
+    'SplitDateTimeField', 'InlineField', 'InlineJustifiedField', 'SwitchField',
+    'InlineSwitchField',
 ]
 
 
@@ -38,6 +39,26 @@ class Field(crispy_forms_layout.Field):
               id="field_name")
     """
     template = "%s/field.html"
+
+
+class FakeField(Field):
+    """
+    Fake field is intended to be used with some app that does not honor field
+    ID on the input element alike ``django-recaptcha`` that build a textarea
+    with a dummy ID attribute. This leads to HTML validation error.
+
+    Fake field works as basic Field object except a ``fake_field`` variable is
+    passed to the template context.
+
+    Actually the only difference with a ``Field`` is label element drops
+    ``for`` attribute.
+
+    You should use this field in last resort.
+    """
+    def render(self, form, form_style, context, template_pack=TEMPLATE_PACK):
+        context['fake_field'] = True
+        return super(FakeField, self).render(form, form_style, context,
+                                             template_pack)
 
 
 class MultiWidgetField(crispy_forms_layout.MultiWidgetField):
