@@ -11,6 +11,7 @@ Version 0.6.3 - Unreleased
 * Added new field ``FakeField``;
 * Fixed tests to always compare rendered value to attempted value, so the test error output diffs are allways in the same order;
 * Updated documentation;
+* Adopted new settings structure in ``project/settings/``, removed ``db.sqlite3`` from repository;
 
 Version 0.6.2 - 2017/07/03
 **************************
