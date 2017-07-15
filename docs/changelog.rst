@@ -4,7 +4,7 @@
 Changelog
 =========
 
-Version 0.6.3 - Unreleased
+Version 0.6.3 - 2017/07/16
 **************************
 
 This release adds some bugfixes with Abide, new button objects that will replace the old ones a release and Foundation5 support will be removed for the next (non bugfix) release.
