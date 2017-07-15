@@ -14,6 +14,7 @@ Version 0.6.3 - Unreleased
 * Adopted new settings structure in ``project/settings/``, removed ``db.sqlite3`` from repository;
 * Enabled ``django-debug-toolbar`` in development environment and settings for demo only (not for tests);
 * Moved ``layout.buttons.Hidden`` to ``layout.fields.Hidden``;
+* Added ``layout.buttons.ButtonElement``, ``layout.buttons.SubmitButton`` and ``layout.buttons.ResetButton`` to button input as real ``<button/>`` element but keeping old input button behavior for now;
 
 Version 0.6.2 - 2017/07/03
 **************************

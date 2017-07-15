@@ -15,7 +15,9 @@ from crispy_forms import layout as crispy_forms_layout
 
 
 __all__ = [
-    'Layout', 'UneditableField', 'HTML', 'Div', 'Panel', 'Callout',
+    'Layout', 'UneditableField',
+    'HTML', 'Div',
+    'Panel', 'Callout',
 ]
 
 

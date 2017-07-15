@@ -6,7 +6,9 @@ from django.utils.translation import ugettext_lazy as _
 from crispy_forms.helper import FormHelper
 from crispy_forms_foundation.layout import (
     Layout, Fieldset, HTML, Row, Column, Panel, Callout,
-    ButtonHolder, ButtonHolderPanel, ButtonGroup, Button, Submit,
+    ButtonHolder, ButtonHolderPanel, ButtonGroup,
+    Button, Submit, Reset,
+    ButtonElement, SubmitButton, ResetButton,
     InlineField, InlineJustifiedField,
     SwitchField, InlineSwitchField
 )
@@ -100,7 +102,7 @@ def buttons_crispies(pack=None):
             Column(
                 ButtonGroup(
                     Submit('submit', _('Submit'), css_class='success'),
-                    Button('cancel', _('Cancel')),
+                    Reset('cancel', _('Cancel')),
                     Button('dummy', _('Delete'), css_class='alert'),
                     css_class='radius right'
                 ),
@@ -110,10 +112,25 @@ def buttons_crispies(pack=None):
         Row(
             Column(
                 box(
+                    HTML("""<p>As &lt;input/&gt;</p>"""),
                     ButtonGroup(
                         Submit('submit', _('Submit'), css_class='success'),
-                        Button('cancel', _('Cancel')),
+                        Reset('cancel', _('Cancel')),
                         Button('dummy', _('Delete'), css_class='alert'),
+                        css_class='radius right'
+                    ),
+                    css_class='clearfix'
+                )
+            ),
+        ),
+        Row(
+            Column(
+                box(
+                    HTML("""<p>As &lt;button/&gt;</p>"""),
+                    ButtonGroup(
+                        SubmitButton('submit', _('Submit'), css_class='success'),
+                        ResetButton('cancel', _('Cancel')),
+                        ButtonElement('dummy', _('Delete'), css_class='alert'),
                         css_class='radius right'
                     ),
                     css_class='clearfix'

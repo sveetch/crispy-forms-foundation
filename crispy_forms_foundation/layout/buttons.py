@@ -21,6 +21,7 @@ from crispy_forms import layout as crispy_forms_layout
 __all__ = [
     'ButtonHolder', 'ButtonHolderPanel', 'ButtonHolderCallout', 'ButtonGroup',
     'Button', 'Submit', 'Reset',
+    'ButtonElement', 'SubmitButton', 'ResetButton',
 ]
 
 
@@ -143,6 +144,54 @@ class Reset(crispy_forms_layout.BaseInput):
     .. sourcecode:: python
 
         reset = Reset('Reset This Form', 'Revert Me!')
+
+    .. note:: The first argument is also slugified and turned into the id for
+              the reset.
+    """
+    input_type = 'reset'
+    field_classes = 'reset button'
+
+
+class ButtonElement(crispy_forms_layout.BaseInput):
+    """
+    Used to create a Submit input descriptor for the {% crispy %} template tag:
+
+    .. sourcecode:: python
+
+        button = ButtonElement('Button 1', 'Press Me!')
+
+    .. note:: The first argument is also slugified and turned into the id for
+              the button.
+    """
+    template = "%s/layout/basebutton.html"
+    input_type = 'button'
+    field_classes = 'button'
+
+
+class SubmitButton(ButtonElement):
+    """
+    Used to create a Submit button descriptor for the {% crispy %} template
+    tag:
+
+    .. sourcecode:: python
+
+        submit = SubmitButton('Search the Site', 'search this site')
+
+    .. note:: The first argument is also slugified and turned into the id for
+              the submit button.
+    """
+    input_type = 'submit'
+    field_classes = 'submit button'
+
+
+class ResetButton(ButtonElement):
+    """
+    Used to create a Reset button input descriptor for the ``{% crispy %}``
+    template tag:
+
+    .. sourcecode:: python
+
+        reset = ResetButton('Reset This Form', 'Revert Me!')
 
     .. note:: The first argument is also slugified and turned into the id for
               the reset.
