@@ -13,4 +13,7 @@
 .tox
 .cache
 __pycache__
+
+#django
 project_test/db.sqlite3
+project_test/project/settings/local.py

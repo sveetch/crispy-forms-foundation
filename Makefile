@@ -44,4 +44,5 @@ tests:
 quality: tests flake
 
 runserver:
-	$(DJANGOMANAGER) runserver 0.0.0.0:8001 --settings=project.settings.base
+	@if [ ! -e project_test/db.sqlite3 ]; then $(DJANGOMANAGER) migrate --settings=project.settings.development; fi;
+	$(DJANGOMANAGER) runserver 0.0.0.0:8001 --settings=project.settings.development

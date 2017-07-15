@@ -27,3 +27,11 @@ urlpatterns = [
 
      url(r'^crispy-forms/', include('project.demo.urls', namespace='crispy-foundation')),
 ]
+
+try:
+    import debug_toolbar
+    urlpatterns += [
+        url(r'^__debug__/', include(debug_toolbar.urls)),
+    ]
+except ImportError:
+    pass
