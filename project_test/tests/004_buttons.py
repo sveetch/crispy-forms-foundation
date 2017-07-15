@@ -45,7 +45,7 @@ def test_buttonelement(output_test_path, render_output, rendered_template,
     rendered = rendered_template(form, helper=helper)
 
     attempted = render_output(os.path.join(output_test_path, pack,
-                                           "test_buttongroup.html"))
-    write_output(output_test_path, pack, "test_buttonelement.html", rendered)
+                                           "test_buttonelement.html"))
+    #write_output(output_test_path, pack, "test_buttonelement.html", rendered)
 
     assert attempted == rendered
