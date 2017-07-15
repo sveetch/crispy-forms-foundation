@@ -44,4 +44,4 @@ tests:
 quality: tests flake
 
 runserver:
-	$(DJANGOMANAGER) runserver 0.0.0.0:8001
+	$(DJANGOMANAGER) runserver 0.0.0.0:8001 --settings=project.settings.base
