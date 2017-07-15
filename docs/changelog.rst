@@ -7,14 +7,17 @@ Changelog
 Version 0.6.3 - Unreleased
 **************************
 
-* Removed ``is-visible`` class and added missing ``data-form-error-for`` attribute in Foundation6 field templates close #33;
+This release adds some bugfixes with Abide, new button objects that will replace the old ones a release and Foundation5 support will be removed for the next (non bugfix) release.
+
+* Removed ``is-visible`` class and added missing ``data-form-error-for`` attribute in Foundation6 field templates, close #33;
 * Added new field ``layout.fields.FakeField``;
 * Fixed tests to always compare rendered value to attempted value, so the test error output diffs are allways in the same order;
 * Updated documentation;
 * Adopted new settings structure in ``project/settings/``, removed ``db.sqlite3`` from repository;
 * Enabled ``django-debug-toolbar`` in development environment and settings for demo only (not for tests);
 * Moved ``layout.buttons.Hidden`` to ``layout.fields.Hidden``;
-* Added ``layout.buttons.ButtonElement``, ``layout.buttons.SubmitButton`` and ``layout.buttons.ResetButton`` to button input as real ``<button/>`` element but keeping old input button behavior for now;
+* Added ``layout.buttons.ButtonElement``, ``layout.buttons.ButtonSubmit`` and ``layout.buttons.ButtonReset`` to button input as real ``<button/>`` element but keeping old input button behavior for now. **This is on the way to replace respectively** ``Button``, ``Submit`` and ``Reset``. Close #28;
+* Added ``layout.buttons.InputButton``, ``layout.buttons.InputSubmit`` and ``layout.buttons.InputReset`` to maintain backward compatibility when the button objects will replace the old ones;
 
 Version 0.6.2 - 2017/07/03
 **************************

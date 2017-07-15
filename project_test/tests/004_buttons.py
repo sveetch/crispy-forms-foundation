@@ -4,10 +4,10 @@ import pytest
 
 from crispy_forms_foundation.layout import (Layout, ButtonGroup,
                                             Submit, Button,
-                                            ButtonElement, SubmitButton)
+                                            ButtonElement, ButtonSubmit)
 
 from project_test.tests.forms import BasicInputForm
-from project_test.tests.utils import write_output
+#from project_test.tests.utils import write_output
 
 
 def test_buttongroup(output_test_path, render_output, rendered_template,
@@ -38,8 +38,8 @@ def test_buttonelement(output_test_path, render_output, rendered_template,
     pack = helper.template_pack
 
     helper.layout = Layout(
-        SubmitButton('Save', 'Save'),
-        ButtonElement('Foo', 'Foo'),
+        ButtonSubmit('Save', 'Save'),
+        ButtonElement('Foo', 'Foo', content="""<span>&lt;Pong/&gt;</span>"""),
     )
 
     rendered = rendered_template(form, helper=helper)

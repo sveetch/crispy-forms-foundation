@@ -8,7 +8,7 @@ from crispy_forms_foundation.layout import (
     Layout, Fieldset, HTML, Row, Column, Panel, Callout,
     ButtonHolder, ButtonHolderPanel, ButtonGroup,
     Button, Submit, Reset,
-    ButtonElement, SubmitButton, ResetButton,
+    ButtonElement, ButtonSubmit, ButtonReset,
     InlineField, InlineJustifiedField,
     SwitchField, InlineSwitchField
 )
@@ -128,9 +128,12 @@ def buttons_crispies(pack=None):
                 box(
                     HTML("""<p>As &lt;button/&gt;</p>"""),
                     ButtonGroup(
-                        SubmitButton('submit', _('Submit'), css_class='success'),
-                        ResetButton('cancel', _('Cancel')),
-                        ButtonElement('dummy', _('Delete'), css_class='alert'),
+                        ButtonSubmit('submit', _('Submit'),
+                                     css_class='success'),
+                        ButtonReset('cancel', _('Cancel')),
+                        ButtonElement('button-label', 'button-value',
+                                      css_class='alert',
+                                      content="""<span>&lt;Doh/&gt;</span>"""),
                         css_class='radius right'
                     ),
                     css_class='clearfix'

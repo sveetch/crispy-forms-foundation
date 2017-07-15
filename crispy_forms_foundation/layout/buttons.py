@@ -21,7 +21,8 @@ from crispy_forms import layout as crispy_forms_layout
 __all__ = [
     'ButtonHolder', 'ButtonHolderPanel', 'ButtonHolderCallout', 'ButtonGroup',
     'Button', 'Submit', 'Reset',
-    'ButtonElement', 'SubmitButton', 'ResetButton',
+    'InputButton', 'InputSubmit', 'InputReset',
+    'ButtonElement', 'ButtonSubmit', 'ButtonReset',
 ]
 
 
@@ -105,13 +106,13 @@ class ButtonGroup(crispy_forms_layout.LayoutObject):
         }))
 
 
-class Button(crispy_forms_layout.BaseInput):
+class InputButton(crispy_forms_layout.BaseInput):
     """
     Used to create a Submit input descriptor for the {% crispy %} template tag:
 
     .. sourcecode:: python
 
-        button = Button('Button 1', 'Press Me!')
+        button = InputButton('Button 1', 'Press Me!')
 
     .. note:: The first argument is also slugified and turned into the id for
               the button.
@@ -120,7 +121,19 @@ class Button(crispy_forms_layout.BaseInput):
     field_classes = 'button'
 
 
-class Submit(crispy_forms_layout.BaseInput):
+class Button(InputButton):
+    """
+    This is the old Button object that inherit from ``InputButton`` for
+    backward compatibility.
+
+    If you want to stand for an input button, you are invited to use
+    ``InputButton`` instead to avoid problem when ``ButtonElement`` will
+    become the new ``Button`` object.
+    """
+    pass
+
+
+class InputSubmit(crispy_forms_layout.BaseInput):
     """
     Used to create a Submit button descriptor for the {% crispy %} template
     tag:
@@ -128,15 +141,24 @@ class Submit(crispy_forms_layout.BaseInput):
     .. sourcecode:: python
 
         submit = Submit('Search the Site', 'search this site')
-
-    .. note:: The first argument is also slugified and turned into the id for
-              the submit button.
     """
     input_type = 'submit'
     field_classes = 'submit button'
 
 
-class Reset(crispy_forms_layout.BaseInput):
+class Submit(InputSubmit):
+    """
+    This is the old Button object that inherit from ``InputSubmit`` for
+    backward compatibility.
+
+    If you want to stand for an input button, you are invited to use
+    ``InputSubmit`` instead to avoid problem when ``ButtonSubmit`` will
+    become the new ``Submit`` object.
+    """
+    pass
+
+
+class InputReset(crispy_forms_layout.BaseInput):
     """
     Used to create a Reset button input descriptor for the ``{% crispy %}``
     template tag:
@@ -144,57 +166,84 @@ class Reset(crispy_forms_layout.BaseInput):
     .. sourcecode:: python
 
         reset = Reset('Reset This Form', 'Revert Me!')
-
-    .. note:: The first argument is also slugified and turned into the id for
-              the reset.
     """
     input_type = 'reset'
     field_classes = 'reset button'
 
 
+class Reset(InputReset):
+    """
+    This is the old Button object that inherit from ``InputReset`` for
+    backward compatibility.
+
+    If you want to stand for an input button, you are invited to use
+    ``InputReset`` instead to avoid problem when ``ButtonReset`` will
+    become the new ``Reset`` object.
+    """
+    pass
+
+
 class ButtonElement(crispy_forms_layout.BaseInput):
     """
-    Used to create a Submit input descriptor for the {% crispy %} template tag:
+    Contrary to ``Button``, ButtonElement purpose use a ``<button>`` element
+    to create a clickable form button and accept an argument to add free
+    content inside element.
+
+    Advantage of ``<button>`` is to accept almost any HTML content inside
+    element.
 
     .. sourcecode:: python
 
-        button = ButtonElement('Button 1', 'Press Me!')
+        button = ButtonElement('name', 'value',
+                               content="<span>Press Me!</span>")
 
-    .. note:: The first argument is also slugified and turned into the id for
-              the button.
+    .. note::
+            * First argument is for ``name`` attribute and also turned into
+              the id for the button;
+            * Second argument is for ``value`` attribute and also for element
+              content if not given;
+            * Third argument is an optional named argument ``content``, if
+              given it will be appended inside element instead of ``value``.
+              Content string is marked as safe so you can put anything you
+              want;
     """
     template = "%s/layout/basebutton.html"
     input_type = 'button'
     field_classes = 'button'
 
+    def __init__(self, field, *args, **kwargs):
+        self.content = kwargs.pop('content', None)
+        super(ButtonElement, self).__init__(field, *args, **kwargs)
 
-class SubmitButton(ButtonElement):
+    def render(self, form, form_style, context, template_pack=TEMPLATE_PACK):
+        context['button_content'] = self.content
+        return super(ButtonElement, self).render(form, form_style, context,
+                                                 template_pack)
+
+
+class ButtonSubmit(ButtonElement):
     """
-    Used to create a Submit button descriptor for the {% crispy %} template
-    tag:
+    Create a submit button following the ``ButtonElement`` behaviors:
 
     .. sourcecode:: python
 
-        submit = SubmitButton('Search the Site', 'search this site')
+        button = ButtonSubmit('search', 'go-search',
+                              content="<span>Search this site!</span>")
 
-    .. note:: The first argument is also slugified and turned into the id for
-              the submit button.
     """
     input_type = 'submit'
     field_classes = 'submit button'
 
 
-class ResetButton(ButtonElement):
+class ButtonReset(ButtonElement):
     """
-    Used to create a Reset button input descriptor for the ``{% crispy %}``
-    template tag:
+    Create a reset button following the ``ButtonElement`` behaviors:
 
     .. sourcecode:: python
 
-        reset = ResetButton('Reset This Form', 'Revert Me!')
+        button = ButtonReset('reset', 'revert'
+                             content="<span>Revert Me!</span>")
 
-    .. note:: The first argument is also slugified and turned into the id for
-              the reset.
     """
     input_type = 'reset'
     field_classes = 'reset button'

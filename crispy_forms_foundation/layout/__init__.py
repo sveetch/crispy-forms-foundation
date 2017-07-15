@@ -13,9 +13,10 @@ from .fields import (MultiWidgetField, Field, MultiField,
                      SplitDateTimeField, InlineField,
                      InlineJustifiedField, SwitchField,
                      InlineSwitchField, FakeField, Hidden)
-from .buttons import (ButtonHolder, ButtonHolderPanel,
-                      ButtonGroup, Button, Submit, Reset,
-                      ButtonElement, SubmitButton, ResetButton)
+from .buttons import (ButtonHolder, ButtonHolderPanel, ButtonGroup,
+                      Button, Submit, Reset,
+                      InputButton, InputSubmit, InputReset,
+                      ButtonElement, ButtonSubmit, ButtonReset)
 from .containers import (Container, ContainerHolder,
                          Fieldset, TabItem, TabHolder,
                          VerticalTabHolder, AccordionItem,
@@ -23,6 +24,9 @@ from .containers import (Container, ContainerHolder,
 
 
 __all__ = [
+    'Div', 'Panel', 'Callout', 'Layout', 'UneditableField', 'HTML',
+    'Row', 'RowFluid', 'Column',
+
     'Field', 'FakeField', 'Hidden',
     'MultiWidgetField', 'MultiField',
     'SplitDateTimeField',
@@ -30,7 +34,8 @@ __all__ = [
 
     'ButtonHolder', 'ButtonHolderPanel', 'ButtonGroup',
     'Button', 'Submit', 'Reset',
-    'ButtonElement', 'SubmitButton', 'ResetButton',
+    'InputButton', 'InputSubmit', 'InputReset',
+    'ButtonElement', 'ButtonSubmit', 'ButtonReset',
 
     'Container', 'ContainerHolder', 'Fieldset',
     'TabItem', 'TabHolder', 'VerticalTabHolder',
