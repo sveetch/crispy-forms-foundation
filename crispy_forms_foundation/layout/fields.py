@@ -19,7 +19,7 @@ from crispy_forms import layout as crispy_forms_layout
 
 
 __all__ = [
-    'Field', 'FakeField', 'MultiWidgetField', 'MultiField',
+    'Field', 'FakeField', 'Hidden', 'MultiWidgetField', 'MultiField',
     'SplitDateTimeField', 'InlineField', 'InlineJustifiedField', 'SwitchField',
     'InlineSwitchField',
 ]
@@ -59,6 +59,15 @@ class FakeField(Field):
         context['fake_field'] = True
         return super(FakeField, self).render(form, form_style, context,
                                              template_pack)
+
+
+class Hidden(crispy_forms_layout.Hidden):
+    """
+    Hidden field. Work as basic Field except the ``hidden`` value for ``type``
+    attribute.
+    """
+    input_type = 'hidden'
+    field_classes = 'hidden'
 
 
 class MultiWidgetField(crispy_forms_layout.MultiWidgetField):

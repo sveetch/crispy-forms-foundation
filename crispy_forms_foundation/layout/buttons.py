@@ -20,7 +20,7 @@ from crispy_forms import layout as crispy_forms_layout
 
 __all__ = [
     'ButtonHolder', 'ButtonHolderPanel', 'ButtonHolderCallout', 'ButtonGroup',
-    'Button', 'Submit', 'Hidden', 'Reset',
+    'Button', 'Submit', 'Reset',
 ]
 
 
@@ -133,14 +133,6 @@ class Submit(crispy_forms_layout.BaseInput):
     """
     input_type = 'submit'
     field_classes = 'submit button'
-
-
-class Hidden(crispy_forms_layout.Hidden):
-    """
-    Used to create a Hidden input descriptor for the {% crispy %} template tag.
-    """
-    input_type = 'hidden'
-    field_classes = 'hidden'
 
 
 class Reset(crispy_forms_layout.BaseInput):

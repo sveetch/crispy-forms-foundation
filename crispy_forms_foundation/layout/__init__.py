@@ -12,9 +12,9 @@ from .grid import Row, RowFluid, Column
 from .fields import (MultiWidgetField, Field, MultiField,
                      SplitDateTimeField, InlineField,
                      InlineJustifiedField, SwitchField,
-                     InlineSwitchField, FakeField)
+                     InlineSwitchField, FakeField, Hidden)
 from .buttons import (ButtonHolder, ButtonHolderPanel,
-                      ButtonGroup, Button, Submit, Hidden, Reset)
+                      ButtonGroup, Button, Submit, Reset)
 from .containers import (Container, ContainerHolder,
                          Fieldset, TabItem, TabHolder,
                          VerticalTabHolder, AccordionItem,

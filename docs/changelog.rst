@@ -8,11 +8,12 @@ Version 0.6.3 - Unreleased
 **************************
 
 * Removed ``is-visible`` class and added missing ``data-form-error-for`` attribute in Foundation6 field templates close #33;
-* Added new field ``FakeField``;
+* Added new field ``layout.fields.FakeField``;
 * Fixed tests to always compare rendered value to attempted value, so the test error output diffs are allways in the same order;
 * Updated documentation;
 * Adopted new settings structure in ``project/settings/``, removed ``db.sqlite3`` from repository;
 * Enabled ``django-debug-toolbar`` in development environment and settings for demo only (not for tests);
+* Moved ``layout.buttons.Hidden`` to ``layout.fields.Hidden``;
 
 Version 0.6.2 - 2017/07/03
 **************************
