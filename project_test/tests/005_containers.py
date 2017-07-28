@@ -1,6 +1,7 @@
 import os
 
 import pytest
+from django.test.html import parse_html
 
 from crispy_forms_foundation.layout import (Layout, TabHolder, TabItem,
                                             AccordionHolder, AccordionItem)
@@ -29,7 +30,7 @@ def test_tab(output_test_path, render_output, rendered_template, helper,
                                            "test_tab.html"))
     #write_output(output_test_path, pack, "test_tab.html", rendered)
 
-    assert attempted == rendered
+    assert parse_html(attempted) == parse_html(rendered)
 
 
 def test_accordion(output_test_path, render_output, rendered_template, helper,
@@ -53,4 +54,4 @@ def test_accordion(output_test_path, render_output, rendered_template, helper,
                                            "test_accordion.html"))
     #write_output(output_test_path, pack, "test_accordion.html", rendered)
 
-    assert attempted == rendered
+    assert parse_html(attempted) == parse_html(rendered)

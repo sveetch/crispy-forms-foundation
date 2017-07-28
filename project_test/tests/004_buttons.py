@@ -1,7 +1,7 @@
 import os
 
 import pytest
-
+from django.test.html import parse_html
 from crispy_forms_foundation.layout import (Layout, ButtonGroup,
                                             Submit, Button,
                                             ButtonElement, ButtonSubmit)
@@ -29,7 +29,7 @@ def test_buttongroup(output_test_path, render_output, rendered_template,
                                            "test_buttongroup.html"))
     #write_output(output_test_path, pack, "test_buttongroup.html", rendered)
 
-    assert attempted == rendered
+    assert parse_html(attempted) == parse_html(rendered)
 
 
 def test_buttonelement(output_test_path, render_output, rendered_template,
