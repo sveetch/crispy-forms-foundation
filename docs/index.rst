@@ -61,6 +61,7 @@ Contributors
 .. _`@sbaechler`: https://github.com/sbaechler
 .. _`@bionikspoon`: https://github.com/bionikspoon
 .. _`@flesser`: https://github.com/flesser
+.. _`@xbello`: https://github.com/xbello
 
 * Philip Garnero (`@PhilipGarnero`_);
 * Juerg Rast (`@jrast`_);
@@ -69,3 +70,4 @@ Contributors
 * Simon Bächler (`@sbaechler`_);
 * Manu Phatak (`@bionikspoon`_);
 * Florian Eßer (`@flesser`_);
+* Xabier Bello (`@xbello`_);

@@ -11,7 +11,6 @@ References
     * `Foundation 6 Button Group <http://foundation.zurb.com/sites/docs/button-group.html>`_;
 
 """  # noqa: E501
-from django.template import Context
 from django.template.loader import render_to_string
 
 from crispy_forms.utils import render_field, TEMPLATE_PACK
@@ -100,17 +99,10 @@ class ButtonGroup(crispy_forms_layout.LayoutObject):
                              template_pack=template_pack)
             )
 
-        try:
-            buttons = render_to_string(template, Context({
-                'buttongroup': self,
-                'field_list': field_list,
-            }))
-        except TypeError:
-            # From Django 1.11 render_to_string doesn't want a Context object
-            buttons = render_to_string(template, {
-                'buttongroup': self,
-                'field_list': field_list,
-            })
+        buttons = render_to_string(template, {
+            'buttongroup': self,
+            'field_list': field_list,
+        })
 
         return buttons
 

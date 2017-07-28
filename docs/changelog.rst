@@ -4,6 +4,12 @@
 Changelog
 =========
 
+Version 0.6.4 - 2017/07/29
+**************************
+
+* Fixed ``layout.buttons.ButtonGroup`` for deprecated ``Context()`` usage;
+* Fixed tests that performs comparison on html part using ``django.test.html.parse_html``;
+
 Version 0.6.3 - 2017/07/16
 **************************
 
