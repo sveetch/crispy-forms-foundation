@@ -100,10 +100,19 @@ class ButtonGroup(crispy_forms_layout.LayoutObject):
                              template_pack=template_pack)
             )
 
-        return render_to_string(template, Context({
-            'buttongroup': self,
-            'field_list': field_list,
-        }))
+        try:
+            buttons = render_to_string(template, Context({
+                'buttongroup': self,
+                'field_list': field_list,
+            }))
+        except TypeError:
+            # From Django 1.11 render_to_string doesn't want a Context object
+            buttons = render_to_string(template, {
+                'buttongroup': self,
+                'field_list': field_list,
+            })
+
+        return buttons
 
 
 class InputButton(crispy_forms_layout.BaseInput):
