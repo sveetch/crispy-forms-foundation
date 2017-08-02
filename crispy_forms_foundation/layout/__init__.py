@@ -8,7 +8,7 @@ and implements Foundation components.
 from __future__ import absolute_import
 
 from .base import Div, Panel, Callout, Layout, UneditableField, HTML
-from .grid import Row, RowFluid, Column
+from .grid import Row, RowFluid, Column, GridX, GridY, Cell
 from .fields import (MultiWidgetField, Field, MultiField,
                      SplitDateTimeField, InlineField,
                      InlineJustifiedField, SwitchField,
@@ -26,11 +26,12 @@ from .containers import (Container, ContainerHolder,
 __all__ = [
     'Div', 'Panel', 'Callout', 'Layout', 'UneditableField', 'HTML',
     'Row', 'RowFluid', 'Column',
+    'GridX', 'GridY', 'Cell',
 
     'Field', 'FakeField', 'Hidden',
     'MultiWidgetField', 'MultiField',
     'SplitDateTimeField',
-    'InlineField', 'InlineJustifiedField', 'SwitchField', 'InlineSwitchField'
+    'InlineField', 'InlineJustifiedField', 'SwitchField', 'InlineSwitchField',
 
     'ButtonHolder', 'ButtonHolderPanel', 'ButtonGroup',
     'Button', 'Submit', 'Reset',
