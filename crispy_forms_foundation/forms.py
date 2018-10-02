@@ -4,6 +4,7 @@ from copy import deepcopy
 
 from django import forms
 from django.core.urlresolvers import reverse, NoReverseMatch
+from django.forms.fields import FileField
 from django.utils.translation import ugettext_lazy as _
 
 from crispy_forms.helper import FormHelper
@@ -65,8 +66,9 @@ class FoundationFormMixin(object):
         # Put required HTML attribute on required fields so they are managed by
         # Abide (if enabled)
         if "data_abide" in self.attrs:
-            for field in self.fields.values():
-                if field.required:
+            for field_name, field in self.fields.items():
+                field_value = getattr(self.instance, field_name, None)
+                if field.required and not (isinstance(field, FileField) and field_value):
                     field.widget.attrs["required"] = ""
                     field.abide_msg = _("This field is required.")
 
