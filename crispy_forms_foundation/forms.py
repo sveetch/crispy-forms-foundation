@@ -67,7 +67,10 @@ class FoundationFormMixin(object):
         # Abide (if enabled)
         if "data_abide" in self.attrs:
             for field_name, field in self.fields.items():
-                field_value = getattr(self.instance, field_name, None)
+                if hasattr(self, 'instance'):
+                    field_value = getattr(self.instance, field_name, None)
+                else:
+                    field_value = None
                 if field.required and not (isinstance(field, FileField) and field_value):
                     field.widget.attrs["required"] = ""
                     field.abide_msg = _("This field is required.")
