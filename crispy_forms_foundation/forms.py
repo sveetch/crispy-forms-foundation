@@ -4,7 +4,7 @@ from copy import deepcopy
 
 from django import forms
 from django.core.urlresolvers import reverse, NoReverseMatch
-from django.forms.fields import FileField
+from django.forms.fields import FileField, ImageField
 from django.utils.translation import ugettext_lazy as _
 
 from crispy_forms.helper import FormHelper
@@ -71,7 +71,7 @@ class FoundationFormMixin(object):
                     field_value = getattr(self.instance, field_name, None)
                 else:
                     field_value = None
-                if field.required and not (isinstance(field, FileField) and field_value):
+                if field.required and not ((isinstance(field, FileField) or isinstance(field, ImageField)) and field_value):
                     field.widget.attrs["required"] = ""
                     field.abide_msg = _("This field is required.")
 
