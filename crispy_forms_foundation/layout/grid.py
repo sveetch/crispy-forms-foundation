@@ -10,13 +10,14 @@ Grid
 References
     * `Foundation 5 Grid <http://foundation.zurb.com/sites/docs/v/5.5.3/components/grid.html>`_;
     * `Foundation 6 Grid <http://foundation.zurb.com/sites/docs/grid.html>`_;
+    * `Foundation 6 XY Grid <http://foundation.zurb.com/sites/docs/xy-grid.html>`_;
 
 """  # noqa: E501
 from crispy_forms_foundation.layout.base import Div
 
 
 __all__ = [
-    'Row', 'RowFluid', 'Column',
+    'Row', 'RowFluid', 'Column', 'GridX', 'GridY', 'Cell',
 ]
 
 
@@ -132,3 +133,63 @@ class Column(Div):
             kwargs['css_class'] = 'large-12'
 
         super(Column, self).__init__(field, *args, **kwargs)
+
+
+class GridX(Div):
+    """
+    Wrap fields in a div whose default class is ``grid-x``. Example:
+
+    .. sourcecode:: python
+
+        Row('form_field_1', 'form_field_2', 'form_field_3')
+
+    Act as an horizontal grid, it will embed its items in a div like that:
+
+    .. sourcecode:: html
+
+        <div class"grid-x">Content</div>
+    """
+    css_class = 'grid-x'
+
+
+class GridY(Div):
+    """
+    Wrap fields in a div whose default class is ``grid-y``. Example:
+
+    .. sourcecode:: python
+
+        Row('form_field_1', 'form_field_2', 'form_field_3')
+
+    Act as a vertical grid, it will embed its items in a div like that:
+
+    .. sourcecode:: html
+
+        <div class"grid-y">Content</div>
+    """
+    css_class = 'grid-y'
+
+
+class Cell(Div):
+    """
+    Wrap fields in a div. If not defined, CSS class will default to ``cell``.
+    It is always appended, so you don't need to specify it.
+
+    This is the cell from the Foundation XY-Grid component, all cells should
+    be contained in a **GridX** or a **GridY** and you will have to define the
+    cell type in the ``css_class`` attribute.
+
+    Example:
+
+    .. sourcecode:: python
+
+        Cell('form_field_1', 'form_field_2', css_class='large-6')
+
+    Will render to something like that:
+
+    .. sourcecode:: html
+
+        <div class"large-6 cell">...</div>
+
+    ``cell`` class is always appended, so you don't need to specify it.
+    """
+    css_class = 'cell'
