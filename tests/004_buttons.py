@@ -6,8 +6,8 @@ from crispy_forms_foundation.layout import (Layout, ButtonGroup,
                                             Submit, Button,
                                             ButtonElement, ButtonSubmit)
 
-from project_test.tests.forms import BasicInputForm
-#from project_test.tests.utils import write_output
+from tests.forms import BasicInputForm
+#from tests.utils import write_output
 
 
 def test_buttongroup(output_test_path, render_output, rendered_template,

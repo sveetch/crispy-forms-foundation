@@ -5,8 +5,8 @@ from django.test.html import parse_html
 from crispy_forms_foundation.layout import (Layout, Row, Column, ButtonHolder,
                                             Submit)
 
-from project_test.tests.forms import BasicInputForm, BasicInputFormLayoutIncluded, AdvancedForm
-#from project_test.tests.utils import write_output
+from tests.forms import BasicInputForm, BasicInputFormLayoutIncluded, AdvancedForm
+#from tests.utils import write_output
 
 
 def test_basic(output_test_path, render_output, rendered_template, helper, client):

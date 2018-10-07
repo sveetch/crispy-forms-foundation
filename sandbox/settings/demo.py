@@ -1,8 +1,9 @@
-from __future__ import absolute_import, unicode_literals
+"""
+Django settings for project demonstration
+"""
+#from __future__ import absolute_import, unicode_literals
 
-import os
-
-from .base import *  # noqa
+from sandbox.settings.base import *
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -20,7 +21,16 @@ MIDDLEWARE[0:0] = [  # noqa
     'debug_toolbar.middleware.DebugToolbarMiddleware',
 ]
 
+
+#
+# Default crispy_forms_foundation settings
+#
+from crispy_forms_foundation.settings import *
+
+
+#
 # django-debug-toolbar settings
+#
 DEBUG_TOOLBAR_CONFIG = {
     'INTERCEPT_REDIRECTS': False,
 }
@@ -37,6 +47,6 @@ DEBUG_TOOLBAR_PANELS = [
 ]
 
 try:
-    from .local import *  # noqa
+    from sandbox.settings.local import *  # noqa
 except ImportError:
     pass

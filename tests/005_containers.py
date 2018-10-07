@@ -6,8 +6,8 @@ from django.test.html import parse_html
 from crispy_forms_foundation.layout import (Layout, TabHolder, TabItem,
                                             AccordionHolder, AccordionItem)
 
-from project_test.tests.forms import AdvancedForm
-#from project_test.tests.utils import write_output
+from tests.forms import AdvancedForm
+#from tests.utils import write_output
 
 
 def test_tab(output_test_path, render_output, rendered_template, helper,

@@ -5,8 +5,8 @@ from django.test.html import parse_html
 from crispy_forms_foundation.layout import (Layout, InlineField,
                                             InlineSwitchField, FakeField)
 
-from project_test.tests.forms import BasicInputForm, BoolInputForm
-#from project_test.tests.utils import write_output
+from tests.forms import BasicInputForm, BoolInputForm
+#from tests.utils import write_output
 
 
 def test_fakefield(output_test_path, render_output, rendered_template,

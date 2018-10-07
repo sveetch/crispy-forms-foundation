@@ -4,6 +4,16 @@
 Changelog
 =========
 
+Version 0.7.0 - Unreleased
+**************************
+
+**Add support for Django 2.0 and 2.1**
+
+* Rewrite package to use ``setup.cfg``;
+* Add support for Django Django 2.0 and Django 2.1, close #36;
+* Django 1.11 support is the last one for Python2;
+* Change old demo project to more cleaner sandbox;
+
 Version 0.6.4 - 2017/07/29
 **************************
 
