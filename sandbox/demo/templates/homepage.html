@@ -1,0 +1,12 @@
+{% extends "skeleton.html" %}
+
+{% block base_content %}
+<div class="row">
+    <h1>Sample projet for crispy-forms-foundation</h1>
+
+    <ul>
+        <li><a href="{% url 'crispy-demo-form-fieldsets' foundation_version=5 %}">Foundation5</a></li>
+        <li><a href="{% url 'crispy-demo-form-fieldsets' foundation_version=6 %}">Foundation6</a></li>
+    </ul>
+</div>
+{% endblock %}

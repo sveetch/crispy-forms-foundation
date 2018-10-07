@@ -6,8 +6,7 @@ import pytest
 
 from crispy_forms.helper import FormHelper
 
-from project_test.tests.utils import (get_rendered_template,
-                                      render_attempted_output)
+from tests.utils import get_rendered_template, render_attempted_output
 
 
 @pytest.fixture(scope='session')

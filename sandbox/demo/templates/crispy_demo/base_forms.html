@@ -25,13 +25,13 @@
         <div class="stacked-for-small round button-group">
         {% endif %}
             {% if foundation_version == '5' %}<li>{% endif %}
-                <a href="{% url 'crispy-foundation:crispy-demo-form-fieldsets' foundation_version=foundation_version %}" class="button{% block crispy_demo_menu_fieldsets_item %} secondary{% endblock %}">Form by fieldsets</a>
+                <a href="{% url 'crispy-demo-form-fieldsets' foundation_version=foundation_version %}" class="button{% block crispy_demo_menu_fieldsets_item %} secondary{% endblock %}">Form by fieldsets</a>
             {% if foundation_version == '5' %}</li>{% endif %}
             {% if foundation_version == '5' %}<li>{% endif %}
-                <a href="{% url 'crispy-foundation:crispy-demo-form-accordions' foundation_version=foundation_version %}" class="button{% block crispy_demo_menu_accordions_item %} secondary{% endblock %}">Form by accordions</a>
+                <a href="{% url 'crispy-demo-form-accordions' foundation_version=foundation_version %}" class="button{% block crispy_demo_menu_accordions_item %} secondary{% endblock %}">Form by accordions</a>
             {% if foundation_version == '5' %}</li>{% endif %}
             {% if foundation_version == '5' %}<li>{% endif %}
-                <a href="{% url 'crispy-foundation:crispy-demo-form-tabs' foundation_version=foundation_version %}" class="button{% block crispy_demo_menu_tabs_item %} secondary{% endblock %}">Form by tabs</a>
+                <a href="{% url 'crispy-demo-form-tabs' foundation_version=foundation_version %}" class="button{% block crispy_demo_menu_tabs_item %} secondary{% endblock %}">Form by tabs</a>
             {% if foundation_version == '5' %}</li>{% endif %}
         {% if foundation_version == '5' %}
         </ul>

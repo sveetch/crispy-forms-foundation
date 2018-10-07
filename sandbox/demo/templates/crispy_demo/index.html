@@ -1,0 +1,15 @@
+{% extends "skeleton.html" %}
+{% load i18n %}
+
+{% block menu_item_contact %} class="active"{% endblock %}
+
+{% block base_content %}<div class="row">
+    <h2>Index des démos</h2>
+
+    <hr>
+    <div class="large-6 columns text-center">
+        <p><a href="{% url 'crispy-demo-form-fieldsets' foundation_version=foundation_version %}" class="button large">Form by fieldsets</a></p>
+        <p><a href="{% url 'crispy-demo-form-accordions' foundation_version=foundation_version %}" class="button large">Form by accordions</a></p>
+        <p><a href="{% url 'crispy-demo-form-tabs' foundation_version=foundation_version %}" class="button large">Form by tabs</a></p>
+    </div>
+</div>{% endblock %}

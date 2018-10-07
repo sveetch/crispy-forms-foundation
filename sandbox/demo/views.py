@@ -3,9 +3,14 @@
 Views
 """
 from django import template
-from django.core.urlresolvers import reverse
 from django.views.generic.edit import FormView
 from django.views.generic.base import TemplateView
+try:
+    # Default 'reverse' path since Django1.10
+    from django.urls import reverse
+except ImportError:
+    # 'reverse' path for Django<1.10
+    from django.core.urlresolvers import reverse
 
 from crispy_forms_foundation import __version__ as crispy_foundation_version
 from crispy_forms import __version__ as crispy_version

@@ -1,19 +1,52 @@
 # virtualenv
-/venv
+.venv
+venv
 
-#egg's specific
+# Packaging
+build
+dist
 *.egg-info
 
-#defaults
-/dist
-*.pyc
-*.pyo
+# sqlite DB
+db.sqlite3
+*.db
 
-#tests
-.tox
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+
+# Site media
+/data/
+
+# Settings
+/sandbox/settings/local.py
+
+# Unit test / coverage reports
+htmlcov/
+.coverage
 .cache
-__pycache__
+.pytest_cache
+nosetests.xml
+coverage.xml
 
-#django
-project_test/db.sqlite3
-project_test/project/settings/local.py
+# Temp files
+*~
+.~lock*
+
+# Swap files
+*.sw[po]
+
+# JS dependencies
+node_modules
+
+# SASS
+.sass-cache
+
+# logs
+yarn-error.log
+
+# Exported strings & generated translation templates
+*.pot
+
+# Tests
+.tox

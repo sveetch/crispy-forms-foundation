@@ -3,9 +3,14 @@ from __future__ import unicode_literals, absolute_import
 from copy import deepcopy
 
 from django import forms
-from django.core.urlresolvers import reverse, NoReverseMatch
 from django.forms.fields import FileField, ImageField
 from django.utils.translation import ugettext_lazy as _
+try:
+    # Default 'reverse' path since Django1.10
+    from django.urls import reverse, NoReverseMatch
+except ImportError:
+    # 'reverse' path for Django<1.10
+    from django.core.urlresolvers import reverse, NoReverseMatch
 
 from crispy_forms.helper import FormHelper
 
@@ -14,8 +19,8 @@ from .layout import Submit, HTML, InlineSwitchField
 
 class FoundationFormMixin(object):
     """
-    Mixin to implement the layout helper that will automatically build a form
-    layout
+    Mixin to implement a layout helper that will automatically build a form
+    layout.
 
     Generally, you will prefer to use ``FoundationForm`` or
     ``FoundationModelForm`` instead.
@@ -71,9 +76,12 @@ class FoundationFormMixin(object):
                     field_value = getattr(self.instance, field_name, None)
                 else:
                     field_value = None
-                if field.required and not ((isinstance(field, FileField) or isinstance(field, ImageField)) and field_value):
-                    field.widget.attrs["required"] = ""
-                    field.abide_msg = _("This field is required.")
+                if field.required \
+                    and not ((isinstance(field, FileField) or
+                              isinstance(field, ImageField))
+                             and field_value):
+                        field.widget.attrs["required"] = ""
+                        field.abide_msg = _("This field is required.")
 
         if not self.layout:
             # Start with an empty layout

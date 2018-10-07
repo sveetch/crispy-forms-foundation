@@ -7,7 +7,11 @@ recursive-include crispy_forms_foundation/static *
 recursive-include crispy_forms_foundation/locale *
 recursive-include crispy_forms_foundation/test_fixtures *
 
-recursive-exclude project_test *
-recursive-exclude project_test .cache
-recursive-exclude project_test __pycache__
-recursive-exclude project_test *.pyc
+recursive-exclude data *
+recursive-exclude docs *
+recursive-exclude sandbox *
+recursive-exclude tests *
+recursive-exclude * .cache
+recursive-exclude * __pycache__
+recursive-exclude * *.py[co]
+
