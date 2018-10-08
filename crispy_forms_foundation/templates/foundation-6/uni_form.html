@@ -7,7 +7,7 @@
 {% endif %}
 
 {% for field in form %}
-    {% include "foundation-6/field.html" %}
+    {% include field_template|default:"foundation-6/field.html" %}
 {% endfor %}
 
 {% if form_style == "" or form_style %}

@@ -76,9 +76,12 @@ class FoundationFormMixin(object):
                     field_value = getattr(self.instance, field_name, None)
                 else:
                     field_value = None
-                if field.required and not ((isinstance(field, FileField) or isinstance(field, ImageField)) and field_value):
-                    field.widget.attrs["required"] = ""
-                    field.abide_msg = _("This field is required.")
+                if field.required \
+                    and not ((isinstance(field, FileField) or
+                              isinstance(field, ImageField))
+                             and field_value):
+                        field.widget.attrs["required"] = ""
+                        field.abide_msg = _("This field is required.")
 
         if not self.layout:
             # Start with an empty layout
