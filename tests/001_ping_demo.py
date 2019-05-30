@@ -15,14 +15,14 @@ except ImportError:
 
 @pytest.mark.parametrize("url_name,url_args,url_kwargs", [
     ('home', [], {}),
-    ('crispy-demo-form-fieldsets', [], {'foundation_version':5}),
-    ('crispy-demo-form-tabs', [], {'foundation_version':5}),
-    ('crispy-demo-form-accordions', [], {'foundation_version':5}),
-    ('crispy-demo-success', [], {'foundation_version':5}),
-    ('crispy-demo-form-fieldsets', [], {'foundation_version':6}),
-    ('crispy-demo-form-tabs', [], {'foundation_version':6}),
-    ('crispy-demo-form-accordions', [], {'foundation_version':6}),
-    ('crispy-demo-success', [], {'foundation_version':6}),
+    ('demo:crispy-demo-form-fieldsets', [], {'foundation_version':5}),
+    ('demo:crispy-demo-form-tabs', [], {'foundation_version':5}),
+    ('demo:crispy-demo-form-accordions', [], {'foundation_version':5}),
+    ('demo:crispy-demo-success', [], {'foundation_version':5}),
+    ('demo:crispy-demo-form-fieldsets', [], {'foundation_version':6}),
+    ('demo:crispy-demo-form-tabs', [], {'foundation_version':6}),
+    ('demo:crispy-demo-form-accordions', [], {'foundation_version':6}),
+    ('demo:crispy-demo-success', [], {'foundation_version':6}),
 ])
 def test_ping_reverse_urlname(client, url_name, url_args, url_kwargs):
     """Ping reversed url names"""

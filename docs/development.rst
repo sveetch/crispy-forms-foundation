@@ -22,14 +22,8 @@ crispy-form-foundation is developed with:
 * `tox`_ to test again different Python and Django versions;
 
 
-Every requirement is available in file ``requirements/dev.txt`` (except for tox).
-
 Install for development
 ***********************
-
-First ensure you have `pip`_ and ``python-venv`` package installed, clone crispy-form-foundation repository, enter its directory and just type: ::
-
-    make install-dev
 
 Unittests
 ---------

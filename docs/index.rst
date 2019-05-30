@@ -25,6 +25,7 @@ Requires
 
 * `Django`_ >=1.8;
 * `django-crispy-forms`_ >= 1.6.x;
+* `Foundation for sites`_ >= 6.3.x;
 
 User’s Guide
 ************

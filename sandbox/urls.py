@@ -13,7 +13,7 @@ urlpatterns = [
     ), name='home'),
 
      url(r'^crispy-forms/',
-         include('sandbox.demo.urls')),
+         include('sandbox.demo.urls', namespace='demo')),
 ]
 
 try:

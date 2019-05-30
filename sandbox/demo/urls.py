@@ -6,6 +6,9 @@ from django.views.generic.base import TemplateView
 
 from .views import FormByFieldsetView, FormByTabView, FormByAccordionView, StaticPage
 
+
+app_name = 'demo'
+
 urlpatterns = [
     url(r'^foundation-(?P<foundation_version>\d+)/$',
         FormByFieldsetView.as_view(),

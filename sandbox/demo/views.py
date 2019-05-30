@@ -5,6 +5,7 @@ Views
 from django import template
 from django.views.generic.edit import FormView
 from django.views.generic.base import TemplateView
+
 try:
     # Default 'reverse' path since Django1.10
     from django.urls import reverse
@@ -33,7 +34,7 @@ class CrispyFoundationMixin(object):
 
 class FormContainersMixin(object):
     def get_success_url(self):
-        return reverse('crispy-foundation:crispy-demo-success', kwargs={
+        return reverse('demo:crispy-demo-success', kwargs={
             'foundation_version': int(self.kwargs.get('foundation_version'))
         })
 

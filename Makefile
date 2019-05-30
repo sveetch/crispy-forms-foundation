@@ -16,7 +16,7 @@ help:
 	@echo "  clean-pycache       -- to remove all __pycache__, this is recursive from current directory"
 	@echo ""
 	@echo "  migrate             -- to apply demo database migrations"
-	@echo "  run                 -- to run Django development server"
+	@echo "  run                 -- to run Django development server for demo"
 	@echo "  shell               -- to run Django shell"
 	@echo "  superuser           -- to create a superuser for Django admin"
 	@echo ""
@@ -26,7 +26,9 @@ help:
 	@echo
 
 clean-pycache:
+	rm -Rf .pytest_cache
 	find . -type d -name "__pycache__"|xargs rm -Rf
+	find . -name "*\.pyc"|xargs rm -f
 .PHONY: clean-pycache
 
 clean-install:

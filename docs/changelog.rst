@@ -4,7 +4,20 @@
 Changelog
 =========
 
-Version 0.7.0 - 2017/10/08
+Version 0.7.1 - 2019/05/30
+**************************
+
+**Minor release to add support for Django 2.2**
+
+**This will be the last release to support Django<1.11, Python2 and Foundation5**
+
+* Updated tox configuration to cover Django 2.2;
+* Updated sandbox demo to work with Django 2.2;
+* Fixed changelog;
+* Fixed package manifest for supported Django versions;
+* Fixed README for supported Foundation versions;
+
+Version 0.7.0 - 2018/10/08
 **************************
 
 **Add support for Django 2.0 and 2.1**
