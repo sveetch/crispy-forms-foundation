@@ -1,6 +1,0 @@
-<dd class="accordion-navigation">
-    <a href="#{{ div.css_id }}">{{ div.name|capfirst }}{% if div.item_has_errors %} <span class="label alert round mark">!</span>{% endif %}</a>
-    <div id="{{ div.css_id }}" class="content{% if div.active %} active{% endif %}">
-        {{ fields|safe }}
-    </div>
-</dd>
