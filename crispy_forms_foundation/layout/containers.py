@@ -23,7 +23,6 @@ from django.template.loader import render_to_string
 from crispy_forms import layout as crispy_forms_layout
 from crispy_forms.utils import render_field, TEMPLATE_PACK
 from crispy_forms import bootstrap as crispy_forms_bootstrap
-from crispy_forms.compatibility import text_type
 
 
 __all__ = [
@@ -119,8 +118,7 @@ class TabHolder(crispy_forms_bootstrap.TabHolder):
         # accordion group needs the parent div id to set `data-parent` (I don't
         # know why). This needs to be a unique id
         if not self.css_id:
-            self.css_id = "-".join(["tabsholder",
-                                    text_type(randint(1000, 9999))])
+            self.css_id = "-".join(["tabsholder", str(randint(1000, 9999))])
 
         for tab in self.fields:
             tab.active = False
@@ -225,7 +223,7 @@ class AccordionHolder(crispy_forms_bootstrap.Accordion):
         # know why). This needs to be a unique id
         if not self.css_id:
             self.css_id = "-".join(["accordion",
-                                    text_type(randint(1000, 9999))])
+                                    str(randint(1000, 9999))])
 
         # Active first 'AccordionItem' containing a field error if any, else
         # active first holder item
