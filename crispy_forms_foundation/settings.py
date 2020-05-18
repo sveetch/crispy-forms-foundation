@@ -11,11 +11,9 @@ file.
 # Allowed layout pack
 CRISPY_ALLOWED_TEMPLATE_PACKS = (
     'bootstrap',
-    'uni_form',
-    'bootstrap3',
     'bootstrap4',
-    'foundation-5',
-    'foundation-6'
+    'foundation-6',
+    'uni_form',
 )
 
 

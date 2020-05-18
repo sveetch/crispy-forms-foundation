@@ -23,8 +23,9 @@ Links
 Requires
 ========
 
-* `Django`_ >=1.8;
-* `django-crispy-forms`_ >= 1.6.x;
+* `Python`_ >= 3.5;
+* `Django`_ >= 2.0;
+* `django-crispy-forms`_ >= 1.8.1;
 * `Foundation for sites`_ >= 6.3.x;
 
 User’s Guide
@@ -63,6 +64,7 @@ Contributors
 .. _`@bionikspoon`: https://github.com/bionikspoon
 .. _`@flesser`: https://github.com/flesser
 .. _`@xbello`: https://github.com/xbello
+.. _`@mpasternak`: https://github.com/mpasternak
 
 * Philip Garnero (`@PhilipGarnero`_);
 * Juerg Rast (`@jrast`_);
@@ -72,3 +74,4 @@ Contributors
 * Manu Phatak (`@bionikspoon`_);
 * Florian Eßer (`@flesser`_);
 * Xabier Bello (`@xbello`_);
+* Michał Pasternak (`@mpasternak`_);

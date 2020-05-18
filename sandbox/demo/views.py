@@ -2,16 +2,11 @@
 """
 Views
 """
+from django import __version__ as django_version
 from django import template
 from django.views.generic.edit import FormView
 from django.views.generic.base import TemplateView
-
-try:
-    # Default 'reverse' path since Django1.10
-    from django.urls import reverse
-except ImportError:
-    # 'reverse' path for Django<1.10
-    from django.core.urlresolvers import reverse
+from django.urls import reverse
 
 from crispy_forms_foundation import __version__ as crispy_foundation_version
 from crispy_forms import __version__ as crispy_version
@@ -22,6 +17,7 @@ class CrispyFoundationMixin(object):
     def get_versions(self):
         return {
             "foundation_version": self.kwargs.get('foundation_version'),
+            "django": django_version,
             "django_crispy_forms": crispy_version,
             "crispy_forms_foundation": crispy_foundation_version,
         }

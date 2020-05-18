@@ -8,9 +8,6 @@ Form containers
 .. _Abide: http://foundation.zurb.com/docs/components/abide.html
 
 References
-    * `Foundation 5 fieldset <http://foundation.zurb.com/sites/docs/v/5.5.3/components/forms.html>`_;
-    * `Foundation 5 Accordion <http://foundation.zurb.com/sites/docs/v/5.5.3/components/accordion.html>`_;
-    * `Foundation 5 Tabs <http://foundation.zurb.com/sites/docs/v/5.5.3/components/tabs.html>`_;
     * `Foundation 6 fieldset <http://foundation.zurb.com/sites/docs/forms.html#fieldset-styles>`_;
     * `Foundation 6 Accordion <http://foundation.zurb.com/sites/docs/accordion.html>`_;
     * `Foundation 6 Tabs <http://foundation.zurb.com/sites/docs/tabs.html>`_;

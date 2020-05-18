@@ -4,6 +4,20 @@
 Changelog
 =========
 
+Version 0.8.0 - Unreleased
+**************************
+
+**Major release to remove deprecated supports**
+
+* Drop Python2 support, minimal Python version support is 3.5;
+* Drop support for Django prior to 2.0;
+* Drop support for django-crispy-forms prior to 1.8.1;
+* Drop support for Foundation 5;
+* Ensure support for Django 2.2 and 3.0;
+* Ensure support for django-crispy-forms to 1.9.1;
+* Removed everything about Foundation 5;
+
+
 Version 0.7.1 - 2019/05/30
 **************************
 
