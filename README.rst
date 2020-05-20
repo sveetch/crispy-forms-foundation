@@ -1,6 +1,7 @@
 .. _Django: https://www.djangoproject.com/
 .. _django-crispy-forms: https://github.com/maraujop/django-crispy-forms
 .. _Foundation for sites: http://foundation.zurb.com/
+.. _Python: http://python.org/
 
 Introduction
 ============
@@ -19,6 +20,7 @@ Links
 Requires
 ========
 
-* `Django`_ >=1.8;
-* `django-crispy-forms`_ >= 1.6.x;
+* `Python`_ >= 3.5;
+* `Django`_ >= 2.0;
+* `django-crispy-forms`_ >= 1.8.1;
 * `Foundation for sites`_ >= 6.3.x;

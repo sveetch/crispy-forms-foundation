@@ -8,8 +8,6 @@ Fields
 .. _Abide: http://foundation.zurb.com/docs/components/abide.html
 
 References
-    * `Foundation 5 Forms <http://foundation.zurb.com/sites/docs/v/5.5.3/components/forms.html>`_;
-    * `Foundation 5 Switches <http://foundation.zurb.com/sites/docs/v/5.5.3/components/switch.html>`_;
     * `Foundation 6 Forms <http://foundation.zurb.com/sites/docs/forms.html>`_;
     * `Foundation 6 Switches <http://foundation.zurb.com/sites/docs/switch.html>`_;
 

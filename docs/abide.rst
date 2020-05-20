@@ -50,13 +50,11 @@ Default `Abide`_ behavior is not aware of Tabs and so input errors can be hided 
 
 .. sourcecode:: html
 
-    <script type="text/javascript" src="{{ STATIC_URL }}js/crispy_forms_foundation/plugins.js"></script>
-    <script type="text/javascript">
-    //<![CDATA[
+    <script src="{{ STATIC_URL }}js/crispy_forms_foundation/plugins.js"></script>
+    <script>
     $(document).ready(function() {
         $('form').abide_support_for_tabs();
     });
-    //]]>
     </script>
 
 This way, all input errors will be raised to their tab name that will display an error mark.
@@ -71,11 +69,9 @@ You will need to load it in your pages then initialize it on your form:
 
 .. sourcecode:: html
 
-    <script type="text/javascript" src="{{ STATIC_URL }}js/crispy_forms_foundation/plugins.js"></script>
-    <script type="text/javascript">
-    //<![CDATA[
+    <script src="{{ STATIC_URL }}js/crispy_forms_foundation/plugins.js"></script>
+    <script>
     $(document).ready(function() {
         $('form').abide_support_for_accordions();
     });
-    //]]>
     </script>

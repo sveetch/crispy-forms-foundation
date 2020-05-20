@@ -8,7 +8,6 @@ Grid
 .. _Abide: http://foundation.zurb.com/docs/components/abide.html
 
 References
-    * `Foundation 5 Grid <http://foundation.zurb.com/sites/docs/v/5.5.3/components/grid.html>`_;
     * `Foundation 6 Grid <http://foundation.zurb.com/sites/docs/grid.html>`_;
 
 """  # noqa: E501

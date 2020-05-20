@@ -7,7 +7,7 @@ and implements Foundation components.
 """
 from __future__ import absolute_import
 
-from .base import Div, Panel, Callout, Layout, UneditableField, HTML
+from .base import Div, Callout, Layout, UneditableField, HTML
 from .grid import Row, RowFluid, Column
 
 from .fields import (  # noqa: F401
@@ -17,7 +17,7 @@ from .fields import (  # noqa: F401
     InlineSwitchField, FakeField, Hidden
 )
 from .buttons import (  # noqa: F401
-    ButtonHolder, ButtonHolderPanel, ButtonGroup,
+    ButtonHolder, ButtonHolderCallout, ButtonGroup,
     Button, Submit, Reset,
     InputButton, InputSubmit, InputReset,
     ButtonElement, ButtonSubmit, ButtonReset
@@ -31,7 +31,7 @@ from .containers import (  # noqa: F401
 
 
 __all__ = [
-    'Div', 'Panel', 'Callout', 'Layout', 'UneditableField', 'HTML',
+    'Div', 'Callout', 'Layout', 'UneditableField', 'HTML',
     'Row', 'RowFluid', 'Column',
 
     'Field', 'FakeField', 'Hidden',
@@ -39,7 +39,7 @@ __all__ = [
     'SplitDateTimeField',
     'InlineField', 'InlineJustifiedField', 'SwitchField', 'InlineSwitchField'
 
-    'ButtonHolder', 'ButtonHolderPanel', 'ButtonGroup',
+    'ButtonHolder', 'ButtonHolderCallout', 'ButtonGroup',
     'Button', 'Submit', 'Reset',
     'InputButton', 'InputSubmit', 'InputReset',
     'ButtonElement', 'ButtonSubmit', 'ButtonReset',

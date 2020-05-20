@@ -6,6 +6,7 @@ from django.contrib import admin
 
 from django.views.generic.base import TemplateView
 
+
 urlpatterns = [
     # Dummy homepage just for simple ping view
     url(r'^$', TemplateView.as_view(

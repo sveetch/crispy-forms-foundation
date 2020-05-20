@@ -1,12 +1,12 @@
 """
 Forms crispies items
 """
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import gettext_lazy as _
 
 from crispy_forms.helper import FormHelper
 from crispy_forms_foundation.layout import (
-    Layout, Fieldset, HTML, Row, Column, Panel, Callout,
-    ButtonHolder, ButtonHolderPanel, ButtonGroup,
+    Layout, Fieldset, HTML, Row, Column, Callout,
+    ButtonHolder, ButtonGroup,
     Button, Submit, Reset,
     ButtonElement, ButtonSubmit, ButtonReset,
     InlineField, InlineJustifiedField,
@@ -94,9 +94,6 @@ def part_4_crispies(pack=None):
 
 
 def buttons_crispies(pack=None):
-    box = Panel
-    if pack == 'foundation-6':
-        box = Callout
     return [
         Row(
             Column(
@@ -111,7 +108,7 @@ def buttons_crispies(pack=None):
         ),
         Row(
             Column(
-                box(
+                Callout(
                     HTML("""<p>As &lt;input/&gt;</p>"""),
                     ButtonGroup(
                         Submit('submit', _('Submit'), css_class='success'),
@@ -125,7 +122,7 @@ def buttons_crispies(pack=None):
         ),
         Row(
             Column(
-                box(
+                Callout(
                     HTML("""<p>As &lt;button/&gt;</p>"""),
                     ButtonGroup(
                         ButtonSubmit('submit', _('Submit'),

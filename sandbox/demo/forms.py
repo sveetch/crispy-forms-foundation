@@ -1,11 +1,15 @@
 from django import forms
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import gettext_lazy as _
 
 from crispy_forms.helper import FormHelper
-from crispy_forms_foundation.layout import Layout, Fieldset, TabItem, TabHolder, AccordionHolder, AccordionItem
+from crispy_forms_foundation.layout import (
+    Layout, Fieldset, TabItem, TabHolder, AccordionHolder, AccordionItem
+)
 
-from .crispies import (part_1_crispies, part_2_crispies, part_3_crispies,
-                       part_4_crispies, buttons_crispies)
+from .crispies import (
+    part_1_crispies, part_2_crispies, part_3_crispies, part_4_crispies,
+    buttons_crispies
+)
 
 
 SELECT_INPUT_CHOICES = [('item-{0}'.format(i), 'Option item {0}'.format(i))

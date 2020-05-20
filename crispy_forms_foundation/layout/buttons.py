@@ -5,8 +5,6 @@ Buttons
 .. _Foundation: http://github.com/zurb/foundation
 
 References
-    * `Foundation 5 Button <http://foundation.zurb.com/sites/docs/v/5.5.3/components/buttons.html>`_;
-    * `Foundation 5 Button Group <http://foundation.zurb.com/sites/docs/v/5.5.3/components/button_groups.html>`_;
     * `Foundation 6 Button <http://foundation.zurb.com/sites/docs/button.html>`_;
     * `Foundation 6 Button Group <http://foundation.zurb.com/sites/docs/button-group.html>`_;
 
@@ -18,7 +16,7 @@ from crispy_forms import layout as crispy_forms_layout
 
 
 __all__ = [
-    'ButtonHolder', 'ButtonHolderPanel', 'ButtonHolderCallout', 'ButtonGroup',
+    'ButtonHolder', 'ButtonHolderCallout', 'ButtonGroup',
     'Button', 'Submit', 'Reset',
     'InputButton', 'InputSubmit', 'InputReset',
     'ButtonElement', 'ButtonSubmit', 'ButtonReset',
@@ -45,16 +43,6 @@ class ButtonHolder(crispy_forms_layout.ButtonHolder):
     template = "%s/layout/buttonholder.html"
 
 
-class ButtonHolderPanel(ButtonHolder):
-    """
-    Act like ``ButtonHolder`` but add a ``panel`` class name on the main
-    ``div``.
-    """
-    def __init__(self, field, *args, **kwargs):
-        kwargs['css_class'] = kwargs.get('css_class', '')+' panel'
-        super(ButtonHolderPanel, self).__init__(field, *args, **kwargs)
-
-
 class ButtonHolderCallout(ButtonHolder):
     """
     Act like ``ButtonHolder`` but add a ``callout`` class name on the main
@@ -62,7 +50,7 @@ class ButtonHolderCallout(ButtonHolder):
     """
     def __init__(self, field, *args, **kwargs):
         kwargs['css_class'] = kwargs.get('css_class', '')+' callout'
-        super(ButtonHolderPanel, self).__init__(field, *args, **kwargs)
+        super().__init__(field, *args, **kwargs)
 
 
 class ButtonGroup(crispy_forms_layout.LayoutObject):

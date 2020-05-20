@@ -1,11 +1,9 @@
 {% extends "skeleton.html" %}
 {% load i18n crispy_forms_tags %}
 
-{% block header_assets %}{% if foundation_version == '5' %}
-    {% include 'crispy_demo/assets/foundation5_header_assets.html' %}
-{% else %}
+{% block header_assets %}
     {% include 'crispy_demo/assets/foundation6_header_assets.html' %}
-{% endif %}{% endblock header_assets %}
+{% endblock header_assets %}
 
 {% block base_content %}<div class="row">
     <div class="small-12 columns">
@@ -13,39 +11,24 @@
         <h2>{% blocktrans with version=foundation_version %}Crispy forms Foundation {{ version }} sample{% endblocktrans %}</h2>
         {% with packages_versions=view.get_versions %}
         <p class="text-right">
+            <span class="label">django=={{ packages_versions.django }}</span>
             <span class="label">django-crispy-forms=={{ packages_versions.django_crispy_forms }}</span>
             <span class="label">crispy-forms-foundation=={{ packages_versions.crispy_forms_foundation }}</span>
         </p>
         {% endwith %}
         <hr>
 
-        {% if foundation_version == '5' %}
-        <ul class="stack-for-small round button-group">
-        {% else %}
         <div class="stacked-for-small round button-group">
-        {% endif %}
-            {% if foundation_version == '5' %}<li>{% endif %}
-                <a href="{% url 'demo:crispy-demo-form-fieldsets' foundation_version=foundation_version %}" class="button{% block crispy_demo_menu_fieldsets_item %} secondary{% endblock %}">Form by fieldsets</a>
-            {% if foundation_version == '5' %}</li>{% endif %}
-            {% if foundation_version == '5' %}<li>{% endif %}
-                <a href="{% url 'demo:crispy-demo-form-accordions' foundation_version=foundation_version %}" class="button{% block crispy_demo_menu_accordions_item %} secondary{% endblock %}">Form by accordions</a>
-            {% if foundation_version == '5' %}</li>{% endif %}
-            {% if foundation_version == '5' %}<li>{% endif %}
-                <a href="{% url 'demo:crispy-demo-form-tabs' foundation_version=foundation_version %}" class="button{% block crispy_demo_menu_tabs_item %} secondary{% endblock %}">Form by tabs</a>
-            {% if foundation_version == '5' %}</li>{% endif %}
-        {% if foundation_version == '5' %}
-        </ul>
-        {% else %}
+            <a href="{% url 'demo:crispy-demo-form-fieldsets' foundation_version=foundation_version %}" class="button{% block crispy_demo_menu_fieldsets_item %} secondary{% endblock %}">Form by fieldsets</a>
+            <a href="{% url 'demo:crispy-demo-form-accordions' foundation_version=foundation_version %}" class="button{% block crispy_demo_menu_accordions_item %} secondary{% endblock %}">Form by accordions</a>
+            <a href="{% url 'demo:crispy-demo-form-tabs' foundation_version=foundation_version %}" class="button{% block crispy_demo_menu_tabs_item %} secondary{% endblock %}">Form by tabs</a>
         </div>
-        {% endif %}
 
 
         {% crispy form %}
     </div>
 </div>{% endblock %}
 
-{% block footer_assets %}{% if foundation_version == '5' %}
-    {% include 'crispy_demo/assets/foundation5_footer_assets.html' %}
-{% else %}
+{% block footer_assets %}
     {% include 'crispy_demo/assets/foundation6_footer_assets.html' %}
-{% endif %}{% endblock footer_assets %}
+{% endblock footer_assets %}

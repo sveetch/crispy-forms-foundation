@@ -5,20 +5,11 @@ WARNING: Keep this syncrhonized with enabled urls files
 """
 import pytest
 
-try:
-    # Default 'reverse' path since Django1.10
-    from django.urls import reverse
-except ImportError:
-    # 'reverse' path for Django<1.10
-    from django.core.urlresolvers import reverse
+from django.urls import reverse
 
 
 @pytest.mark.parametrize("url_name,url_args,url_kwargs", [
     ('home', [], {}),
-    ('demo:crispy-demo-form-fieldsets', [], {'foundation_version':5}),
-    ('demo:crispy-demo-form-tabs', [], {'foundation_version':5}),
-    ('demo:crispy-demo-form-accordions', [], {'foundation_version':5}),
-    ('demo:crispy-demo-success', [], {'foundation_version':5}),
     ('demo:crispy-demo-form-fieldsets', [], {'foundation_version':6}),
     ('demo:crispy-demo-form-tabs', [], {'foundation_version':6}),
     ('demo:crispy-demo-form-accordions', [], {'foundation_version':6}),

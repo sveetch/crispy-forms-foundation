@@ -4,13 +4,8 @@ from copy import deepcopy
 
 from django import forms
 from django.forms.fields import FileField, ImageField
-from django.utils.translation import ugettext_lazy as _
-try:
-    # Default 'reverse' path since Django1.10
-    from django.urls import reverse, NoReverseMatch
-except ImportError:
-    # 'reverse' path for Django<1.10
-    from django.core.urlresolvers import reverse, NoReverseMatch
+from django.utils.translation import gettext_lazy as _
+from django.urls import reverse, NoReverseMatch
 
 from crispy_forms.helper import FormHelper
 
