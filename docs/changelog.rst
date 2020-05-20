@@ -4,7 +4,7 @@
 Changelog
 =========
 
-Version 0.8.0 - Unreleased
+Version 0.8.0 - 2020/05/20
 **************************
 
 **Major release to remove deprecated supports**
