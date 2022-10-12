@@ -39,7 +39,7 @@ class CrispyFoundationFieldNode(CrispyFieldNode):
         except template.VariableDoesNotExist:
             html5_required = False
 
-        widgets = getattr(field.field.widget, 'widgets', [field.field.widget])
+        widgets = getattr(field.field.widget, "widgets", [getattr(field.field.widget, "widget", field.field.widget)])
 
         if isinstance(attrs, dict):
             attrs = [attrs] * len(widgets)
@@ -74,18 +74,23 @@ class CrispyFoundationFieldNode(CrispyFieldNode):
             # HTML5 required attribute
             if (html5_required and field.field.required
                and 'required' not in widget.attrs):
-                if field.field.widget.__class__.__name__ != 'RadioSelect':
+                if field.field.widget.__class__.__name__ != 'RadioSelect' and field.field.widget.__class__.__name__ != 'CheckboxSelectMultiple':
                     widget.attrs['required'] = 'required'
 
             for attribute_name, attribute in attr.items():
                 attribute_name = template.Variable(attribute_name).resolve(context)  # noqa: E501
+                attributes = template.Variable(attribute).resolve(context)
 
                 if attribute_name in widget.attrs:
-                    widget.attrs[attribute_name] += " " + template.Variable(attribute).resolve(context)  # noqa: E501
+                    # multiple attribtes are in a single string, e.g.
+                    # "form-control is-invalid"
+                    for attr in attributes.split():
+                        if attr not in widget.attrs[attribute_name].split():
+                            widget.attrs[attribute_name] += " " + attr
                 else:
-                    widget.attrs[attribute_name] = template.Variable(attribute).resolve(context)  # noqa: E501
+                    widget.attrs[attribute_name] = attributes
 
-        return field
+        return str(field)
 
 
 @register.tag(name="crispy_field")

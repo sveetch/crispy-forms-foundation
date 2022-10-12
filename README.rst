@@ -20,7 +20,7 @@ Links
 Requires
 ========
 
-* `Python`_ >= 3.5;
-* `Django`_ >= 2.0;
+* `Python`_ >= 3.7;
+* `Django`_ >= 3.2;
 * `django-crispy-forms`_ >= 1.8.1;
 * `Foundation for sites`_ >= 6.3.x;

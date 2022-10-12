@@ -4,12 +4,12 @@ import io
 from django.template import Context, Template
 
 import django
-from distutils.version import LooseVersion
 
 
-# Getting Django versions compatibilities
-DJANGO110_COMPAT = LooseVersion(django.get_version()) >= LooseVersion('1.10')
+django_version = django.get_version()
 
+from packaging.version import Version
+DJANGO110_COMPAT = Version(django.get_version()) >= Version('1.10')
 
 def write_output(filepath, pack, filename, content):
     """
