@@ -1,16 +1,15 @@
 import os
 
-import pytest
 from django.test.html import parse_html
 from crispy_forms_foundation.layout import (Layout, InlineField,
                                             InlineSwitchField, FakeField)
 
 from tests.forms import BasicInputForm, BoolInputForm
-#from tests.utils import write_output
+# from tests.utils import write_output
 
 
 def test_fakefield(output_test_path, render_output, rendered_template,
-                     helper, client):
+                   helper, client):
     form = BasicInputForm()
     pack = helper.template_pack
 
@@ -22,7 +21,7 @@ def test_fakefield(output_test_path, render_output, rendered_template,
 
     attempted = render_output(os.path.join(output_test_path, pack,
                                            "test_fakefield.html"))
-    #write_output(output_test_path, pack, "test_fakefield.html", rendered)
+    # write_output(output_test_path, pack, "test_fakefield.html", rendered)
 
     assert parse_html(attempted) == parse_html(rendered)
 
@@ -41,7 +40,7 @@ def test_inlinefield(output_test_path, render_output, rendered_template,
 
     attempted = render_output(os.path.join(output_test_path, pack,
                                            "test_inlinefield.html"))
-    #write_output(output_test_path, pack, "test_inlinefield.html", rendered)
+    # write_output(output_test_path, pack, "test_inlinefield.html", rendered)
 
     assert parse_html(attempted) == parse_html(rendered)
 
@@ -61,6 +60,6 @@ def test_inlineswitchfield(output_test_path, render_output, rendered_template,
 
     attempted = render_output(os.path.join(output_test_path, pack,
                                            "test_inlineswitchfield.html"))
-    #write_output(output_test_path, pack, "test_inlineswitchfield.html", rendered)
+    # write_output(output_test_path, pack, "test_inlineswitchfield.html", rendered)
 
     assert parse_html(attempted) == parse_html(rendered)

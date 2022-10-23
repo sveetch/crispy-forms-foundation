@@ -1,16 +1,9 @@
 """
-Form containers
-===============
-
-.. _django-crispy-forms: https://github.com/maraujop/django-crispy-forms
-.. _Foundation: http://github.com/zurb/foundation
-.. _crispy-forms-foundation-demo: https://github.com/sveetch/crispy-forms-foundation-demo
-.. _Abide: http://foundation.zurb.com/docs/components/abide.html
 
 References
-    * `Foundation 6 fieldset <http://foundation.zurb.com/sites/docs/forms.html#fieldset-styles>`_;
-    * `Foundation 6 Accordion <http://foundation.zurb.com/sites/docs/accordion.html>`_;
-    * `Foundation 6 Tabs <http://foundation.zurb.com/sites/docs/tabs.html>`_;
+    * `Foundation 6 fieldset <https://get.foundation/sites/docs/forms.html#fieldset-styles>`_;
+    * `Foundation 6 Accordion <https://get.foundation/sites/docs/accordion.html>`_;
+    * `Foundation 6 Tabs <https://get.foundation/sites/docs/tabs.html>`_;
 
 """  # noqa: E501
 from random import randint
@@ -32,7 +25,7 @@ class Fieldset(crispy_forms_layout.Fieldset):
     """
     It wraps fields in a ``<fieldset>``:
 
-    .. sourcecode:: python
+    .. code-block:: python
 
         Fieldset("Text for the legend",
             'form_field_1',
@@ -42,7 +35,7 @@ class Fieldset(crispy_forms_layout.Fieldset):
     The first parameter is the text for the fieldset legend. This text is
     context aware, so you can do things like :
 
-    .. sourcecode:: python
+    .. code-block:: python
 
         Fieldset("Data for {{ user.username }}",
             'form_field_1',
@@ -87,7 +80,7 @@ class TabHolder(crispy_forms_bootstrap.TabHolder):
     """
     Tabs holder object to wrap Tab item objects in a container:
 
-    .. sourcecode:: python
+    .. code-block:: python
 
         TabHolder(
             TabItem('My tab 1', 'form_field_1', 'form_field_2'),
@@ -156,7 +149,7 @@ class TabItem(Container):
 
     Example:
 
-    .. sourcecode:: python
+    .. code-block:: python
 
         TabItem('My tab', 'form_field_1', 'form_field_2', 'form_field_3')
 
@@ -190,7 +183,7 @@ class AccordionHolder(crispy_forms_bootstrap.Accordion):
     Accordion items holder object to wrap Accordion item objects in a
     container:
 
-    .. sourcecode:: python
+    .. code-block:: python
 
         AccordionHolder(
             AccordionItem("group name", "form_field_1", "form_field_2"),
@@ -252,7 +245,7 @@ class AccordionItem(crispy_forms_bootstrap.AccordionGroup):
 
     Example:
 
-    .. sourcecode:: python
+    .. code-block:: python
 
         AccordionItem("group name", "form_field_1", "form_field_2")
     """

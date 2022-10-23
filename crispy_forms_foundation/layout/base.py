@@ -1,12 +1,7 @@
 """
-Basic elements
-==============
-
-.. _Foundation: http://github.com/zurb/foundation
-.. _Foundation 6 Callout: http://foundation.zurb.com/sites/docs/callout.html
 
 References:
-    * `Foundation 6 Callout`_;
+    * `Foundation 6 Callout <https://get.foundation/sites/docs/callout.html>`_;
 
 """  # noqa: E501
 from crispy_forms import layout as crispy_forms_layout
@@ -40,7 +35,7 @@ class Div(crispy_forms_layout.Div):
 
     Example:
 
-    .. sourcecode:: python
+    .. code-block:: python
 
         Div('form_field_1', 'form_field_2', css_id='div-example',
             css_class='divs')
@@ -54,7 +49,7 @@ class Callout(crispy_forms_layout.Div):
 
     Example:
 
-    .. sourcecode:: python
+    .. code-block:: python
 
         Callout('form_field_1', 'form_field_2', css_id='div-example',
               css_class='divs')

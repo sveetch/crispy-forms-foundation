@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 from __future__ import unicode_literals, absolute_import
 from copy import deepcopy
 
@@ -145,7 +144,7 @@ class FoundationForm(FoundationFormMixin, forms.Form):
 
     Example:
 
-    .. sourcecode:: python
+    .. code-block:: python
 
         from django import forms
         from crispy_forms_foundation.forms import FoundationForm
@@ -173,7 +172,7 @@ class FoundationModelForm(FoundationFormMixin, forms.ModelForm):
 
     Example:
 
-    .. sourcecode:: python
+    .. code-block:: python
 
         from crispy_forms_foundation.forms import FoundationModelForm
 

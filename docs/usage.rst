@@ -4,7 +4,7 @@ Basic sample
 
 Import **crispy-forms-foundation** then you can use the layout objects in your form :
 
-.. sourcecode:: python
+.. code-block:: python
 
     from crispy_forms_foundation.layout import Layout, Fieldset, SplitDateTimeField, Row, Column, ButtonHolder, Submit
 
@@ -42,4 +42,4 @@ Import **crispy-forms-foundation** then you can use the layout objects in your f
 
             super(YourForm, self).__init__(*args, **kwargs)
 
-Embedded templates are in ``crispy_forms_foundation/templates/foundation-5`` or ``crispy_forms_foundation/templates/foundation-6`` depending of your template pack.
+Embedded templates are in ``crispy_forms_foundation/templates/foundation-6``.

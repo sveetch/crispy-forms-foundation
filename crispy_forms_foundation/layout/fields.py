@@ -1,15 +1,8 @@
 """
-Fields
-======
-
-.. _django-crispy-forms: https://github.com/maraujop/django-crispy-forms
-.. _Foundation: http://github.com/zurb/foundation
-.. _crispy-forms-foundation-demo: https://github.com/sveetch/crispy-forms-foundation-demo
-.. _Abide: http://foundation.zurb.com/docs/components/abide.html
 
 References
-    * `Foundation 6 Forms <http://foundation.zurb.com/sites/docs/forms.html>`_;
-    * `Foundation 6 Switches <http://foundation.zurb.com/sites/docs/switch.html>`_;
+    * `Foundation 6 Forms <https://get.foundation/sites/docs/forms.html>`_;
+    * `Foundation 6 Switches <https://get.foundation/sites/docs/switch.html>`_;
 
 """  # noqa: E501
 from crispy_forms.utils import render_field, TEMPLATE_PACK
@@ -31,7 +24,7 @@ class Field(crispy_forms_layout.Field):
 
     Example:
 
-    .. sourcecode:: python
+    .. code-block:: python
 
         Field('field_name', style="color: #333;", css_class="whatever",
               id="field_name")
@@ -97,13 +90,13 @@ class InlineField(Field):
 
     Example:
 
-    .. sourcecode:: python
+    .. code-block:: python
 
         InlineField('field_name')
 
     Or:
 
-    .. sourcecode:: python
+    .. code-block:: python
 
         InlineField('field_name', label_column='large-8',
                     input_column='large-4', label_class='')
@@ -155,7 +148,7 @@ class SwitchField(Field):
 
     Example:
 
-    .. sourcecode:: python
+    .. code-block:: python
 
         SwitchField('field_name', style="color: #333;", css_class="whatever",
                     id="field_name")
@@ -185,13 +178,13 @@ class InlineSwitchField(InlineField):
 
     Example:
 
-    .. sourcecode:: python
+    .. code-block:: python
 
         InlineSwitchField('field_name')
 
     Or:
 
-    .. sourcecode:: python
+    .. code-block:: python
 
         InlineSwitchField('field_name', label_column='large-8',
                           input_column='large-4', label_class='',

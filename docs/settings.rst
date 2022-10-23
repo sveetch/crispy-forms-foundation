@@ -7,7 +7,7 @@ Settings
 **crispy-forms-foundation** itself does not have its own settings but overrides some of `django-crispy-forms`_ settings:
 
 CRISPY_ALLOWED_TEMPLATE_PACKS
-    To add ``foundation-5`` and ``foundation-6`` template pack names to allowed template packs.
+    To add ``foundation-6`` template pack names to allowed template packs.
 CRISPY_TEMPLATE_PACK
     To set default template pack to ``foundation-6``.
 CRISPY_CLASS_CONVERTERS

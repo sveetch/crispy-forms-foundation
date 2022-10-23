@@ -1,12 +1,8 @@
 """
-Buttons
-=======
-
-.. _Foundation: http://github.com/zurb/foundation
 
 References
-    * `Foundation 6 Button <http://foundation.zurb.com/sites/docs/button.html>`_;
-    * `Foundation 6 Button Group <http://foundation.zurb.com/sites/docs/button-group.html>`_;
+    * `Foundation 6 Button <https://get.foundation/sites/docs/button.html>`_;
+    * `Foundation 6 Button Group <https://get.foundation/sites/docs/button-group.html>`_;
 
 """  # noqa: E501
 from django.template.loader import render_to_string
@@ -33,7 +29,7 @@ class ButtonHolder(crispy_forms_layout.ButtonHolder):
 
     Example:
 
-    .. sourcecode:: python
+    .. code-block:: python
 
         ButtonHolder(
             HTML(<span style="display: hidden;">Information Saved</span>),
@@ -62,7 +58,7 @@ class ButtonGroup(crispy_forms_layout.LayoutObject):
 
     Example:
 
-    .. sourcecode:: python
+    .. code-block:: python
 
         ButtonGroup(
             Submit('Save', 'Save'),
@@ -99,7 +95,7 @@ class InputButton(crispy_forms_layout.BaseInput):
     """
     Used to create a Submit input descriptor for the {% crispy %} template tag:
 
-    .. sourcecode:: python
+    .. code-block:: python
 
         button = InputButton('Button 1', 'Press Me!')
 
@@ -127,7 +123,7 @@ class InputSubmit(crispy_forms_layout.BaseInput):
     Used to create a Submit button descriptor for the {% crispy %} template
     tag:
 
-    .. sourcecode:: python
+    .. code-block:: python
 
         submit = Submit('Search the Site', 'search this site')
     """
@@ -152,7 +148,7 @@ class InputReset(crispy_forms_layout.BaseInput):
     Used to create a Reset button input descriptor for the ``{% crispy %}``
     template tag:
 
-    .. sourcecode:: python
+    .. code-block:: python
 
         reset = Reset('Reset This Form', 'Revert Me!')
     """
@@ -181,7 +177,7 @@ class ButtonElement(crispy_forms_layout.BaseInput):
     Advantage of ``<button>`` is to accept almost any HTML content inside
     element.
 
-    .. sourcecode:: python
+    .. code-block:: python
 
         button = ButtonElement('name', 'value',
                                content="<span>Press Me!</span>")
@@ -214,7 +210,7 @@ class ButtonSubmit(ButtonElement):
     """
     Create a submit button following the ``ButtonElement`` behaviors:
 
-    .. sourcecode:: python
+    .. code-block:: python
 
         button = ButtonSubmit('search', 'go-search',
                               content="<span>Search this site!</span>")
@@ -228,7 +224,7 @@ class ButtonReset(ButtonElement):
     """
     Create a reset button following the ``ButtonElement`` behaviors:
 
-    .. sourcecode:: python
+    .. code-block:: python
 
         button = ButtonReset('reset', 'revert'
                              content="<span>Revert Me!</span>")

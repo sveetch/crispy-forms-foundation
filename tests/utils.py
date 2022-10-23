@@ -3,13 +3,6 @@ import io
 
 from django.template import Context, Template
 
-import django
-
-
-django_version = django.get_version()
-
-from packaging.version import Version
-DJANGO110_COMPAT = Version(django.get_version()) >= Version('1.10')
 
 def write_output(filepath, pack, filename, content):
     """
@@ -50,7 +43,7 @@ def render_attempted_output(path, **kwargs):
     1.10 (``required``).
     """
     context_kwargs = {
-        'DJANGO110_COMPAT': DJANGO110_COMPAT,
+        # 'DJANGO110_COMPAT': DJANGO110_COMPAT,
     }
     context_kwargs.update(**kwargs)
     context = Context(context_kwargs)

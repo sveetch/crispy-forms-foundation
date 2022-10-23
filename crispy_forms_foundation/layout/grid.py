@@ -1,14 +1,7 @@
 """
-Grid
-====
-
-.. _django-crispy-forms: https://github.com/maraujop/django-crispy-forms
-.. _Foundation: http://github.com/zurb/foundation
-.. _crispy-forms-foundation-demo: https://github.com/sveetch/crispy-forms-foundation-demo
-.. _Abide: http://foundation.zurb.com/docs/components/abide.html
 
 References
-    * `Foundation 6 Grid <http://foundation.zurb.com/sites/docs/grid.html>`_;
+    * `Foundation 6 Grid <https://get.foundation/sites/docs/grid.html>`_;
 
 """  # noqa: E501
 from crispy_forms_foundation.layout.base import Div
@@ -23,15 +16,15 @@ class Row(Div):
     """
     Wrap fields in a div whose default class is ``row``. Example:
 
-    .. sourcecode:: python
+    .. code-block:: python
 
         Row('form_field_1', 'form_field_2', 'form_field_3')
 
     Act as a div container row, it will embed its items in a div like that:
 
-    .. sourcecode:: html
+    .. code-block:: html
 
-        <div class"row">Content</div>
+        <div class="row">Content</div>
     """
     css_class = 'row'
 
@@ -40,7 +33,7 @@ class RowFluid(Row):
     """
     Wrap fields in a div whose default class is "row row-fluid". Example:
 
-    .. sourcecode:: python
+    .. code-block:: python
 
         RowFluid('form_field_1', 'form_field_2', 'form_field_3')
 
@@ -49,13 +42,14 @@ class RowFluid(Row):
     to put the CSS for this class to your CSS stylesheets. It will embed its
     items in a div like that:
 
-    .. sourcecode:: html
+    .. code-block:: html
 
-        <div class"row row-fluid">Content</div>
+        <div class="row row-fluid">Content</div>
 
     The CSS to add should be something like that:
 
-    .. sourcecode:: css
+    .. code-block:: scss
+       :force:
 
         /*
         * Fluid row takes the full width but keep normal row and columns
@@ -109,15 +103,15 @@ class Column(Div):
 
     Example:
 
-    .. sourcecode:: python
+    .. code-block:: python
 
         Column('form_field_1', 'form_field_2', css_class='small-12 large-6')
 
     Will render to something like that:
 
-    .. sourcecode:: html
+    .. code-block:: html
 
-        <div class"small-12 large-6 columns">...</div>
+        <div class="small-12 large-6 columns">...</div>
 
     ``columns`` class is always appended, so you don't need to specify it.
 

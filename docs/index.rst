@@ -1,6 +1,7 @@
 .. _Django: https://www.djangoproject.com/
 .. _django-crispy-forms: https://github.com/maraujop/django-crispy-forms
-.. _Foundation for sites: http://foundation.zurb.com/
+.. _Foundation for sites: https://get.foundation/
+.. _Python: http://python.org/
 
 .. crispy-form-foundation documentation master file, created by
    sphinx-quickstart on Sat Nov 15 20:21:48 2014.
@@ -8,9 +9,11 @@
 Welcome to crispy-form-foundation's documentation!
 ==================================================
 
-This is a `Django`_ application to add `django-crispy-forms`_ layout objects for `Foundation for sites`_.
+This is a `Django`_ application to add `django-crispy-forms`_ layout objects for
+`Foundation for sites`_.
 
-This app does not include `Foundation for sites`_ assets, you will have to install them yourself in your projects.
+This app does not include `Foundation for sites`_ assets, you will have to install them
+by yourself in your projects.
 
 Links
 *****
@@ -23,9 +26,9 @@ Links
 Requires
 ========
 
-* `Python`_ >= 3.5;
-* `Django`_ >= 2.0;
-* `django-crispy-forms`_ >= 1.8.1;
+* `Python`_ >= 3.8;
+* `Django`_ >= 3.2;
+* `django-crispy-forms`_ >= 1.9.0;
 * `Foundation for sites`_ >= 6.3.x;
 
 User’s Guide
@@ -65,6 +68,7 @@ Contributors
 .. _`@flesser`: https://github.com/flesser
 .. _`@xbello`: https://github.com/xbello
 .. _`@mpasternak`: https://github.com/mpasternak
+.. _`@sprda`: https://github.com/sprda
 
 * Philip Garnero (`@PhilipGarnero`_);
 * Juerg Rast (`@jrast`_);
@@ -75,3 +79,4 @@ Contributors
 * Florian Eßer (`@flesser`_);
 * Xabier Bello (`@xbello`_);
 * Michał Pasternak (`@mpasternak`_);
+* Sprda (`@sprda`_);

@@ -4,6 +4,27 @@
 Changelog
 =========
 
+Version 0.9.0 - 2022/10/22
+**************************
+
+**Major release to update supports**
+
+* **Dropped support for Python<3.8**;
+* **Dropped support for Django<3.2**;
+* **Added official support for Python 3.8, 3.9 and 3.10**.
+* **Added official support for Django 3.2 and 4.0**.
+* Updated tox configuration to fit to Python and Django supports;
+* Updated package configuration to split requirements in more extra requirements so Tox
+  won't have to install Sphinx, flake, etc.. only the Pytest suite;
+* Removed code for old compatibility management from old unsupported Django versions;
+* Updated Flake8 configuration for ``max-line-length`` value to ``88``;
+* Fixed all quality issues raised by Flake8 from code and tests;
+* Updated makefile;
+* Updated documentation configuration;
+* Replaced ``sphinx-autobuild`` requirement by ``livereload``;
+* Fixed some invalid ``code-block`` in docstrings;
+
+
 Version 0.8.0 - 2020/05/20
 **************************
 

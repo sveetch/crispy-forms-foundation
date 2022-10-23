@@ -1,12 +1,12 @@
 import os
 
-import pytest
 from django.test.html import parse_html
-from crispy_forms_foundation.layout import (Layout, Row, Column, ButtonHolder,
-                                            Submit)
+from crispy_forms_foundation.layout import (
+    Layout, Row, Column, ButtonHolder, Submit
+)
 
 from tests.forms import BasicInputForm, BasicInputFormLayoutIncluded, AdvancedForm
-#from tests.utils import write_output
+# from tests.utils import write_output
 
 
 def test_basic(output_test_path, render_output, rendered_template, helper, client):
@@ -17,7 +17,7 @@ def test_basic(output_test_path, render_output, rendered_template, helper, clien
 
     attempted = render_output(os.path.join(output_test_path, pack,
                                            "test_basic.html"))
-    #write_output(output_test_path, pack, "test_basic.html", rendered)
+    # write_output(output_test_path, pack, "test_basic.html", rendered)
 
     assert parse_html(attempted) == parse_html(rendered)
 
@@ -30,7 +30,7 @@ def test_layout(output_test_path, render_output, rendered_template, helper, clie
 
     attempted = render_output(os.path.join(output_test_path, pack,
                                            "test_layout.html"))
-    #write_output(output_test_path, pack, "test_layout.html", rendered)
+    # write_output(output_test_path, pack, "test_layout.html", rendered)
 
     assert parse_html(attempted) == parse_html(rendered)
 
@@ -67,6 +67,6 @@ def test_advanced(output_test_path, render_output, rendered_template, helper, cl
 
     attempted = render_output(os.path.join(output_test_path, pack,
                                            "test_advanced.html"))
-    #write_output(output_test_path, pack, "test_advanced.html", rendered)
+    # write_output(output_test_path, pack, "test_advanced.html", rendered)
 
     assert parse_html(attempted) == parse_html(rendered)

@@ -1,13 +1,12 @@
 import os
 
-import pytest
 from django.test.html import parse_html
 from crispy_forms_foundation.layout import (Layout, ButtonGroup,
                                             Submit, Button,
                                             ButtonElement, ButtonSubmit)
 
 from tests.forms import BasicInputForm
-#from tests.utils import write_output
+# from tests.utils import write_output
 
 
 def test_buttongroup(output_test_path, render_output, rendered_template,
@@ -27,13 +26,13 @@ def test_buttongroup(output_test_path, render_output, rendered_template,
 
     attempted = render_output(os.path.join(output_test_path, pack,
                                            "test_buttongroup.html"))
-    #write_output(output_test_path, pack, "test_buttongroup.html", rendered)
+    # write_output(output_test_path, pack, "test_buttongroup.html", rendered)
 
     assert parse_html(attempted) == parse_html(rendered)
 
 
 def test_buttonelement(output_test_path, render_output, rendered_template,
-                     helper, client):
+                       helper, client):
     form = BasicInputForm()
     pack = helper.template_pack
 
@@ -46,6 +45,6 @@ def test_buttonelement(output_test_path, render_output, rendered_template,
 
     attempted = render_output(os.path.join(output_test_path, pack,
                                            "test_buttonelement.html"))
-    #write_output(output_test_path, pack, "test_buttonelement.html", rendered)
+    # write_output(output_test_path, pack, "test_buttonelement.html", rendered)
 
     assert attempted == rendered
