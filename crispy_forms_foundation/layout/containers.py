@@ -60,7 +60,7 @@ class Container(crispy_forms_bootstrap.Container):
             return "is-active"
         return self.active_css_class
 
-    def render(self, form, form_style, context, template_pack=TEMPLATE_PACK,
+    def render(self, form, context, template_pack=TEMPLATE_PACK,
                **kwargs):
         active_classname = self.get_active_css_class(template_pack)
         if self.active:
@@ -68,7 +68,7 @@ class Container(crispy_forms_bootstrap.Container):
                 self.css_class += ' ' + active_classname
         else:
             self.css_class = self.css_class.replace(active_classname, '')
-        return super(Container, self).render(form, form_style, context,
+        return super(Container, self).render(form, context,
                                              template_pack)
 
 
@@ -98,7 +98,7 @@ class TabHolder(crispy_forms_bootstrap.TabHolder):
     template = "%s/layout/tab-holder.html"
     default_active_tab = None
 
-    def render(self, form, form_style, context, template_pack=TEMPLATE_PACK):
+    def render(self, form, context, template_pack=TEMPLATE_PACK):
         """
         Re-implement almost the same code from crispy_forms but passing
         ``form`` instance to item ``render_link`` method.
@@ -118,7 +118,7 @@ class TabHolder(crispy_forms_bootstrap.TabHolder):
 
         for tab in self.fields:
             content += render_field(
-                tab, form, form_style, context, template_pack=template_pack
+                tab, form, context, template_pack=template_pack
             )
             links += tab.render_link(form, template_pack)
 
@@ -201,7 +201,7 @@ class AccordionHolder(crispy_forms_bootstrap.Accordion):
     """
     template = "%s/layout/accordion-holder.html"
 
-    def render(self, form, form_style, context, template_pack=TEMPLATE_PACK,
+    def render(self, form, context, template_pack=TEMPLATE_PACK,
                **kwargs):
         """
         Re-implement almost the same code from crispy_forms but using
@@ -225,7 +225,7 @@ class AccordionHolder(crispy_forms_bootstrap.Accordion):
                                          form.errors.keys()
                                          if fieldname_error in group])
             content += render_field(
-                group, form, form_style, context, template_pack=template_pack,
+                group, form, context, template_pack=template_pack,
                 **kwargs
             )
 

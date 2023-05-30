@@ -46,9 +46,9 @@ class FakeField(Field):
 
     You should use this field in last resort.
     """
-    def render(self, form, form_style, context, template_pack=TEMPLATE_PACK):
+    def render(self, form, context, template_pack=TEMPLATE_PACK):
         context['fake_field'] = True
-        return super(FakeField, self).render(form, form_style, context,
+        return super(FakeField, self).render(form, context,
                                              template_pack)
 
 
@@ -114,7 +114,7 @@ class InlineField(Field):
 
         super(InlineField, self).__init__(field, *args, **kwargs)
 
-    def render(self, form, form_style, context, template_pack=TEMPLATE_PACK):
+    def render(self, form, context, template_pack=TEMPLATE_PACK):
         context['label_column'] = self.label_column
         context['input_column'] = self.input_column
         context['label_class'] = self.label_class
@@ -122,7 +122,7 @@ class InlineField(Field):
         html = ''
         template = self.get_template_name(template_pack)
         for field in self.fields:
-            html += render_field(field, form, form_style, context,
+            html += render_field(field, form, context,
                                  template=template, attrs=self.attrs,
                                  template_pack=template_pack)
         return html
@@ -161,9 +161,9 @@ class SwitchField(Field):
 
         super(SwitchField, self).__init__(field, *args, **kwargs)
 
-    def render(self, form, form_style, context, template_pack=TEMPLATE_PACK):
+    def render(self, form, context, template_pack=TEMPLATE_PACK):
         context['switch_class'] = " ".join(self.switch_class)
-        return super(SwitchField, self).render(form, form_style, context,
+        return super(SwitchField, self).render(form, context,
                                                template_pack)
 
 
@@ -203,7 +203,7 @@ class InlineSwitchField(InlineField):
 
         super(InlineSwitchField, self).__init__(field, *args, **kwargs)
 
-    def render(self, form, form_style, context, template_pack=TEMPLATE_PACK):
+    def render(self, form, context, template_pack=TEMPLATE_PACK):
         context['switch_class'] = " ".join(self.switch_class)
-        return super(InlineSwitchField, self).render(form, form_style, context,
+        return super(InlineSwitchField, self).render(form, context,
                                                      template_pack)

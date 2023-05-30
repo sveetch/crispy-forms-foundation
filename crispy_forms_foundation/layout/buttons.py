@@ -73,13 +73,13 @@ class ButtonGroup(crispy_forms_layout.LayoutObject):
         self.css_id = kwargs.get('css_id', None)
         self.template = kwargs.get('template', self.template)
 
-    def render(self, form, form_style, context, template_pack=TEMPLATE_PACK):
+    def render(self, form, context, template_pack=TEMPLATE_PACK):
         field_list = []
         template = self.get_template_name(template_pack)
 
         for field in self.fields:
             field_list.append(
-                render_field(field, form, form_style, context,
+                render_field(field, form, context,
                              template_pack=template_pack)
             )
 
@@ -200,9 +200,9 @@ class ButtonElement(crispy_forms_layout.BaseInput):
         self.content = kwargs.pop('content', None)
         super(ButtonElement, self).__init__(field, *args, **kwargs)
 
-    def render(self, form, form_style, context, template_pack=TEMPLATE_PACK):
+    def render(self, form, context, template_pack=TEMPLATE_PACK):
         context['button_content'] = self.content
-        return super(ButtonElement, self).render(form, form_style, context,
+        return super(ButtonElement, self).render(form, context,
                                                  template_pack)
 
 
