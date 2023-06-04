@@ -4,7 +4,7 @@
 Changelog
 =========
 
-Version 1.0.0 - Unreleased
+Version 1.0.0 - 2023/06/04
 **************************
 
 **Major release to upgrade to django-crispy-forms 2.0**
