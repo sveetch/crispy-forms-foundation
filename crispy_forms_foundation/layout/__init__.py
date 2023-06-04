@@ -5,8 +5,6 @@ Inherits from the default **crispy_forms** layout objects to force templates on
 the right ``TEMPLATE_PACK`` (defined from ``settings.CRISPY_TEMPLATE_PACK``)
 and implements Foundation components.
 """
-from __future__ import absolute_import
-
 from .base import Div, Callout, Layout, UneditableField, HTML
 from .grid import Row, RowFluid, Column
 

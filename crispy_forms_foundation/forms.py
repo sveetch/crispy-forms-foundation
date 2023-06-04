@@ -1,4 +1,3 @@
-from __future__ import unicode_literals, absolute_import
 from copy import deepcopy
 
 from django import forms

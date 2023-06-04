@@ -146,6 +146,13 @@ test:
 	$(PYTEST) -vv tests/
 .PHONY: test
 
+freeze-dependencies:
+	@echo ""
+	@echo "==== Freezing backend dependencies versions ===="
+	@echo ""
+	$(VENV_PATH)/bin/python freezer.py
+.PHONY: freeze-dependencies
+
 build-package:
 	@echo ""
 	@echo "==== Build package ===="
@@ -175,7 +182,7 @@ tox:
 	$(TOX)
 .PHONY: tox
 
-quality: test flake docs check-release
+quality: test flake docs check-release freeze-dependencies
 	@echo ""
 	@echo "♥ ♥ Everything should be fine ♥ ♥"
 	@echo ""

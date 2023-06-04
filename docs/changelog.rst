@@ -4,6 +4,21 @@
 Changelog
 =========
 
+Version 1.0.0 - Unreleased
+**************************
+
+**Major release to upgrade to django-crispy-forms 2.0**
+
+To migrate to this version you just need to upgrade django-crispy-forms, your code
+should be safe to work until you made very specific hack around django-crispy-forms
+internals.
+
+* **Dropped support for django-crispy-forms<2.0**;
+* **Added support for django-crispy-forms 2.0**.
+* **Added support for Python 3.11**.
+* **Added support for Django 4.1 and 4.2**.
+
+
 Version 0.9.0 - 2022/10/22
 **************************
 

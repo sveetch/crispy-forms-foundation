@@ -1,22 +1,25 @@
 """
 Re implementation of ``crispy_forms.templatetags.crispy_forms_field`` needed to
 have correct Foundation6 error class on input element.
-
-TODO: Changes stand on ``CRISPY_CLASS_CONVERTERS`` usage so it may be included
-      in ``django-crispy-forms``, this needs a Pull request.
 """
 from django import template
 from django.conf import settings
 
-from crispy_forms.templatetags.crispy_forms_field import (is_checkbox,
-                                                          is_file,
-                                                          pairwise,
-                                                          CrispyFieldNode)
+from crispy_forms.templatetags.crispy_forms_field import (
+    is_checkbox,
+    is_file,
+    pairwise,
+    CrispyFieldNode,
+)
 
 register = template.Library()
 
 
 class CrispyFoundationFieldNode(CrispyFieldNode):
+    """
+    Override original Node object to manage field in a proper way for Foundation
+    classes.
+    """
     def __init__(self, field, attrs):
         self.field = field
         self.attrs = attrs
@@ -83,7 +86,7 @@ class CrispyFoundationFieldNode(CrispyFieldNode):
                     widget.attrs['required'] = 'required'
 
             for attribute_name, attribute in attr.items():
-                attribute_name = template.Variable(attribute_name).resolve(context)  # noqa: E501
+                attribute_name = template.Variable(attribute_name).resolve(context)
                 attributes = template.Variable(attribute).resolve(context)
 
                 if attribute_name in widget.attrs:
@@ -101,7 +104,12 @@ class CrispyFoundationFieldNode(CrispyFieldNode):
 @register.tag(name="crispy_field")
 def crispy_field(parser, token):
     """
-    {% crispy_field field attrs %}
+    Override original template filter to use the ``CrispyFoundationFieldNode``.
+
+    Usage is identical to the original one: ::
+
+        {% crispy_field field attrs %}
+
     """
     token = token.split_contents()
     field = token.pop(1)
