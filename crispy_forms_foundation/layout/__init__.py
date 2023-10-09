@@ -35,7 +35,7 @@ __all__ = [
     'Field', 'FakeField', 'Hidden',
     'MultiWidgetField', 'MultiField',
     'SplitDateTimeField',
-    'InlineField', 'InlineJustifiedField', 'SwitchField', 'InlineSwitchField'
+    'InlineField', 'InlineJustifiedField', 'SwitchField', 'InlineSwitchField',
 
     'ButtonHolder', 'ButtonHolderCallout', 'ButtonGroup',
     'Button', 'Submit', 'Reset',
