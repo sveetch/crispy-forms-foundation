@@ -69,6 +69,7 @@ Contributors
 .. _`@xbello`: https://github.com/xbello
 .. _`@mpasternak`: https://github.com/mpasternak
 .. _`@sprda`: https://github.com/sprda
+.. _`@sparrow`: https://github.com/sparrowme
 
 * Philip Garnero (`@PhilipGarnero`_);
 * Juerg Rast (`@jrast`_);
@@ -80,3 +81,4 @@ Contributors
 * Xabier Bello (`@xbello`_);
 * Michał Pasternak (`@mpasternak`_);
 * Sprda (`@sprda`_);
+* Sparrow (`@sparrow`_);

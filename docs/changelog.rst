@@ -4,6 +4,13 @@
 Changelog
 =========
 
+Version 1.0.2 - 2023/10/11
+**************************
+
+Fixed missing comma in importations from layout module which caused error when trying
+to import it.
+
+
 Version 1.0.1 - 2023/08/18
 **************************
 
