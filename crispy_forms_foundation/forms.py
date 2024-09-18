@@ -107,12 +107,12 @@ class FoundationFormMixin(object):
             # Get a list of all fields with their location within the layout
             layout_field_names = self.helper.layout.get_field_names()
             # Transform checkbox fields to switches element
+
             for pointer in layout_field_names:
-                if isinstance(self.fields[pointer[1]].widget,
+                if isinstance(self.fields[pointer.name].widget,
                               forms.CheckboxInput):
-                    field = InlineSwitchField(pointer[1],
-                                              switch_class="inline")
-                    self.replace_layout_object(pointer[0], field)
+                    field = InlineSwitchField(pointer.name,switch_class="inline")
+                    self.replace_layout_object(pointer.positions, field)
 
         if self.submit:
             if isinstance(self.submit, Submit):
