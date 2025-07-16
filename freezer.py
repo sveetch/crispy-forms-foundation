@@ -1,125 +1,250 @@
 """
-A script to collect every installed dependencies versions from "pip freeze" but
-only those ones explicitely required in package configuration.
+A portable script to get requirements with their installed versions.
 
-It will create a "frozen.txt" file which can help users to find an exact list of
-dependencies versions which have been tested.
+Opposed to a ``pip freeze`` this only care about the direct dependencies, if you just
+want the whole list of installed package versions use pip freeze.
 
-This require a recent install of setuptools (>=39.1.0).
-
-You must call this script with the same Python interpreter used in your virtual
-environment.
+It requires Python>=3.8 and 'packaging' library (which should already be installed on
+a development environment).
 """
 import subprocess
 import sys
+from collections import defaultdict
+from importlib.metadata import (
+    PackageNotFoundError, distribution, version as dist_version,
+    requires as dist_requires
+)
+from pathlib import Path
 
-import pkg_resources
+from packaging.requirements import Requirement
 
 
-def flatten_requirement(requirement):
+class CollectorRequirementNotFoundError(ModuleNotFoundError):
+    pass
+
+
+class InstalledRequirementCollector:
     """
-    Return only the package name from a requirement.
+    Collect every requirement with their installed version number from a project.
 
-    Arguments:
-        requirement (pkg_resources.Requirement): A requirement object.
-
-    Returns:
-        string: Package name.
+    The project need to be installed as a package since it is informations are imported
+    with ``importlib.metadata``.
     """
-    return requirement.key
+    def __init__(self, safe=False):
+        self.safe = safe
 
+    def get_requirement_extra(self, marker):
+        """
+        Get the 'extra' section from marker.
 
-def extract_pkg_version(package_name):
-    """
-    Get package version from installed distribution or configuration file if not
-    installed
+        Arguments:
+            marker (packaging.markers.Marker):
 
-    Arguments:
-        package_name (string): Package name to search and extract informations.
+        Return:
+            string: The 'extra' section value if found else None.
+        """
+        if not marker:
+            return None
 
-    Returns:
-        string: Version name.
-    """
-    return pkg_resources.get_distribution(package_name).version
+        # Patch marker set so it can be splitted in items that we can search for the
+        # 'extra' reference
+        patched_marker = str(marker).replace(" and ", "/").replace(" or ", "/")
+        for mark in patched_marker.split("/"):
+            if mark.replace(" ", "").startswith("extra=="):
+                return mark.replace(" ", "").replace("extra==", "").replace("\"", "")
 
+        return None
 
-def extract_pkg_requirements(package_name):
-    """
-    Get all required dependency names from every requirement sections.
+    def parse_requirement(self, requirement):
+        """
+        Parse requirement string to get package name, version and possible 'extra'
+        label.
 
-    Arguments:
-        package_name (string): Package name to search and extract informations.
+        Arguments:
+            requirement (string): Full requirement string to parse.
 
-    Returns:
-        list: A list of all required package names.
-    """
-    distrib = pkg_resources.get_distribution(package_name)
+        Returns:
+            tuple: In order the package name, the version and then the possible 'extra'
+            section value.
+        """
+        req = Requirement(requirement)
 
-    requirements = set([])
+        return (req.name, str(req.specifier), self.get_requirement_extra(req.marker))
 
-    for r in distrib.requires():
-        requirements.add(flatten_requirement(r))
+    def distribution_requirements(self, main_package_name, ignore_pkg=None):
+        """
+        Get all required dependency names from every requirement sections from a package
+        distribution.
 
-    for item in distrib.extras:
-        for r in distrib.requires(extras=(item,)):
-            requirements.add(flatten_requirement(r))
+        Arguments:
+            main_package_name (string): Project package name.
 
-    return list(requirements)
+        Keyword Arguments:
+            ignore_pkg (list): List of package names to ignore from installed
+                dependencies.
 
+        Returns:
+            dict: Dictionnary of requirements indexed on their extra label (or None for
+                non extra requirements).
+        """
+        ignore_pkg = ignore_pkg or []
+        requirements = defaultdict(list)
+        found = dist_requires(main_package_name) or []
 
-def get_install_dependencies(requirements=None, ignore=[]):
-    """
-    Use "pip freeze" command to get installed dependencies and possibly filtered
-    them from a list of names.
+        for item in found:
+            name, specifier, extra = self.parse_requirement(item)
+            if name not in ignore_pkg:
+                requirements[extra].append(name)
 
-    This does not support installed dependencies from a VCS or in editable mode.
+        return requirements
 
-    Keyword Arguments:
-        requirements (list): List of package names to retain from installed
-            dependencies. If not given, all installed dependencies are retained.
-        ignore (list): List of package names to ignore from installed
-            dependencies.
+    def get_install_dependencies(self, requirements, safe=False):
+        """
+        Get project requirements installed to collect their useful metadata.
 
-    Returns:
-        list: List of installed dependencies with their version. Either all or
-        only those ones from given ``names``.
-    """
-    reqs = subprocess.check_output([sys.executable, '-m', 'pip', 'freeze'])
+        All project requirements are required to be installed except those explicitely
+        defined to ignore.
 
-    # Filter from requirement names (if any) and ignored ones
-    deps = []
-    for item in reqs.splitlines():
-        pkg = item.decode('utf-8')
-        name = pkg.split("==")[0].lower()
+        This may not work well with installed dependencies from a VCS or in editable
+        mode if they don't configure the proper package informations.
 
-        if (
-            (requirements is None or name in requirements) and
-            name not in ignore
-        ):
-            deps.append(pkg)
+        Keyword Arguments:
+            requirements (list): List of package names to retain from installed
+                dependencies. If not given, all installed dependencies are retained.
+            ignores (list): List of package names to ignore from installed
+                dependencies.
+            safe (boolean): If true, a required package that is not installed won't
+                raise an exception, instead it will be just commented with a message.
 
-    return deps
+        Returns:
+            dict: A dictionnary created with ``collections.defaultdict`` for collected
+                requirements indexed on their extra section name, the base requirements
+                are stored in the ``None`` item.
+        """
+        registry = defaultdict(list)
 
+        for extra_name, extra_reqs in requirements.items():
+            for name in extra_reqs:
+                try:
+                    dependency_distrib = distribution(name)
+                except PackageNotFoundError as e:
+                    if self.safe:
+                        registry[extra_name].append(
+                            "# Defined but uninstalled package " + name
+                        )
+                    else:
+                        msg = (
+                            "Package '{}' is defined in requirements but not "
+                            "installed. You should only load this script with all "
+                            "defined requirements installed."
+                        )
+                        raise CollectorRequirementNotFoundError(msg.format(name))
+                else:
+                    registry[extra_name].append(
+                        name + "==" + dependency_distrib.metadata["Version"]
+                    )
 
-def write_frozen_requirements(package_name, filename="frozen.txt"):
-    """
-    Write a file of frozen requirement versions for current version of a
-    package.
-    """
-    version = extract_pkg_version(package_name)
-    requirements = extract_pkg_requirements(package_name)
-    installed = get_install_dependencies(requirements)
+        return registry
 
-    lines = [
-        "# Frozen requirement versions from '{}' installation".format(version)
-    ] + installed
+    def collect(self, name, destination=None, safe=False, ignore_pkg=None):
+        """
+        Get the installed project requirements structured by their 'extra' section and
+        build a file to list them.
 
-    with open(filename, "w") as fp:
-        fp.write("\n".join(lines))
+        Arguments:
+            name (string): Project package name to collect its requirements.
 
-    return filename
+        Keyword Arguments:
+            destination (Path): A path object to a file where to write collected
+                content. If targetted file already exists it will be overwritten. If
+                this argument value is empty, the requirement file content will just
+                be printed to standard output.
+            ignore_pkg (list): List of package names to ignore from installed
+                dependencies.
+
+        Returns:
+            dict: A dictionnary created with ``collections.defaultdict`` for collected
+                requirements indexed on their extra section name, the base requirements
+                are stored in the ``None`` item.
+        """
+        requirements = self.distribution_requirements(name, ignore_pkg=ignore_pkg)
+        registry = collector.get_install_dependencies(requirements)
+
+        lines = [
+            "# Frozen requirement versions for '{name}=={version}' installation".format(
+                name=name,
+                version=dist_version(name),
+            )
+        ]
+
+        for extra_name, extra_reqs in registry.items():
+            if extra_name:
+                lines.append("# From extra requirements '{}'".format(extra_name))
+
+            for name in extra_reqs:
+                lines.append(name)
+
+        content = "\n".join(lines)
+
+        if destination:
+            destination.write_text(content)
+            print("Frozen requirements written to:", destination)
+        else:
+            print(content)
+
 
 
 if __name__ == "__main__":
-    filename = write_frozen_requirements("crispy-forms-foundation")
-    print("Created file for frozen dependencies:", filename)
+    import argparse
+
+    parser = argparse.ArgumentParser(
+        description=(
+            "Build a requirements file for project requirements with their locally "
+            "installed versions. Project must have been installed as a package since "
+            "it is imported to get some needed informations. Opposed to a 'pip freeze' "
+            "this will only care about explicitely defined project requirements and "
+            "not about all installed packages."
+        ),
+    )
+    parser.add_argument(
+        "package_name",
+        default=None,
+        help=(
+            "Name of an installed package, it can be your project package or any "
+            "other installed package."
+        )
+    )
+    parser.add_argument(
+        "--destination",
+        type=Path,
+        default=None,
+        help=(
+            "A filepath where to write the built requirement file. Be aware that this "
+            "won't create missing directories from your path."
+        )
+    )
+    parser.add_argument(
+        "--safe",
+        action="store_true",
+        help=(
+            "This will avoid aborting process if a defined package is not "
+            "installed, instead the package will just be commented with a message."
+        )
+    )
+    parser.add_argument(
+        "--ignore_pkg",
+        action="append",
+        help=(
+            "Can be used multiple times to define some requirement package names to "
+            "ignore."
+        )
+    )
+
+    args = parser.parse_args()
+
+    collector = InstalledRequirementCollector(safe=args.safe)
+    collector.collect(
+        args.package_name,
+        destination=args.destination,
+        ignore_pkg=args.ignore_pkg,
+    )

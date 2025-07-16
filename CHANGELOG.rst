@@ -4,6 +4,35 @@
 Changelog
 =========
 
+Version 1.1.0 - 2025/07/16
+**************************
+
+A major release to modernize package, drop some supports and some new ones. No behavior
+changes or new features have been introduced so this won't break anything on its own.
+
+* Specified in README that project is in maintenance mode;
+* Added support for Python 3.12 and Python 3.13;
+* Added support for Django>=5.0;
+* Dropped support for Python<3.10;
+* Dropped support for Django<5.0;
+* Added a minimal version to every requirements to help Pip to resolve packages
+  quicker;
+* Updated package to use ``importlib.metadata`` instead of deprecated ``pkg_resources``;
+* Added 'pyproject.toml' file to fix PIP warnings about editable install but package
+  config is still in 'setup.cfg' for now;
+* Moved 'manage.py' script at root of repository to fix issue with latest PIP and
+  setuptools versions that changed how *editable* install works (the sandbox was
+  missing from PYTHONPATH). This have no impact on package itself, it is just for
+  development;
+* Fixed issue in some templates that was still using template filter ``length_is`` that
+  was removed since Django 5.1;
+* Updated documentation;
+* Changed documentation from sphinx-rtd to Furo;
+* Updated '.readthedocs.yml' to use sandbox.settings.documentation instead of old
+  custom documentation settings;
+* Updated script to freeze local dependencies;
+
+
 Version 1.0.2 - 2023/10/11
 **************************
 

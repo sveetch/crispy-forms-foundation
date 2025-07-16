@@ -1,0 +1,49 @@
+
+/* Logo smaller */
+.sidebar-logo {
+  display: block;
+  margin: 0 auto;
+  max-width: 100px;
+}
+
+/* Versionning smaller */
+.sidebar-brand-text small {
+  font-size: var(--font-size--small--4);
+}
+
+/* Less vertical space between sidebar list items */
+.sidebar-tree .reference {
+  padding: .4rem var(--sidebar-item-spacing-horizontal);
+}
+
+/* Toctree caption will look alike a h4 title */
+.toctree-wrapper.compound .caption,
+.toctree-wrapper.compound :not(.caption) > .caption-text {
+  font-size: var(--font-size--normal);
+  font-weight: 700;
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+
+/* Dl item title in bold for more readability */
+.field-list dt,
+.option-list dt,
+dl.footnote dt,
+dl.glossary dt,
+dl.simple dt,
+dl:not([class]) dt {
+  font-weight: 700;
+}
+
+/* Admoninition and topic content with more exposure */
+.admonition,
+.topic {
+  font-size: var(--font-size--small);
+  padding: 0 .8rem .8rem;
+}
+
+.admonition p.admonition-title,
+p.topic-title {
+  margin: 0 -.8rem .8rem;
+}

@@ -11,22 +11,18 @@ Get it from PyPi: ::
     pip install crispy-forms-foundation
 
 
-Register required applications in your project settings:
+Register required applications in your project settings: ::
 
-    .. code-block:: python
+    INSTALLED_APPS = (
+        ...
+        "crispy_forms",
+        "crispy_forms_foundation",
+        ...
+    )
 
-        INSTALLED_APPS = (
-            ...
-            "crispy_forms",
-            "crispy_forms_foundation",
-            ...
-        )
+Import default settings at the end of the settings file: ::
 
-Import default settings at the end of the settings file:
-
-    .. code-block:: python
-
-        from crispy_forms_foundation.settings import *
+    from crispy_forms_foundation.settings import *
 
 Default template pack name used will be ``foundation-6``.
 

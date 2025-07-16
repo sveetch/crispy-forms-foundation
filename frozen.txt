@@ -1,12 +1,19 @@
-# Frozen requirement versions from '1.0.2' installation
-Django==4.2.1
-django-crispy-forms==2.0
-django-debug-toolbar==4.1.0
-flake8==6.0.0
-livereload==2.6.3
-pytest==7.3.1
-pytest-django==4.5.2
-Sphinx==6.2.1
-sphinx-rtd-theme==1.2.1
-tox==4.5.2
-twine==4.0.2
+# Frozen requirement versions for 'crispy-forms-foundation==1.1.0' installation
+Django==5.2.4
+django-crispy-forms==2.4
+# From extra requirements 'sandbox'
+django-debug-toolbar==5.2.0
+# From extra requirements 'dev'
+pytest==8.4.1
+pytest-django==4.11.1
+# From extra requirements 'quality'
+flake8==7.3.0
+tox==4.27.0
+# From extra requirements 'doc'
+sphinx==8.1.3
+furo==2024.8.6
+sphinx-copybutton==0.5.2
+# From extra requirements 'doc-live'
+livereload==2.7.1
+# From extra requirements 'release'
+twine==6.1.0

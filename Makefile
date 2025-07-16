@@ -1,9 +1,9 @@
 PYTHON_INTERPRETER=python3
 VENV_PATH=.venv
 PIP=$(VENV_PATH)/bin/pip
-DJANGO_MANAGE=$(VENV_PATH)/bin/python sandbox/manage.py
+DJANGO_MANAGE=$(VENV_PATH)/bin/python ./manage.py
 FLAKE=$(VENV_PATH)/bin/flake8
-SPHINX_RELOAD=$(VENV_PATH)/bin/python sphinx_reload.py
+SPHINX_RELOAD=$(VENV_PATH)/bin/python ./docs/sphinx_reload.py
 PYTEST=$(VENV_PATH)/bin/pytest
 TOX=$(VENV_PATH)/bin/tox
 TWINE=$(VENV_PATH)/bin/twine
@@ -27,7 +27,8 @@ help:
 	@echo "  docs                -- to build documentation"
 	@echo
 	@echo "  flake               -- to launch Flake8 checking"
-	@echo "  test               -- to launch tests using Pytest"
+	@echo "  test                -- to launch test suite using Pytest"
+	@echo "  test-initial        -- to launch test suite using Pytest with re-initialized database"
 	@echo "  tox                 -- to launch tests for every Tox environments"
 	@echo "  quality             -- to launch Flake8 checking and Pytest"
 	@echo
@@ -75,9 +76,6 @@ venv:
 	@echo "==== Install virtual environment ===="
 	@echo ""
 	virtualenv -p $(PYTHON_INTERPRETER) $(VENV_PATH)
-	# This is required for those ones using ubuntu<16.04
-	$(PIP) install --upgrade pip
-	$(PIP) install --upgrade setuptools
 .PHONY: venv
 
 migrate:
@@ -107,7 +105,7 @@ install: venv
 	@echo "==== Install everything for development ===="
 	@echo ""
 	mkdir -p data
-	$(PIP) install -e .[dev,test,quality,doc]
+	$(PIP) install -e .[sandbox,dev,quality,doc,doc-live,release]
 	${MAKE} migrate
 .PHONY: install
 
@@ -136,21 +134,28 @@ flake:
 	@echo ""
 	@echo "==== Flake ===="
 	@echo ""
-	$(FLAKE) --show-source crispy_forms_foundation tests
+	$(FLAKE) --statistics --show-source crispy_forms_foundation tests
 .PHONY: flake
 
 test:
 	@echo ""
 	@echo "==== Tests ===="
 	@echo ""
-	$(PYTEST) -vv tests/
+	$(PYTEST) -vv --reuse-db tests/
 .PHONY: test
+
+test-initial:
+	@echo ""
+	@echo "==== Tests from zero ===="
+	@echo ""
+	$(PYTEST) -vv --reuse-db --create-db tests/
+.PHONY: test-initial
 
 freeze-dependencies:
 	@echo ""
 	@echo "==== Freezing backend dependencies versions ===="
 	@echo ""
-	$(VENV_PATH)/bin/python freezer.py
+	$(VENV_PATH)/bin/python freezer.py crispy-forms-foundation --destination=frozen.txt
 .PHONY: freeze-dependencies
 
 build-package:

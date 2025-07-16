@@ -6,6 +6,8 @@
 Introduction
 ============
 
+**This project is in maintenance mode.**
+
 This is a `Django`_ application to add `django-crispy-forms`_ layout objects for
 `Foundation for sites`_.
 
@@ -22,7 +24,7 @@ Links
 Requires
 ========
 
-* `Python`_ >= 3.8;
-* `Django`_ >= 3.2;
-* `django-crispy-forms`_ >= 1.9.0;
+* `Python`_ >= 3.10;
+* `Django`_ >= 4.2;
+* `django-crispy-forms`_ >= 2.0.0;
 * `Foundation for sites`_ >= 6.3.x;
